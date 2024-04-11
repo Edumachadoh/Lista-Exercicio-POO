@@ -1,11 +1,11 @@
 package br.edu.up;
-import br.edu.up.modelos.Biblioteca;
+import br.edu.up.modelos.Livro;
 
 public class Programa {
     public static void main(String[] args) {
         
-        String[] autores1 = {"João", "Pedro"};
-        Biblioteca livro01 = new Biblioteca("6666AA", "Rei Leão", autores1, "6643643634", 2010);
+        String[] autores1 = {"Gustavo", "Alex"};
+        Livro livro01 = new Livro("6666AA", "Rei Leão", autores1, "6643643634", 2010);
         
         livro01.setCodigo("1598FHK");
         livro01.setTitulo("Core Java 2");
@@ -14,9 +14,16 @@ public class Programa {
         livro01.setAutores(autores1);
         livro01.setIsbn("0130819336");
         livro01.setAno(2005);
+
+        System.out.printf("Livro 01\n");
+        System.out.printf("Código: %s\n", livro01.getCodigo());
+        System.out.printf("Título: %s\n", livro01.getTitulo());
+        System.out.printf("Autores: %s", livro01.getAutores());
+        System.out.printf("ISBN: %s\n", livro01.getIsbn());
+        System.out.printf("Ano: %s\n", livro01.getAno());
         
-        String[] autores2 = {"João", "Pedro"};
-        Biblioteca livro02 = new Biblioteca("6666AA", "Rei Leão", autores, "6643643634", 2010);
+        String[] autores2 = {"Fabiano"};
+        Livro livro02 = new Livro("6666AA", "Rei Leão", autores2, "6643643634", 2010);
         
         livro02.setCodigo("9865PLO");
         livro02.setTitulo("ava, How to Program");
@@ -25,12 +32,12 @@ public class Programa {
         livro02.setIsbn("0130819336");
         livro02.setAno(2005);
         
-        System.out.printf("Livro 01\n");
-        System.out.printf("Código: %s\n", livro01.getCodigo());
-        System.out.printf("Título: %s\n", livro01.getTitulo());
-        System.out.printf("Autores: %s\n", livro01.getAutores());
-        System.out.printf("ISBN: %s\n", livro01.getIsbn());
-        System.out.printf("Ano: %s\n", livro01.getAno());
+        System.out.printf("\nLivro 02\n");
+        System.out.printf("Código: %s\n", livro02.getCodigo());
+        System.out.printf("Título: %s\n", livro02.getTitulo());
+        System.out.printf("Autores: %s", livro02.getAutores());
+        System.out.printf("ISBN: %s\n", livro02.getIsbn());
+        System.out.printf("Ano: %s\n", livro02.getAno());
 
 
 

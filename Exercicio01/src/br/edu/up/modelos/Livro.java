@@ -1,13 +1,13 @@
 package br.edu.up.modelos;
 
-public class Biblioteca {
+public class Livro {
     private String codigo;
     private String titulo;
     private String[] autores;
     private String isbn;
     private int ano;
     
-    public Biblioteca(String codigo, String titulo, String[] autores, String isbn, int ano) {
+    public Livro(String codigo, String titulo, String[] autores, String isbn, int ano) {
         this.codigo = codigo;
         this.titulo = titulo;
         this.autores = autores;
@@ -15,29 +15,29 @@ public class Biblioteca {
         this.ano = ano;
     }
 
-    public Biblioteca(String codigo, String titulo, String[] autores, String isbn) {
+    public Livro(String codigo, String titulo, String[] autores, String isbn) {
         this.codigo = codigo;
         this.titulo = titulo;
         this.autores = autores;
         this.isbn = isbn;
     }
 
-    public Biblioteca(String codigo, String titulo, String[] autores) {
+    public Livro(String codigo, String titulo, String[] autores) {
         this.codigo = codigo;
         this.titulo = titulo;
         this.autores = autores;
     }
 
-    public Biblioteca(String codigo, String titulo) {
+    public Livro(String codigo, String titulo) {
         this.codigo = codigo;
         this.titulo = titulo;
     }
 
-    public Biblioteca(String codigo) {
+    public Livro(String codigo) {
         this.codigo = codigo;
     }
 
-    public Biblioteca() {
+    public Livro() {
     }
 
     public String getCodigo() {
@@ -56,13 +56,19 @@ public class Biblioteca {
         this.titulo = titulo;
     }
 
-    public String[] getAutores() {
-        return autores;
+    public String getAutores() {
+        String stringAutores = "";
+        for (int i = 0; i < autores.length; i ++) {
+            stringAutores +=  autores[i] + "\n";
+        }
+        return stringAutores;
     }
 
     public void setAutores(String[] autores) {
         this.autores = autores;
     }
+
+    
 
     public String getIsbn() {
         return isbn;
