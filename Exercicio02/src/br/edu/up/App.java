@@ -13,6 +13,7 @@ public class App {
         
         ponto2.setX(7);
         ponto2.setY(2);
+        
         System.out.printf("Distância ponto 1 ao 2: %.1f", ponto2.calcularDistancia(ponto1.getX(), ponto1.getY()));
 
         ponto1.setX(10);
