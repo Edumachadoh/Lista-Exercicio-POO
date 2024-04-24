@@ -32,6 +32,10 @@ public class Ponto {
         return Math.sqrt(Math.pow(x1 - this.x, 2) + Math.pow(y1 - this.y, 2));
     }
 
+    public double calcularDistancia(Ponto p) {
+        
+    }
+
     
 
     
