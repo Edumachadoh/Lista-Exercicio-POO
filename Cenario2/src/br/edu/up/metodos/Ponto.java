@@ -33,7 +33,7 @@ public class Ponto {
     }
 
     public double calcularDistancia(Ponto p) {
-        
+        return p.calcularDistancia(this.x, this.y);
     }
 
     
