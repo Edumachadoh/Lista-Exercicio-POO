@@ -20,5 +20,9 @@ public class App {
         ponto1.setY(3);
 
 
+
+        ponto1.calcularDistancia(ponto2);
+
+
     }
 }
