@@ -1,13 +1,14 @@
-package br.edu.up.controler;
+package br.edu.up.controles;
 
 import br.edu.up.modelos.Livro;
 
 public class Menu {
     public static void executar() {
+        
+        
         String[] autores1 = {"Gustavo", "Alex"};
         Livro livro01 = new Livro("6666AA", "Rei Leão", autores1, "6643643634", 2010);
         
-        livro01.setCodigo("1598FHK");
         livro01.setTitulo("Core Java 2");
         autores1[0] = "Cay S. Horstmann";
         autores1[1] = "Gary Cornell";

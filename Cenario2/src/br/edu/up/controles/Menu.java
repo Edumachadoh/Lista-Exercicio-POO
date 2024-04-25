@@ -1,4 +1,4 @@
-package br.edu.up.controler;
+package br.edu.up.controles;
 
 import br.edu.up.metodos.Ponto;
 
