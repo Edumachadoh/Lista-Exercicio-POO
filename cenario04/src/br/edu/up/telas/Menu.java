@@ -1,6 +1,8 @@
 package br.edu.up.telas;
 
+import br.edu.up.controles.controlarEstaciomanento;
 import br.edu.up.util.Prompt;
+import br.edu.up.modelos.Carro;
 
 public class Menu {
     public static void executar() {
@@ -18,7 +20,8 @@ public class Menu {
 
             switch (opcao) {
                 case 1:
-                    
+                    Carro carro1 = new Carro();
+                    carro1.
                     break;
                 case 2:
 
