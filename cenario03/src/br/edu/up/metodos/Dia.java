@@ -1,6 +1,9 @@
 package br.edu.up.metodos;
 
 public class Dia {
+
+    @SuppressWarnings("unused")
+
     private int diaMes;
     private Compromisso[] compromissos;
 
@@ -9,7 +12,8 @@ public class Dia {
     }
 
     public void adicionarCompromisso(Compromisso[] compromissos){
-        this.compromissos = compromissos;
+        compromissos.setPessoa();
+
     }
 
     public Compromisso consultarCompromisso(int hora){  
@@ -20,9 +24,9 @@ public class Dia {
         compromissos[hora] = null;
     }
 
-    public String listarCompromissos(){
-        String compromissosListados = new String();
 
-        return compromissosListados;
+    // o uq fazer??
+    public String listarCompromissos(){
+        
     }
 }
