@@ -1,12 +1,13 @@
 package br.edu.up.telas;
 
-import br.edu.up.controles.controlarEstaciomanento;
+import br.edu.up.controles.ControleEstacionamento;
 import br.edu.up.util.Prompt;
 import br.edu.up.modelos.Carro;
 
 public class Menu {
     public static void executar() {
         int opcao = 1;
+        int cont = 0;
 
         do {
             System.out.printf("------------------------- \n");
@@ -20,11 +21,12 @@ public class Menu {
 
             switch (opcao) {
                 case 1:
-                    Carro carro1 = new Carro();
-                    carro1.
+                    cont ++;
+                    ControleEstacionamento carro1 = new ControleEstacionamento();
                     break;
                 case 2:
-
+                    cont --;
+                    ControleEstacionamento carro2 = new ControleEstacionamento();
                     break;
 
                 case 3:
