@@ -1,5 +1,5 @@
 package br.edu.up.controles;
 
-public class emitirRelatorio {
+public class EmitirRelatorio {
 
 }

@@ -7,7 +7,6 @@ import br.edu.up.modelos.Carro;
 public class Menu {
     public static void executar() {
         int opcao = 1;
-        int cont = 0;
 
         do {
             System.out.printf("------------------------- \n");
@@ -19,20 +18,22 @@ public class Menu {
 
             opcao = Prompt.lerInteiro("[");
 
+            ControleEstacionamento carro = new ControleEstacionamento();
+
             switch (opcao) {
                 case 1:
-                    cont ++;
-                    ControleEstacionamento carro1 = new ControleEstacionamento();
+                    carro.setControle(1);
+                    carro.setVagas(1);
                     break;
                 case 2:
-                    cont --;
-                    ControleEstacionamento carro2 = new ControleEstacionamento();
+                    carro.setControle(2);
+                    carro.setVagas(2);
                     break;
-
                 case 3:
                     break;
             }
 
+            System.out.printf("Vagas: %d\n", carro.getVagas());
 
         } while (opcao != 0);
     }
