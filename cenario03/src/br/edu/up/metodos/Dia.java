@@ -12,8 +12,7 @@ public class Dia {
     }
 
     public void adicionarCompromisso(Compromisso[] compromissos){
-        compromissos.setPessoa();
-
+    
     }
 
     public Compromisso consultarCompromisso(int hora){  
@@ -27,6 +26,6 @@ public class Dia {
 
     // o uq fazer??
     public String listarCompromissos(){
-        
+        return compromissos.toString();
     }
 }

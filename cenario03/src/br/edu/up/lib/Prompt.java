@@ -1,4 +1,4 @@
-package lista.br.edu.up.util;
+package br.edu.up.lib;
 
 import java.io.BufferedReader;
 import java.io.IOException;
