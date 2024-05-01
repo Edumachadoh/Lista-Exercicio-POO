@@ -7,10 +7,13 @@ import br.edu.up.modelos.Carro;
 public class Menu {
     public static void executar() {
         int opcao = 1;
+        int vagas = 10;
+        int entradas = 0;
+        int saidas = 0;
 
         do {
             System.out.printf("------------------------- \n");
-            System.out.printf("Digite a ação que deseja de 1 a 3: \n");
+            System.out.printf("Digite a ação que deseja de 1 a 4: \n");
             System.out.printf("1 = Adicionar carro  \n");
             System.out.printf("2 = Retirar carro  \n");
             System.out.printf("3 = Relatório \n");
@@ -20,20 +23,38 @@ public class Menu {
 
             ControleEstacionamento carro = new ControleEstacionamento();
 
+
             switch (opcao) {
+                
                 case 1:
                     carro.setControle(1);
-                    carro.setVagas(1);
+                    carro.setVagas(vagas);
+                    
+                    vagas --;
+
+                    entradas ++;
+                    carro.setEntradas(entradas);
+                    carro.AdicionarRemoverCarro();
                     break;
                 case 2:
                     carro.setControle(2);
-                    carro.setVagas(2);
+                    vagas ++;
+                    carro.setVagas(vagas);
+                    
+                    saidas ++;
+                    carro.setSaidas(saidas);
+                    carro.AdicionarRemoverCarro();
                     break;
                 case 3:
+                    carro.emitirRelatorio(entradas, saidas);;
+                case 4:
                     break;
-            }
 
-            System.out.printf("Vagas: %d\n", carro.getVagas());
+            }
+            if (opcao == 4) {
+                break;
+            }
+            
 
         } while (opcao != 0);
     }
