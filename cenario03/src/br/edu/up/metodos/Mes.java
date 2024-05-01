@@ -23,11 +23,11 @@ public class Mes {
     }
 
     public String listarCompromissos(int diaMes){
-        return
+        return dias[diaMes].listarCompromissos();
     }
 
     public String listarCompromissos(){
-        return 
+        return dias.listarCompromissos();
     }
 
 }   

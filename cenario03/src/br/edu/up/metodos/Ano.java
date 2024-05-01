@@ -18,12 +18,12 @@ public class Ano {
 
     }
     
-    public String listarCompromissos(String nomeMes){
-        
+    public String listarCompromissos(int diaMes){
+        return meses[diaMes].listarCompromissos();
     }
 
     public String listarCompromissos(){
-
+        return meses[].listarCompromissos();
     }
 
 }
