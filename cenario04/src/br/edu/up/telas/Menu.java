@@ -3,10 +3,11 @@ package br.edu.up.telas;
 import br.edu.up.controles.ControleEstacionamento;
 import br.edu.up.util.Prompt;
 import br.edu.up.modelos.Carro;
+import br.edu.up.telas.MensagensEstacionamento;
 
 public class Menu {
     public static void executar() {
-        int opcao = 1;
+        int opcao;
         int vagas = 10;
         int entradas = 0;
         int saidas = 0;
@@ -27,30 +28,46 @@ public class Menu {
             switch (opcao) {
                 
                 case 1:
-                    carro.setControle(1);
-                    carro.setVagas(vagas);
-                    
+                    entradas ++;
                     vagas --;
 
-                    entradas ++;
-                    carro.setEntradas(entradas);
-                    carro.AdicionarRemoverCarro();
+                     if (vagas == 0) {
+                        MensagensEstacionamento.EstacionamentoCheio();
+                        break;
+                     } 
+
+                    String placa = Prompt.lerLinha("Placa:");
+                    String modelo = Prompt.lerLinha("Modelo:");
+                    String cor = Prompt.lerLinha("Cor:");
+
+                    carro.AdicionarCarro(placa, cor, modelo, vagas, entradas);
+                    System.out.printf("Entradas: %d\n", carro.getEntradas());
+                   
                     break;
+
                 case 2:
-                    carro.setControle(2);
                     vagas ++;
-                    carro.setVagas(vagas);
-                    
                     saidas ++;
-                    carro.setSaidas(saidas);
-                    carro.AdicionarRemoverCarro();
+
+                    if (vagas == 11) {
+                        vagas = 10;
+                        break;
+                    }
+
+                    String placaRetirar = Prompt.lerLinha("Placa a retirar:");
+                    carro.RemoverCarro(placaRetirar, saidas, vagas);
+                    System.out.printf("Saidas: %d\n", carro.getSaidas()); 
+
                     break;
                 case 3:
-                    carro.emitirRelatorio(entradas, saidas);;
+                    MensagensEstacionamento.Relatorio(entradas, saidas);
                 case 4:
                     break;
 
             }
+
+            System.out.printf("Vagas disponiveis: %d\n", carro.getVagas());
+
             if (opcao == 4) {
                 break;
             }
