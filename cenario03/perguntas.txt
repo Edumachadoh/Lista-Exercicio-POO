@@ -1,0 +1,4 @@
+1- em qual sentido eu começo a registrar as classes
+2- como que eu faço para começar desse sentido até o outro registrando todas as classes
+3- qual a melhor maneira de verificar se o mês é valido ou não
+4- como que faz o enum

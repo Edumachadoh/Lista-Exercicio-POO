@@ -12,7 +12,7 @@ public class Dia {
     }
 
     public void adicionarCompromisso(Compromisso[] compromissos){
-    
+
     }
 
     public Compromisso consultarCompromisso(int hora){  
@@ -22,8 +22,7 @@ public class Dia {
     public void excluirCompromisso(int hora){
         compromissos[hora] = null;
     }
-
-
+    
     // o uq fazer??
     public String listarCompromissos(){
         return compromissos.toString();
