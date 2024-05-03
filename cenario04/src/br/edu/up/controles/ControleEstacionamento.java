@@ -16,11 +16,14 @@ public class ControleEstacionamento {
 
     public ControleEstacionamento() {  
         this.carros = new Carro[10];
+        for (int i = 0; i < carros.length; i++) {
+            carros[i] = new Carro();
+        }
     }
 
     public void AdicionarCarro(String placa, String cor, String modelo, int vagas, int entradas) {
         Carro carro = new Carro();   
-         
+       
         carro.setModelo(modelo);
         carro.setPlaca(placa);
         carro.setCor(cor);
@@ -36,20 +39,23 @@ public class ControleEstacionamento {
             checarCarroRetirado = false;
             
         } else {
-            this.carros[this.vagas - 1] = carro;
+            this.carros[9 - vagas] = carro;
+           
         }
-
+        
         
 }
 
     public void RemoverCarro(String placaRetirar, int saidas, int vagas) {
         this.vagas = vagas;
         this.saidas = saidas;
+        String placaComparar = this.carros[0].getPlaca();
 
-         for (int i = 9; i >= 0; i--) {
+        System.out.printf("Placa .getPlaca(): %s\n", placaComparar);
+         for (int i = 0; i < 9; i++) {
             
-            if (this.carros[i] != null && placaRetirar.equals(this.carros[i].getPlaca())) {
-               
+            if (this.carros[i] != null && placaRetirar.equals(this.carros[i].getPlaca()) ) {
+                System.out.printf("teste remover\n", this.carroRetirado);
                 this.carros[i] = null; 
                 this.carroRetirado = i;
                 this.checarCarroRetirado = true;

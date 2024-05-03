@@ -20,7 +20,7 @@ public class Menu {
             System.out.printf("3 = Relatório \n");
             System.out.printf("4 = Sair \n");
 
-            opcao = Prompt.lerInteiro("[");
+            opcao = Prompt.lerInteiro("|");
 
             ControleEstacionamento carro = new ControleEstacionamento();
 
@@ -41,12 +41,16 @@ public class Menu {
                     String cor = Prompt.lerLinha("Cor:");
 
                     carro.AdicionarCarro(placa, cor, modelo, vagas, entradas);
+                    
+                    System.out.printf("------------------------- \n");
                     System.out.printf("Entradas: %d\n", carro.getEntradas());
                    
+                    System.out.printf("Vagas disponiveis: %d\n", carro.getVagas());
+                    
                     break;
 
                 case 2:
-                    vagas ++;
+                    
                     saidas ++;
 
                     if (vagas == 11) {
@@ -56,7 +60,12 @@ public class Menu {
 
                     String placaRetirar = Prompt.lerLinha("Placa a retirar:");
                     carro.RemoverCarro(placaRetirar, saidas, vagas);
+                    
+                    vagas ++;
+                    System.out.printf("------------------------- \n");
                     System.out.printf("Saidas: %d\n", carro.getSaidas()); 
+                    System.out.printf("Vagas disponiveis: %d\n", carro.getVagas());
+                    
 
                     break;
                 case 3:
@@ -66,7 +75,7 @@ public class Menu {
 
             }
 
-            System.out.printf("Vagas disponiveis: %d\n", carro.getVagas());
+           
 
             if (opcao == 4) {
                 break;

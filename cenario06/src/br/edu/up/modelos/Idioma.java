@@ -1,5 +1,15 @@
 package br.edu.up.modelos;
 
 public class Idioma {
-    private String[] idioma;
+    private String idioma;
+
+    public String getIdioma() {
+        return idioma;
+    }
+
+    public void setIdioma(String idioma) {
+        this.idioma = idioma;
+    }
+
+    
 }
