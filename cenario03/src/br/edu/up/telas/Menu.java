@@ -1,18 +1,19 @@
 package br.edu.up.telas;
 
 import br.edu.up.Programa;
-import br.edu.up.controles.AgendarCompromisso;
+import br.edu.up.controles.DefinirDiasValidos;
+import br.edu.up.controles.DefinirNumMes;
 import br.edu.up.controles.VerificarBissexto;
-import br.edu.up.controles.VerificarMesValido;
-import br.edu.up.lib.Prompt;
+import br.edu.up.util.Prompt;
 
 public class Menu {
 
-    public static void mostrarTela(int numeroCompromissos){
-
+    public static void mostrarTela(){
+        
+        Prompt.separador();
         System.out.println("=== Sistema de Agendamento ===");
         Prompt.separador();
-        System.out.println("\n\n--Selecione a operação desejada:");
+        System.out.println("--Selecione a operação desejada:--");
         System.out.println("1 - Agendar Compromisso");
         System.out.println("2 - Alterar compromisso");
         System.out.println("3 - Excluir compromisso");
@@ -22,8 +23,7 @@ public class Menu {
 
         switch (escolha) {
             case 1:
-                menuAgendamento(numeroCompromissos);
-                numeroCompromissos++;
+                MenuAgendamento.agendar();
             break;
             
             case 2:
@@ -43,32 +43,12 @@ public class Menu {
                 Programa.parar();
                 break;
         }
-        mostrarTela(numeroCompromissos);
-    }
-
-    public static void menuAgendamento(int n){
-        
-        int ano = Prompt.lerInteiro("Qual ano:");
-        VerificarBissexto.executar(ano);
-        String mes = mesValido();
-        int dia = Prompt.lerInteiro("Qual dia:");
-        int hora = Prompt.lerInteiro("Qual hora:");
-        String pessoa = Prompt.lerLinha("Nome da pessoa:");
-        String local = Prompt.lerLinha("Nome do local:");
-        String assunto = Prompt.lerLinha("Assunto:");
-
-        
-        AgendarCompromisso.executar(ano,mes,dia,hora,pessoa,local,assunto);
+        mostrarTela();
     }
 
     public static String mesValido(){
-        String mes = Prompt.lerLinha("Qual Mês");
-        boolean valido = VerificarMesValido.executar(mes);
-
-        if(valido == false){
-            Prompt.imprimir("!Mês inválido!\n---Digite novamente---");
-            mesValido();
-        }
+        String mes = Prompt.lerLinha("Qual Mês:");
+        VerificarMes.executar(mes);
 
         return mes;
     }

@@ -2,8 +2,6 @@ package br.edu.up.metodos;
 
 public class Dia {
 
-    @SuppressWarnings("unused")
-
     private int diaMes;
     private Compromisso[] compromissos;
 
@@ -12,7 +10,7 @@ public class Dia {
     }
 
     public void adicionarCompromisso(Compromisso[] compromissos){
-
+        compromissos = new Compromisso[diaMes];
     }
 
     public Compromisso consultarCompromisso(int hora){  
@@ -25,6 +23,12 @@ public class Dia {
     
     // o uq fazer??
     public String listarCompromissos(){
-        return compromissos.toString();
+        String lista = new String();
+        
+        for (Compromisso compromisso : compromissos) {
+            lista += compromisso.toString() + "\n";
+        }
+
+        return lista;
     }
 }

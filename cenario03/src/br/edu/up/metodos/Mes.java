@@ -11,7 +11,7 @@ public class Mes {
     }
 
     public void adicionarCompromisso(Compromisso compromissos, int diaMes){
-        //ver com prof    
+
     }
 
     public void adicionarCompromisso(String pessoa, String local, String assunto, int hora){
@@ -23,11 +23,18 @@ public class Mes {
     }
 
     public String listarCompromissos(int diaMes){
-        return dias[diaMes].listarCompromissos();
+        String compromissos = new String();
+
+        for (Dia dia : dias) {
+            compromissos += dia.listarCompromissos() + "\n" ;   
+        }
+        return compromissos;
     }
 
     public String listarCompromissos(){
-       //ver com prof
+        for (Dia dia : dias) {
+            
+        }
     }
 
 }   
