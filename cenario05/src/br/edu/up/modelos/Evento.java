@@ -2,14 +2,14 @@ package br.edu.up.modelos;
 
 public class Evento {
     private String nome;
-    private int data;
+    private String data;
     private String local;
     private int qtdIngressosVendidos;
     private double precoIngresso;
     private int lotacaoMax;
     
     
-    public Evento(String nome, int data, String local, int qtdIngressosVendidos, double precoIngresso, int lotacaoMax) {
+    public Evento(String nome, String data, String local, int qtdIngressosVendidos, double precoIngresso, int lotacaoMax) {
         this.nome = nome;
         this.data = data;
         this.local = local;
@@ -24,10 +24,10 @@ public class Evento {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public int getData() {
+    public String getData() {
         return data;
     }
-    public void setData(int data) {
+    public void setData(String data) {
         this.data = data;
     }
     public String getLocal() {

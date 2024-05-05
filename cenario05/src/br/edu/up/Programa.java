@@ -7,6 +7,7 @@ public class Programa {
 
         Menu.executar();
     }
+    
     public static void parar(){
         return;
     }

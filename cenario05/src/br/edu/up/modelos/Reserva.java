@@ -2,16 +2,18 @@ package br.edu.up.modelos;
 
 public class Reserva {
     private String nomeResponsavel;
-    private int QtdPessoas;
+    private int qtdPessoas;
     private double valorTotal;
     private String data;
+    private Evento evento;
 
     
-    public Reserva(String nomeResponsavel, int qtdPessoas, double valorTotal, String data) {
+    public Reserva(String nomeResponsavel, int qtdPessoas, double valorTotal, String data, Evento evento) {
         this.nomeResponsavel = nomeResponsavel;
-        QtdPessoas = qtdPessoas;
+        this.qtdPessoas = qtdPessoas;
         this.valorTotal = valorTotal;
         this.data = data;
+        this.evento = evento;
     }
     
     public String getNomeResponsavel() {
@@ -21,10 +23,10 @@ public class Reserva {
         this.nomeResponsavel = nomeResponsavel;
     }
     public int getQtdPessoas() {
-        return QtdPessoas;
+        return qtdPessoas;
     }
     public void setQtdPessoas(int qtdPessoas) {
-        QtdPessoas = qtdPessoas;
+        this.qtdPessoas = qtdPessoas;
     }
     public double getValorTotal() {
         return valorTotal;
@@ -41,8 +43,8 @@ public class Reserva {
 
     @Override
     public String toString() {
-        return "Reserva [Nome do Responsável=" + nomeResponsavel + ", Quantidade de Pessoas=" + QtdPessoas + ", Valor Total="
-                + valorTotal + ", Data=" + data + "]";
+        return "Reserva [Nome do Responsável=" + nomeResponsavel + ", Quantidade de Pessoas=" + qtdPessoas + ", Valor Total="
+                + valorTotal + ", Data=" + data + "Evento:" + evento.toString() + "]";
     }
 
     
