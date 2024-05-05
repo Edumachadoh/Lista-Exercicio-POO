@@ -1,11 +1,13 @@
 package br.edu.up.controles;
 
 import br.edu.up.modelos.Carro;
+import br.edu.up.modelos.Estacionamento;
 import br.edu.up.telas.MensagensEstacionamento;
 import br.edu.up.util.Prompt;
 
 public class ControleEstacionamento {
     private Carro[] carros;
+    private Estacionamento estacionamento;
     private int controle;
     private int vagas;
     private int saidas;
@@ -16,6 +18,7 @@ public class ControleEstacionamento {
 
     public ControleEstacionamento() {  
         this.carros = new Carro[10];
+        this.estacionamento = new Estacionamento();
         for (int i = 0; i < carros.length; i++) {
             carros[i] = new Carro();
         }
@@ -23,11 +26,13 @@ public class ControleEstacionamento {
 
     public void AdicionarCarro(String placa, String cor, String modelo, int vagas, int entradas) {
         Carro carro = new Carro();   
-       
+        
+
         carro.setModelo(modelo);
         carro.setPlaca(placa);
         carro.setCor(cor);
 
+        
         this.entradas = entradas;
         this.vagas = vagas;
 
