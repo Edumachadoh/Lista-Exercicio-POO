@@ -27,6 +27,12 @@ public class Aeronave {
     public void setQtdAssentos(int qtdAssentos) {
         this.qtdAssentos = qtdAssentos;
     }
+    public Pessoa[] getPessoas() {
+        return pessoas;
+    }
+    public void setPessoas(Pessoa[] pessoas) {
+        this.pessoas = pessoas;
+    }
 
 
 

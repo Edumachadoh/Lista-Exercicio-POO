@@ -27,6 +27,13 @@ public class Passagem {
     public void setClasseAssento(String classeAssento) {
         this.classeAssento = classeAssento;
     }
+    public Data getDataPassagem() {
+        return dataPassagem;
+    }
+    public void setDataPassagem(Data dataPassagem) {
+        this.dataPassagem = dataPassagem;
+    }
 
+    
     
 }

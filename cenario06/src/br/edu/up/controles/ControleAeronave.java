@@ -6,48 +6,65 @@ public class ControleAeronave {
     private Passageiro[] passageiros;
     private Tripulacao[] tripulacoes;
     private Aeronave[] aeronaves;
+    private int contPassageiro;
+    private int contComissario;
+    private int contComandante;
 
     public ControleAeronave() {
         this.aeronaves = new Aeronave[10];
-        this.tripulacoes = new Tripulacao[10];
-        this.passageiros = new Passageiro[10];
+        for (int i = 0; i < aeronaves.length; i++) {
+            aeronaves[i] = new Aeronave();
+        }
+    }
+
+    public void adicionarAeronave(int numAeronave) {
+       
+        this.aeronaves[numAeronave].setIdCodigo(1233);
+        this.aeronaves[numAeronave].setQtdAssentos(555);
+        this.aeronaves[numAeronave].setTipo("");
+
+        this.passageiros = new Passageiro[this.aeronaves[numAeronave].getQtdAssentos()];
+        for (int i = 0; i < aeronaves.length; i++) {
+            passageiros[i] = new Passageiro();
+        }
     }
 
 
-
-    public  void adicionarPassageiro(int idPassagem) {
-        this.passageiros[0].setIdBagagem(10);
-        this.passageiros[0].setNome("Edu");
-        this.passageiros[0].setRg("ssd443");
-
-        Passagem passagem = new Passagem();
-        passagem.setIdPassagem(212);
-        passagem.setNumAssento("53C");
-        passagem.setClasseAssento("Executiva");
-
+    public void adicionarPassageiro(int numPassageiro, int numAeronave, String nome, String rg, int idPassagem, String numAssento, String classeAssento, int dia, int mes, int hora, int minuto, int idBagagem) {
+       
         Data data = new Data();
         data.setDia(1);
         data.setMes(5);
         data.setHora(12);
         data.setMinuto(56);
 
+        Passagem passagem = new Passagem();
+        passagem.setIdPassagem(212);
+        passagem.setNumAssento("53C");
+        passagem.setClasseAssento("Executiva");
+        passagem.setDataPassagem(data);
+
+        this.passageiros[numPassageiro].setPassagem(passagem);
+        this.passageiros[numPassageiro].setIdBagagem(idBagagem);
+        this.passageiros[numPassageiro].setNome(nome);
+        this.passageiros[numPassageiro].setRg(rg);
+        
+
     }
     
-    public  void adicionarTripulacao() {
-        
+    public  void adicionarTripulacao(int tipoTripulacao) {
         this.tripulacoes[0].setIdAeronautica(442);
         this.tripulacoes[0].setIdMatricula(1451);
-        this.tripulacoes[0].setNome("Eloisa");
+        this.tripulacoes[0].setNome("Evandro");
         this.tripulacoes[0].setRg("575457");
-        
-        this.tripulacoes[1].setIdAeronautica(524);
-        this.tripulacoes[1].setIdMatricula(1321);
-        this.tripulacoes[1].setNome("Eduardo");
-        this.tripulacoes[1].setRg("232167");
+        // if (tipoTripulacao == 1) {
+        //     this.tripulacoes[0].set
+        // } else if (tipoTripulacao == 2) {
 
+        // }
         
        
-        
-
     }
+
+    
 }
