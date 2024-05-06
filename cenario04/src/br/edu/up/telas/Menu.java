@@ -3,6 +3,7 @@ package br.edu.up.telas;
 import br.edu.up.controles.ControleEstacionamento;
 import br.edu.up.util.Prompt;
 import br.edu.up.modelos.Carro;
+import br.edu.up.modelos.Estacionamento;
 import br.edu.up.telas.MensagensEstacionamento;
 
 public class Menu {
@@ -32,7 +33,7 @@ public class Menu {
                     vagas --;
 
                      if (vagas == 0) {
-                        MensagensEstacionamento.EstacionamentoCheio();
+                        MensagensEstacionamento.estacionamentoCheio();
                         break;
                      } 
 
@@ -43,9 +44,9 @@ public class Menu {
                     carro.AdicionarCarro(placa, cor, modelo, vagas, entradas);
                     
                     System.out.printf("------------------------- \n");
-                    System.out.printf("Entradas: %d\n", carro.getEntradas());
+                    System.out.printf("Entradas: %d\n", carro.getEntradasEstacionamento());
                    
-                    System.out.printf("Vagas disponiveis: %d\n", carro.getVagas());
+                    System.out.printf("Vagas disponiveis: %d\n",carro.getVagasEstacionamento());
                     
                     break;
 
@@ -63,13 +64,13 @@ public class Menu {
                     
                     vagas ++;
                     System.out.printf("------------------------- \n");
-                    System.out.printf("Saidas: %d\n", carro.getSaidas()); 
-                    System.out.printf("Vagas disponiveis: %d\n", carro.getVagas());
+                    System.out.printf("Saidas: %d\n", carro.getSaidasEstacionamento()); 
+                    System.out.printf("Vagas disponiveis: %d\n", carro.getVagasEstacionamento());
                     
 
                     break;
                 case 3:
-                    MensagensEstacionamento.Relatorio(entradas, saidas);
+                    MensagensEstacionamento.relatorio(carro.getEntradasEstacionamento(), carro.getSaidasEstacionamento());
                 case 4:
                     break;
 

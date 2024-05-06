@@ -8,10 +8,6 @@ import br.edu.up.util.Prompt;
 public class ControleEstacionamento {
     private Carro[] carros;
     private Estacionamento estacionamento;
-    private int controle;
-    private int vagas;
-    private int saidas;
-    private int entradas;
     private int carroRetirado;
     private boolean checarCarroRetirado;
     
@@ -33,16 +29,17 @@ public class ControleEstacionamento {
         carro.setCor(cor);
 
         
-        this.entradas = entradas;
-        this.vagas = vagas;
+        estacionamento.setEntradas(entradas);
+        estacionamento.setVagas(vagas);
+
 
         // System.out.printf("Carro retirado: %d\n", this.carroRetirado);
         // System.out.printf("Checar carro retirado: %b", this.checarCarroRetirado);
         
-        if (this.checarCarroRetirado == true) {
+        if (estacionamento.getChecarCarroRetirado() == true) {
             this.carros[carroRetirado - 1] = carro;
             checarCarroRetirado = false;
-            
+            System.out.printf("Funcionou loop, carro retirado");
         } else {
             this.carros[9 - vagas] = carro;
            
@@ -52,63 +49,48 @@ public class ControleEstacionamento {
 }
 
     public void RemoverCarro(String placaRetirar, int saidas, int vagas) {
-        this.vagas = vagas;
-        this.saidas = saidas;
-        String placaComparar = this.carros[0].getPlaca();
+        estacionamento.setSaidas(saidas);
+        estacionamento.setVagas(vagas);
+        
+       
+        
+       
+         for (int i = 9; i >= 0; i--) {
+            String placaComparar = this.carros[i].getPlaca();
 
-        System.out.printf("Placa .getPlaca(): %s\n", placaComparar);
-         for (int i = 0; i < 9; i++) {
-            
-            if (this.carros[i] != null && placaRetirar.equals(this.carros[i].getPlaca()) ) {
-                System.out.printf("teste remover\n", this.carroRetirado);
-                this.carros[i] = null; 
-                this.carroRetirado = i;
-                this.checarCarroRetirado = true;
+            for (int f = 0; f < placaComparar.length(); f ++) {
+                char charplacaComparar = placaComparar.charAt(f); 
+                char charplacaRetirar = placaRetirar.charAt(f);
+
+                if (charplacaComparar == charplacaRetirar) {
+                   estacionamento.setChecarCarroRetirado(true); 
+                }
             }   
             
         }
     }
 
 
-    public void setVagas(int vagas) {
-       this.vagas = vagas;
-    }
+   public int getEntradasEstacionamento() {
+        return estacionamento.getEntradas();
 
+   }
+
+   public int getSaidasEstacionamento() {
+        return estacionamento.getSaidas();
     
-
-    public void setSaidas(int saidas) {
-        this.saidas = saidas;
+   }
+   public int getVagasEstacionamento() {
+        return estacionamento.getVagas();
     }
 
-
-    public void setEntradas(int entradas) {
-        this.entradas = entradas;
-    }
-
-
-    public int getVagas() {
-        return vagas;
-    }
-
-    public int getSaidas() {
-        return saidas;
-    }
-
-    public int getEntradas() {
-        return entradas;
-    }
-
-
-    public void setControle(int controle) {
-        this.controle = controle;
-    }
 
     public void setCarros(Carro[] carros) {
         this.carros = carros;
     }
 
    
-
+    
 
 
     

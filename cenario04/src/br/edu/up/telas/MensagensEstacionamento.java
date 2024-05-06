@@ -3,12 +3,13 @@ package br.edu.up.telas;
 import br.edu.up.controles.*;
 
 public class MensagensEstacionamento {
-    public static void EstacionamentoCheio() {
+    
+    public static void estacionamentoCheio() {
         System.out.printf("---------------------------\n");
         System.out.printf("Estacionamento cheio!\n");
     }
 
-    public static void Relatorio(int entradas, int saidas) {
+    public static void relatorio(int entradas, int saidas) {
         double valorTotal = entradas * 5;
         System.out.printf("---------------------------\n");
         System.out.printf("Entradas no período: %d\n", entradas);
