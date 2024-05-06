@@ -52,16 +52,22 @@ public class ControleAeronave {
 
     }
     
-    public  void adicionarTripulacao(int tipoTripulacao) {
-        this.tripulacoes[0].setIdAeronautica(442);
-        this.tripulacoes[0].setIdMatricula(1451);
-        this.tripulacoes[0].setNome("Evandro");
-        this.tripulacoes[0].setRg("575457");
-        // if (tipoTripulacao == 1) {
-        //     this.tripulacoes[0].set
-        // } else if (tipoTripulacao == 2) {
-
-        // }
+    public  void adicionarComandante(int tripulacao, int idAeronautica, int idMatricula, int totalHorasVoo ) {
+        this.tripulacoes[tripulacao].setIdAeronautica(442);
+        this.tripulacoes[tripulacao].setIdMatricula(1451);
+        this.tripulacoes[tripulacao].setNome("Evandro");
+        this.tripulacoes[tripulacao].setRg("575457");
+       
+        
+        
+       
+    }
+    public  void adicionarComissario(int tripulacao, int idAeronautica, int idMatricula, int idiomar[]) {
+        this.tripulacoes[tripulacao].setIdAeronautica(442);
+        this.tripulacoes[tripulacao].setIdMatricula(1451);
+        this.tripulacoes[tripulacao].setNome("Evandro");
+        this.tripulacoes[tripulacao].setRg("575457");
+       
         
        
     }
