@@ -3,7 +3,7 @@ package br.edu.up.metodos;
 public class Ano {
     private int ano;
     private boolean bissexto;
-    private Mes[] meses;
+    private Mes[] meses = new Mes[12];
 
     public Ano(int ano, boolean bissexto){
         this.ano = ano;
@@ -23,7 +23,13 @@ public class Ano {
     }
 
     public String listarCompromissos(){
-        //ver com prof
+        String compromissos = new String();
+
+        for (Mes mes : meses) {
+            compromissos += mes.listarCompromissos() + "\n";
+        }
+
+        return compromissos;
     }
 
 }

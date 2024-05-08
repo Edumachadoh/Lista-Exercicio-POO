@@ -12,7 +12,7 @@ public class DefinirMes {
             nomeMes = "Março";
         }else if(mes.contains("abr") == true){
             nomeMes = "Abril";
-        }else if(mes.contains("ma") == true){
+        }else if(mes.contains("mai") == true){
             nomeMes = "Maio";
         }else if(mes.contains("jun") == true){
             nomeMes = "Junho";
