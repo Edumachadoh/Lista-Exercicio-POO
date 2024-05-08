@@ -1,7 +1,7 @@
 package br.edu.up.modelos;
 
 public class Aeronave {
-    private Pessoa[] pessoas;
+    private Pessoa pessoa;
     private int idCodigo;
     private String tipo;
     private int qtdAssentos;
@@ -27,11 +27,11 @@ public class Aeronave {
     public void setQtdAssentos(int qtdAssentos) {
         this.qtdAssentos = qtdAssentos;
     }
-    public Pessoa[] getPessoas() {
-        return pessoas;
+    public Pessoa getPessoa() {
+        return pessoa;
     }
-    public void setPessoas(Pessoa[] pessoas) {
-        this.pessoas = pessoas;
+    public void setPessoa(Pessoa pessoas) {
+        this.pessoa = pessoas;
     }
 
 

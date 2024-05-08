@@ -9,13 +9,15 @@ public class Menu {
         int numAeronave = 0;
         int passageiro = 0;
         int tripulacao = 0;
+        String nome;
+        String rg;
 
         System.out.printf("------------------------- \n");
         int idCodigo = Prompt.lerInteiro("Codigo da aeronave: "); 
         String tipo = Prompt.lerLinha("Tipo: "); 
         int qtdAssentos = Prompt.lerInteiro("Qtd assentos: "); 
        
-       
+        ControleAeronave aeronave = new ControleAeronave();
        
         do {
             System.out.printf("------------------------- \n");
@@ -29,15 +31,16 @@ public class Menu {
             opcao = Prompt.lerInteiro("");
     
 
-            ControleAeronave aeronave = new ControleAeronave();
-            aeronave.adicionarAeronave(numAeronave);
+            
+            
+            aeronave.adicionarAeronave(numAeronave, idCodigo, tipo, qtdAssentos);
 
             switch (opcao) {
                 case 1:
-                   passageiro ++;
+                   
 
-                    String nome = Prompt.lerLinha("Nome:");
-                    String rg = Prompt.lerLinha("Rg:");
+                    nome = Prompt.lerLinha("Nome:");
+                    rg = Prompt.lerLinha("Rg:");
                     int idPassagem = Prompt.lerInteiro("Id passagem:");
                     int idBagagem = Prompt.lerInteiro("Id bagagem:");
                     String numAssento = Prompt.lerLinha("Numero assento:");
@@ -48,34 +51,36 @@ public class Menu {
                     int minuto = Prompt.lerInteiro("Minuto:");
                     
                     aeronave.adicionarPassageiro(passageiro, numAeronave, nome, rg, idPassagem, numAssento, classeAssento, dia, mes, hora, minuto, idBagagem);
-
+                    passageiro ++;
                     break;
                 case 2:
-                    tripulacao ++;
+                    
 
+                    nome = Prompt.lerLinha("Nome:");
+                    rg = Prompt.lerLinha("Rg:");
                     int tipoTripulacao = Prompt.lerInteiro("Qual tripulante [1 - Comandante / 2 - Comissário]:");
                     int idAeronautica = Prompt.lerInteiro("Id aeronautica: ");
                     int idMatricula = Prompt.lerInteiro("Id matricula: ");
-        
+
                     if (tipoTripulacao == 1) {
 
                         int totalHorasVoo = Prompt.lerInteiro("Total de horas de voo: ");     
-                        aeronave.adicionarComandante(tripulacao, idAeronautica, idMatricula, totalHorasVoo); 
+                        aeronave.adicionarComandante(nome, rg, tripulacao, idAeronautica, idMatricula, totalHorasVoo); 
 
                     } else if (tipoTripulacao == 2) {
 
                         int idiomas = Prompt.lerInteiro("Idiomas: "); 
 
-                        if (idiomas == 0) {
-                            aeronave.adicionarComissario(tripulacao,idAeronautica, idMatricula, idiomas[]);
-                        } else if (idiomas != 0)
-                            aeronave.adicionarComissario(tripulacao, idAeronautica, idMatricula, idiomas[]); 
-                         }
+                        // if (idiomas == 0) {
+                        //     aeronave.adicionarComissario(nome, rg ,tripulacao,idAeronautica, idMatricula, idiomas[]);
+                        // } else if (idiomas != 0)
+                        //     aeronave.adicionarComissario(nome, rg ,tripulacao, idAeronautica, idMatricula, idiomas[]); 
+                          }
                     
-                        
+                    tripulacao ++;    
                     break;
                 case 3:
-                    
+                    System.out.println(aeronave);
                     break;
 
                 default:

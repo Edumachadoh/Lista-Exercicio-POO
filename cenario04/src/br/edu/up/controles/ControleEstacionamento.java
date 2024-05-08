@@ -2,18 +2,15 @@ package br.edu.up.controles;
 
 import br.edu.up.modelos.Carro;
 import br.edu.up.modelos.Estacionamento;
-import br.edu.up.telas.MensagensEstacionamento;
-import br.edu.up.util.Prompt;
+
 
 public class ControleEstacionamento {
     private Carro[] carros;
     private Estacionamento estacionamento;
-    private int carroRetirado;
-    private boolean checarCarroRetirado;
-    private String placaRetirar;
     
 
     public ControleEstacionamento() {  
+        
         this.carros = new Carro[10];
         this.estacionamento = new Estacionamento();
         
@@ -27,58 +24,42 @@ public class ControleEstacionamento {
      
         estacionamento.setEntradas(entradas);
         estacionamento.setVagas(vagas);
-
-
-        // System.out.printf("Carro retirado: %d\n", this.carroRetirado);
-        // System.out.printf("Checar carro retirado: %b", this.checarCarroRetirado);
         
-        // if (estacionamento.getChecarCarroRetirado() == true) {
-        //     this.carros[carroRetirado - 1] = carro;
-        //     checarCarroRetirado = false;
-        //     System.out.printf("Funcionou loop, carro retirado");
-        // } else {
-        //     this.carros[9 - vagas] = carro;
-           
-        // }
+        if (estacionamento.getChecarCarroRetirado() == true) {
+            this.carros[estacionamento.getCarroRetirado()] = carro;
+            estacionamento.setChecarCarroRetirado(false);
+            System.out.printf("Funcionou loop, carro retirado\n");
+        } else {
+            this.carros[9 - vagas] = carro;
+        }
         
         this.carros[9 - vagas] = carro;
         
         System.out.printf("Placa: %s\n", this.carros[9 - vagas].getPlaca());
 }
 
-    public void RemoverCarro(String placaRetirar, int saidas, int vagas) {
+    public void RemoverCarro(String placaDigitada, int saidas, int vagas) {
         estacionamento.setSaidas(saidas);
         estacionamento.setVagas(vagas);
       
+        estacionamento.setChecarCarroRetirado(false);
         
-        String placaComparar = new String();
+        String placaCompararBD = "";
         
        for (int i = 0; i < 9; i ++) {
             if (this.carros[i].getPlaca() != null) {
 
-                placaComparar = this.carros[i].getPlaca();
-                System.out.printf("Placa comparar: %s", this.carros[9 - vagas].getPlaca());
-                    if (placaComparar.compareToIgnoreCase(placaRetirar) >= 7) {
-                         System.out.printf("Carro retirado 1 !!!!");
-                    }
+                placaCompararBD = this.carros[i].getPlaca();
+                
+                
+                if (placaCompararBD.equals(placaDigitada)) {
+                      System.out.printf("Carro retirado 1 !!!!");
+                      estacionamento.setChecarCarroRetirado(true);
+                      estacionamento.setCarroRetirado(i);
+                      this.carros[i] = null;
+                }
             }
        }
-
-
-
-        //  for (int i = 9; i >= 0; i--) {
-            
-            
-        //     for (int f = 0; f < placaComparar.length(); f ++) {
-        //         char charplacaComparar = placaComparar.charAt(f); 
-        //         char charplacaRetirar = placaRetirar.charAt(f);
-
-        //         if (charplacaComparar == charplacaRetirar) {
-        //            estacionamento.setChecarCarroRetirado(true); 
-        //         }
-        //     }   
-            
-        // }
     }
 
 
@@ -101,7 +82,26 @@ public class ControleEstacionamento {
     }
 
    
-    
+    public void imprimirCarros() {
+        System.out.printf("Placa: %s\n", this.carros[0].getPlaca());
+        System.out.printf("Modelo: %s\n", this.carros[0].getModelo());
+        System.out.printf("Cor: %s\n", this.carros[0].getCor());
+        System.out.printf("Placa: %s\n", this.carros[1].getPlaca());
+        System.out.printf("Modelo: %s\n", this.carros[1].getModelo());
+        System.out.printf("Cor: %s\n", this.carros[1].getCor());
+        System.out.printf("Placa: %s\n", this.carros[2].getPlaca());
+        System.out.printf("Modelo: %s\n", this.carros[2].getModelo());
+        System.out.printf("Cor: %s\n", this.carros[2].getCor());
+        System.out.printf("Placa: %s\n", this.carros[3].getPlaca());
+        System.out.printf("Modelo: %s\n", this.carros[3].getModelo());
+        System.out.printf("Cor: %s\n", this.carros[3].getCor());
+        System.out.printf("Placa: %s\n", this.carros[4].getPlaca());
+        System.out.printf("Modelo: %s\n", this.carros[4].getModelo());
+        System.out.printf("Cor: %s\n", this.carros[4].getCor());
+        System.out.printf("Placa: %s\n", this.carros[5].getPlaca());
+        System.out.printf("Modelo: %s\n", this.carros[5].getModelo());
+        System.out.printf("Cor: %s\n", this.carros[5].getCor());
+    }
 
 
     

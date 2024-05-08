@@ -13,6 +13,8 @@ public class Menu {
         int entradas = 0;
         int saidas = 0;
 
+        ControleEstacionamento carro = new ControleEstacionamento();
+        
         do {
             System.out.printf("------------------------- \n");
             System.out.printf("Digite a ação que deseja de 1 a 4: \n");
@@ -22,9 +24,6 @@ public class Menu {
             System.out.printf("4 = Sair \n");
 
             opcao = Prompt.lerInteiro("|");
-
-            ControleEstacionamento carro = new ControleEstacionamento();
-
 
             switch (opcao) {
                 
@@ -46,13 +45,14 @@ public class Menu {
                     System.out.printf("------------------------- \n");
                     System.out.printf("Entradas: %d\n", carro.getEntradasEstacionamento());
                    
-                    System.out.printf("Vagas disponiveis: %d\n",carro.getVagasEstacionamento());
+                    System.out.printf("Vagas disponiveis: %d\n",carro.getVagasEstacionamento() );
                     
                     break;
 
                 case 2:
                     
                     saidas ++;
+                    vagas ++;
 
                     if (vagas == 11) {
                         vagas = 10;
@@ -71,6 +71,7 @@ public class Menu {
                     break;
                 case 3:
                     MensagensEstacionamento.relatorio(carro.getEntradasEstacionamento(), carro.getSaidasEstacionamento());
+                    carro.imprimirCarros();
                 case 4:
                     break;
 

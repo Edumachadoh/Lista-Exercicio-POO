@@ -4,11 +4,10 @@ public class Passagem {
     private int idPassagem;
     private String numAssento;
     private String classeAssento;
-    private Data dataPassagem;
+    private Data data;
    
    
-   
-   
+
     public int getIdPassagem() {
         return idPassagem;
     }
@@ -27,11 +26,11 @@ public class Passagem {
     public void setClasseAssento(String classeAssento) {
         this.classeAssento = classeAssento;
     }
-    public Data getDataPassagem() {
-        return dataPassagem;
+    public Data getData() {
+        return data;
     }
-    public void setDataPassagem(Data dataPassagem) {
-        this.dataPassagem = dataPassagem;
+    public void setData(Data dataPassagem) {
+        this.data = dataPassagem;
     }
 
     
