@@ -11,11 +11,11 @@ public class Mes {
     }
 
     public void adicionarCompromisso(Compromisso compromissos, int diaMes){
-
+        
     }
 
     public void adicionarCompromisso(Dia dia){
-        dia.adicionarCompromisso(null);
+
     }
 
     public void excluirCompromisso(int diaMes, int hora){

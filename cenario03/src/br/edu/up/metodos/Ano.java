@@ -1,9 +1,7 @@
 package br.edu.up.metodos;
 
 public class Ano {
-    @SuppressWarnings("unused")
     private int ano;
-    @SuppressWarnings("unused")
     private boolean bissexto;
     private Mes[] meses = new Mes[12];
 
@@ -13,7 +11,7 @@ public class Ano {
     }
 
     public void adicionarMes(Mes mes){
-        meses.adicionarCompromisso();
+
     }
 
     public void excluirCompromisso(String nomeMes, int diaMes, int hora){

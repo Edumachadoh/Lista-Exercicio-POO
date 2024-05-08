@@ -9,7 +9,9 @@ public class Dia {
         this.diaMes = diaMes;
     }
 
-    public void adicionarCompromisso(Compromisso compromissos){
+    public void adicionarCompromisso(Compromisso compromisso){
+        int hora = compromisso.getHora();
+        compromissos[hora - 1] = compromisso;
         
     }
 
