@@ -1,0 +1,2 @@
+fazer um controle para achar um evento a partir do nome do
+responsável pela reserva e a quantidade de pessoas

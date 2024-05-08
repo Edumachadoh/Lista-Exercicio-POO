@@ -1,15 +1,25 @@
 package br.edu.up.telas;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import br.edu.up.Programa;
+import br.edu.up.controles.AgendarCompromisso;
 import br.edu.up.controles.DefinirDiasValidos;
 import br.edu.up.controles.DefinirNumMes;
 import br.edu.up.controles.VerificarBissexto;
+import br.edu.up.metodos.Ano;
 import br.edu.up.util.Prompt;
 
 public class Menu {
+    public static void iniciar(){
+        List<Ano> anos = new ArrayList<>();
 
-    public static void mostrarTela(){
-        
+        mostrarTela(anos);
+    }
+
+    public static void mostrarTela(List<Ano> anos){
+
         Prompt.separador();
         System.out.println("=== Sistema de Agendamento ===");
         Prompt.separador();
@@ -23,7 +33,7 @@ public class Menu {
 
         switch (escolha) {
             case 1:
-                MenuAgendamento.agendar();
+                agendar(anos);
             break;
             
             case 2:
@@ -43,7 +53,7 @@ public class Menu {
                 Programa.parar();
                 break;
         }
-        mostrarTela();
+        mostrarTela(anos);
     }
 
     public static String mesValido(){
@@ -51,5 +61,23 @@ public class Menu {
         VerificarMes.executar(mes);
 
         return mes;
+    }
+
+    public static void agendar(List<Ano> anos){
+        
+        
+        int ano = Prompt.lerInteiro("Qual ano:");
+        boolean bissexto = VerificarBissexto.executar(ano);
+        String mes = Menu.mesValido();
+        int numMes = DefinirNumMes.executar(mes);
+        int numDias = DefinirDiasValidos.executar(numMes, bissexto);
+        int dia = Prompt.lerInteiro("Qual dia:");
+        int hora = Prompt.lerInteiro("Qual hora:");
+        String pessoa = Prompt.lerLinha("Nome da pessoa:");
+        String local = Prompt.lerLinha("Nome do local:");
+        String assunto = Prompt.lerLinha("Assunto:");
+
+        
+        AgendarCompromisso.executar(anos,ano,mes,dia,hora,pessoa,local,assunto,numMes, numDias ,bissexto);
     }
 }

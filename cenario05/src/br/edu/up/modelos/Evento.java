@@ -7,15 +7,20 @@ public class Evento {
     private int qtdIngressosVendidos;
     private double precoIngresso;
     private int lotacaoMax;
+    private Reserva[] reservas = new Reserva[lotacaoMax];
+    private int numReservasFeitas = 0;
     
     
-    public Evento(String nome, String data, String local, int qtdIngressosVendidos, double precoIngresso, int lotacaoMax) {
+    public Evento(String nome, String data, String local, double precoIngresso, int lotacaoMax) {
         this.nome = nome;
         this.data = data;
         this.local = local;
-        this.qtdIngressosVendidos = qtdIngressosVendidos;
         this.precoIngresso = precoIngresso;
         this.lotacaoMax = lotacaoMax;
+    }
+    public void adicionarReserva(Reserva reserva, int numReserva){
+        this.reservas[numReserva] = reserva; 
+        this.numReservasFeitas++;
     }
     
     public String getNome() {
@@ -54,10 +59,25 @@ public class Evento {
     public void setPrecoIngresso(int precoIngresso) {
         this.precoIngresso = precoIngresso;
     }
+    public int getNumReservasFeitas(){
+        return numReservasFeitas;
+    }
+    public String listarReservas(){
+        String listaReserva = new String();
+        int i = 1;
+
+        for (Reserva reserva : reservas) {
+
+            listaReserva += "Reserva " + i +reserva.toString() + "\n";
+            i++;
+
+        }
+        return listaReserva;
+    }
 
     @Override
     public String toString() {
-        return "Evento [Nome=" + nome + ", Data=" + data + ", Local=" + local + ", Quantidade de Ingressos Vendidos="
+        return "[Nome=" + nome + ", Data=" + data + ", Local=" + local + ", Quantidade de Ingressos Vendidos="
                 + qtdIngressosVendidos + ", Preço do Ingresso=" + precoIngresso + ", Lotação Max=" + lotacaoMax + "]";
     }
     

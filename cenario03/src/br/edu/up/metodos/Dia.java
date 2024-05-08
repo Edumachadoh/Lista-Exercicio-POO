@@ -3,14 +3,14 @@ package br.edu.up.metodos;
 public class Dia {
 
     private int diaMes;
-    private Compromisso[] compromissos;
+    private Compromisso[] compromissos = new Compromisso[24];
 
     public Dia(int diaMes){
         this.diaMes = diaMes;
     }
 
-    public void adicionarCompromisso(Compromisso[] compromissos){
-        compromissos = new Compromisso[diaMes];
+    public void adicionarCompromisso(Compromisso compromissos){
+        
     }
 
     public Compromisso consultarCompromisso(int hora){  

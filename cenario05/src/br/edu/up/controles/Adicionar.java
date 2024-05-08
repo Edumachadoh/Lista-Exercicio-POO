@@ -1,18 +1,23 @@
 package br.edu.up.controles;
 
+import java.util.List;
+
 import br.edu.up.modelos.Evento;
 import br.edu.up.modelos.Reserva;
+import br.edu.up.telas.MenuEvento;
 
 public class Adicionar {
-    public static void evento(){
-        
+    public static void evento(List<Evento> eventos, String nome, String data, String local, double precoIngresso, int lotacaoMax){
+        Evento evento = new Evento(nome, data, local, precoIngresso, lotacaoMax);
+        eventos.add(evento);
+        MenuEvento.executar(eventos);
     }
     
-    public static void reserva( String nomeResponsavel , int qtdPessoas , double valorTotal , String data, Evento evento ){
+    public static void reserva(String nomeResponsavel , int qtdPessoas , String data, Evento eventoSelecionado){
         
-        Reserva reserva = new Reserva(nomeResponsavel, qtdPessoas, valorTotal, data, evento);
-        //como é que eu crio uma reserva nova toda a vez sem depender de um vetor,
-        //pois vetor sempre precisa ser criado com um limite, oq eu faço?
-        
+        double valorTotal = eventoSelecionado.getPrecoIngresso() * qtdPessoas;
+        int numReserva = eventoSelecionado.getLotacaoMax() - eventoSelecionado.getNumReservasFeitas();
+        Reserva reserva = new Reserva(nomeResponsavel, qtdPessoas, valorTotal, data, eventoSelecionado);
+        eventoSelecionado.adicionarReserva(reserva, numReserva);
     }
 }

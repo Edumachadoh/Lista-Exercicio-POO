@@ -3,7 +3,7 @@ package br.edu.up.metodos;
 public class Mes {
     private String nome;
     private int qtdDeDias;
-    private Dia[] dias;
+    private Dia[] dias = new Dia[qtdDeDias];
     
     public Mes(int qtdDeDias, String nome){
         this.qtdDeDias = qtdDeDias;
@@ -14,8 +14,8 @@ public class Mes {
 
     }
 
-    public void adicionarCompromisso(String pessoa, String local, String assunto, int hora){
-        
+    public void adicionarCompromisso(Dia dia){
+        dia.adicionarCompromisso(null);
     }
 
     public void excluirCompromisso(int diaMes, int hora){
@@ -32,9 +32,13 @@ public class Mes {
     }
 
     public String listarCompromissos(){
+        String compromissos = new String();
+
         for (Dia dia : dias) {
-            
+            compromissos += dia.listarCompromissos() + "\n";    
         }
+        
+        return compromissos;
     }
 
 }   

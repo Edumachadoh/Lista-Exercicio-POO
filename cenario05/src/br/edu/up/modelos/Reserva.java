@@ -1,6 +1,6 @@
 package br.edu.up.modelos;
 
-public class Reserva {
+public class Reserva {  
     private String nomeResponsavel;
     private int qtdPessoas;
     private double valorTotal;
@@ -43,7 +43,7 @@ public class Reserva {
 
     @Override
     public String toString() {
-        return "Reserva [Nome do Responsável=" + nomeResponsavel + ", Quantidade de Pessoas=" + qtdPessoas + ", Valor Total="
+        return "[Nome do Responsável=" + nomeResponsavel + ", Quantidade de Pessoas=" + qtdPessoas + ", Valor Total="
                 + valorTotal + ", Data=" + data + "Evento:" + evento.toString() + "]";
     }
 
