@@ -10,8 +10,8 @@ public class Dia {
     }
 
     public void adicionarCompromisso(Compromisso compromisso){
-        int hora = compromisso.getHora();
-        compromissos[hora - 1] = compromisso;
+            int hora = compromisso.getHora();
+            compromissos[hora - 1] = compromisso;
         
     }
 
@@ -23,14 +23,22 @@ public class Dia {
         compromissos[hora] = null;
     }
     
-    // o uq fazer??
+    // o q fazer??
     public String listarCompromissos(){
         String lista = new String();
         
         for (Compromisso compromisso : compromissos) {
-            lista += compromisso.toString() + "\n";
+            lista += this.diaMes + "" + compromisso;
         }
 
         return lista;
+    }
+
+    public int getDiaMes() {
+        return diaMes;
+    }
+
+    public void setDiaMes(int diaMes) {
+        this.diaMes = diaMes;
     }
 }

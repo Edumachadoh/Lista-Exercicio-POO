@@ -10,7 +10,7 @@ import br.edu.up.lib.Prompt;
 import br.edu.up.modelos.Evento;
 
 public class MenuReserva {
-    public static void executar(List<Evento> eventos){
+    public static void executar(){
         Prompt.separador();
         Prompt.imprimir("\n---Reservas---");
         Prompt.imprimir("\n1- Realizar reserva (inclusão reserva)");
@@ -24,7 +24,7 @@ public class MenuReserva {
         
         switch (escolha) {
             case 1:
-                Evento eventoSelecionado = escolherEvento(eventos);
+                Evento eventoSelecionado = escolherEvento();
                 realizarReserva(eventoSelecionado);
                 break;
             case 2:
@@ -37,20 +37,20 @@ public class MenuReserva {
                 listarReserva();
                 break;
             case 5:
-                Menu.executar(eventos);
+                Menu.executar();
                 break;
             default:
                 Prompt.imprimir("Escolha invalida");
-                executar(eventos);
+                executar();
                 break;
         }
     }
-    public static Evento escolherEvento(List<Evento> eventos){
+    public static Evento escolherEvento(){
         Prompt.imprimir("Qual envento:");
         
         
         int escolha = Prompt.lerInteiro("\n-->Escolha:");
-        Evento eventoSelecionado = eventos.get(escolha);
+        Evento eventoSelecionado = 0;
 
         return eventoSelecionado;
     }

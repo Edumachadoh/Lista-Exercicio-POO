@@ -8,11 +8,7 @@ import br.edu.up.lib.Prompt;
 import br.edu.up.modelos.Evento;
 
 public class Menu {
-    public static void iniciar(){
-        List<Evento> eventos = new ArrayList<>();
-        executar(eventos);
-    }   
-    public static void executar(List<Evento> eventos){
+    public static void executar(){
         Prompt.separador();
         Prompt.imprimir("\n---Sistema de Agendamento---");
         Prompt.imprimir("\n1- Acessar Menu de Reservas");
@@ -24,17 +20,17 @@ public class Menu {
 
         switch (escolha) {
             case 1:
-                MenuReserva.executar(eventos);
+                MenuReserva.executar();
                 break;
             case 2:
-                MenuEvento.executar(eventos);
+                MenuEvento.executar();
                 break;
             case 3:
                 Programa.parar();
                 break;
             default:
                 Prompt.imprimir("Escolha invalida");
-                executar(eventos);
+                executar();
                 break;
         }
     }

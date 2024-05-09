@@ -1,21 +1,33 @@
 package br.edu.up.metodos;
 
+import br.edu.up.controles.DefinirNumMes;
+
 public class Ano {
     private int ano;
     private boolean bissexto;
     private Mes[] meses = new Mes[12];
+
 
     public Ano(int ano, boolean bissexto){
         this.ano = ano;
         this.bissexto = bissexto;
     }
 
-    public void adicionarMes(Mes mes){
 
+    public int getAno(){
+        return ano;
+    }
+    
+    public void setAno(int ano){
+        this.ano = ano;
+    }
+
+    public void adicionarMes(Mes mes){
+        meses[ano] = mes;
     }
 
     public void excluirCompromisso(String nomeMes, int diaMes, int hora){
-
+        meses[DefinirNumMes.executar(nomeMes)].excluirCompromisso(diaMes, hora);
     }
     
     public String listarCompromissos(int diaMes){
@@ -23,13 +35,22 @@ public class Ano {
     }
 
     public String listarCompromissos(){
-        String compromissos = new String();
+        String listaCompromissos = new String();
 
         for (Mes mes : meses) {
-            compromissos += mes.listarCompromissos() + "\n";
+            listaCompromissos += this.ano + mes.listarCompromissos();
         }
 
-        return compromissos;
+        return listaCompromissos;
     }
 
+    public boolean isBissexto() {
+        return bissexto;
+    }
+
+    public void setBissexto(boolean bissexto) {
+        this.bissexto = bissexto;
+    }
+    
+    
 }

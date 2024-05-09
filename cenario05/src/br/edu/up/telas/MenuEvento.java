@@ -10,7 +10,7 @@ import br.edu.up.lib.Prompt;
 import br.edu.up.modelos.Evento;
 
 public class MenuEvento {
-    public static void executar(List<Evento> eventos){
+    public static void executar(){
         Prompt.imprimir("\n---Eventos---");
         Prompt.imprimir("\n1- Adicionar Evento (inclusão Evento)");
         Prompt.imprimir("2- Alterar Evento (alteração Evento)");
@@ -22,34 +22,34 @@ public class MenuEvento {
         
         switch (escolha) {
             case 1:
-                adicionarEvento(eventos);
+                adicionarEvento();
                 break;
             case 2:
                 alterarEvento();
                 break;
             case 3:
-                listarEvento(eventos);
+                listarEvento();
                 break;
             case 4:
                 excluirEvento();
                 break;
             case 5:
-                Menu.executar(eventos);
+                Menu.executar();
                 break;
             default:
                 Prompt.imprimir("Escolha invalida");
-                executar(eventos);
+                executar();
                 break;
         }
     }
 
-    public static void adicionarEvento(List<Evento> eventos){
+    public static void adicionarEvento(){
         String nomeEvento = Prompt.lerLinha("Nome do Evento:");
         String data = Prompt.lerLinha("Data de realização do evento:");
         String local = Prompt.lerLinha("Nome do local do evento:");
         double precoIngresso = Prompt.lerDecimal("Preço do ingresso:");
         int lotacaoMax = Prompt.lerInteiro("Lotação máxima do evento:");
-        Adicionar.evento(eventos, nomeEvento, data, local, precoIngresso, lotacaoMax);
+        Adicionar.evento( nomeEvento, data, local, precoIngresso, lotacaoMax);
     }
 
     public static void alterarEvento(){
@@ -58,10 +58,10 @@ public class MenuEvento {
         //Alterar.evento();
     }
     
-    public static void listarEvento(List<Evento> eventos){
+    public static void listarEvento(){
         //String nome = Prompt.lerLinha("Nome do Responsável pela evento:");
         //int nPessoas = Prompt.lerInteiro("Número de pessoas registradas na evento:");
-        Listar.evento(eventos);
+        Listar.evento();
     }
 
     public static void excluirEvento(){

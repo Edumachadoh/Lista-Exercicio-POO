@@ -10,16 +10,17 @@ public class Mes {
         this.nome = nome;        
     }
 
-    public void adicionarCompromisso(Compromisso compromissos, int diaMes){
-        
+    public void adicionarCompromisso(Compromisso compromisso, int diaMes){
+        dias[diaMes - 1].adicionarCompromisso(compromisso);
     }
 
-    public void adicionarCompromisso(Dia dia){
-
+    public void adicionarCompromisso(String pessoa, String local, String assunto, int hora, int diaMes){
+        Compromisso compromisso = new Compromisso(pessoa, local, assunto, hora);
+        dias[diaMes].adicionarCompromisso(compromisso);
     }
 
     public void excluirCompromisso(int diaMes, int hora){
-
+        dias[diaMes].excluirCompromisso(hora);
     }
 
     public String listarCompromissos(int diaMes){
@@ -32,13 +33,13 @@ public class Mes {
     }
 
     public String listarCompromissos(){
-        String compromissos = new String();
+        String listaCompromissos = new String();
 
         for (Dia dia : dias) {
-            compromissos += dia.listarCompromissos() + "\n";    
+            listaCompromissos += nome + dia.listarCompromissos();    
         }
         
-        return compromissos;
+        return listaCompromissos;
     }
 
 }   
