@@ -11,6 +11,10 @@ public class Mes {
     }
 
     public void adicionarCompromisso(Compromisso compromisso, int diaMes){
+
+        System.out.println("------------------> " + dias.length);
+        System.out.println("------------------> " + (diaMes - 1));
+
         dias[diaMes - 1].adicionarCompromisso(compromisso);
     }
 

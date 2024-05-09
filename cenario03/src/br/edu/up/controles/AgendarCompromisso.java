@@ -11,12 +11,15 @@ public class AgendarCompromisso {
         
         Compromisso objCompromisso = new Compromisso(pessoa, local, assunto, hora);
         Dia objetoDia = new Dia(dia);
-        Mes objetoMes = new Mes(dia, mes);
 
-        
-        objetoAno.adicionarMes(objetoMes);
-        objetoMes.adicionarCompromisso(objCompromisso, dia);
+        System.out.println("------------------> " + numDias);
+        Mes objetoMes = new Mes(numDias, mes);
+
         objetoDia.adicionarCompromisso(objCompromisso);
+        objetoMes.adicionarCompromisso(objCompromisso, dia);
+        objetoAno.adicionarMes(objetoMes, numMes);
+        
+
         
     }
     

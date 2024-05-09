@@ -1,32 +1,37 @@
 package br.edu.up.telas;
 
 import br.edu.up.Programa;
+import br.edu.up.controles.AdcionarAno;
 import br.edu.up.controles.AgendarCompromisso;
 import br.edu.up.controles.DefinirDiasValidos;
 import br.edu.up.controles.DefinirNumMes;
+import br.edu.up.controles.VerificarBissexto;
+import br.edu.up.controles.VerificarPosicao;
 import br.edu.up.metodos.Ano;
-import br.edu.up.util.Prompt;
+import br.edu.up.telas.util.Prompt;
 
 public class Menu {
     
 
     public static void iniciar(){
         Ano[] listaAnos = new Ano[1];
-        mostrarTela(listaAnos);
+        int ano = Prompt.lerInteiro("Digite o ano desejado:");
+        listaAnos[0] = new Ano(ano, VerificarBissexto.executar(ano)); 
+        mostrarTela(listaAnos, 0);
     }
 
-    public static void mostrarTela(Ano[] listAnos){
+    public static void mostrarTela(Ano[] listaAnos, int posicao){
 
         Prompt.separador();
         System.out.println("=== Sistema de Agendamento ===");
-        System.err.println("Ano:" + objetoAno.getAno());
+        System.out.println("Ano:" + listaAnos[posicao].getAno());
         Prompt.separador();
         System.out.println("--Selecione a operação desejada:--");
         System.out.println("1 - Agendar Compromisso");
         System.out.println("2 - Alterar compromisso");
         System.out.println("3 - Excluir compromisso");
-        System.out.println("4 - Listar compromissos");
-        System.out.println("5 - Listar compromisso específico");
+        System.out.println("4 - Listar compromissos desse ano");
+        System.out.println("5 - Listar compromisso de uma mês específico");
         System.out.println("6 - Mudar ano");
         System.out.println("(qualquer botão) - Parar Programa");
         Prompt.separador();
@@ -35,7 +40,7 @@ public class Menu {
 
         switch (escolha) {
             case 1:
-                agendar(objetoAno);
+                agendar(listaAnos[posicao]);
             break;
             
             case 2:
@@ -50,29 +55,31 @@ public class Menu {
 
                 break;
             case 4:
-                objetoAno.listarCompromissos();
+                listaAnos[posicao].listarCompromissos();
+
                 break;
             case 5:
-                Prompt.imprimir("1 - De um Mês em específico");
-                Prompt.imprimir("2- De um dia em específico");
-                System.out.println("(qualquer botão) - Voltar Menu");
-                
-                int escolha2 = Prompt.lerInteiro("-->");
-                
-                switch (escolha2) {
-                    case 1:
-                        String mesEspecifico = mesValido();
-                        
-                        break;
-                
-                    case 2:
-                        int diaEspecifico = Prompt.lerInteiro("Qual Dia:");
-                        break;
-                    default:
-                    mostrarTela(objetoAno);
-                        break;
+
+
+                break;
+            case 6:
+                int anoDigitado = Prompt.lerInteiro("Qual ano:");  
+                boolean posicaoExiste = VerificarPosicao.seExiste(listaAnos, anoDigitado);
+
+                if(posicaoExiste == true){
+                    posicao = VerificarPosicao.qualPosicao(listaAnos, anoDigitado, posicao);
+                    mostrarTela(listaAnos, posicao);
+                }else{
+
+                    listaAnos = new Ano[listaAnos.length + 1];
+                    listaAnos = AdcionarAno.executar(listaAnos);
+                    posicao = VerificarPosicao.qualPosicao(listaAnos, anoDigitado, posicao);
+                    listaAnos[posicao] = new Ano(anoDigitado, VerificarBissexto.executar(anoDigitado)); 
+                    mostrarTela(listaAnos, posicao);
                 }
+                break;
             default:
+
                 Programa.parar();
                 break;
         }
@@ -99,4 +106,6 @@ public class Menu {
         
         AgendarCompromisso.executar(objetoAno,mes,dia,hora,pessoa,local,assunto,numMes, numDias);
     }
+
+
 }

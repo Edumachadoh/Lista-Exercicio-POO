@@ -22,8 +22,8 @@ public class Ano {
         this.ano = ano;
     }
 
-    public void adicionarMes(Mes mes){
-        meses[ano] = mes;
+    public void adicionarMes(Mes mes, int numMes){
+        meses[numMes] = mes;
     }
 
     public void excluirCompromisso(String nomeMes, int diaMes, int hora){

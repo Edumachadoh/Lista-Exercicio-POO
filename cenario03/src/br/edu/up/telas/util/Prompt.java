@@ -1,4 +1,4 @@
-package br.edu.up.util;
+package br.edu.up.telas.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
