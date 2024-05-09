@@ -1,6 +1,6 @@
 package br.edu.up.modelos;
 
-public class Comandante extends Tripulacao{
+public class Comandante extends Tripulante{
     private int totalHorasVoo;
 
     public int getTotalHorasVoo() {

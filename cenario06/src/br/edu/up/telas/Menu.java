@@ -69,16 +69,16 @@ public class Menu {
 
                     } else if (tipoTripulacao == 2) {
 
-                        int idiomas = Prompt.lerInteiro("Idiomas: "); 
+                        int numIdiomas = Prompt.lerInteiro("Idiomas fluentes: ");
 
-                        // if (idiomas == 0) {
-                        //     aeronave.adicionarComissario(nome, rg ,tripulacao,idAeronautica, idMatricula, idiomas[]);
-                        // } else if (idiomas != 0)
-                        //     aeronave.adicionarComissario(nome, rg ,tripulacao, idAeronautica, idMatricula, idiomas[]); 
-                          }
-                    
-                    tripulacao ++;    
+                        int[] idiomas = new int[numIdiomas];
+
+                        aeronave.adicionarComissario(nome, rg ,tripulacao,idAeronautica, idMatricula, idiomas);
+                       
+                        tripulacao ++; 
+                           
                     break;
+                    }
                 case 3:
                     System.out.println(aeronave);
                     break;

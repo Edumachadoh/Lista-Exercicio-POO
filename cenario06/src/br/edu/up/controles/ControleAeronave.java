@@ -4,38 +4,52 @@ import br.edu.up.modelos.*;
 
 public class ControleAeronave {
     private Passageiro[] passageiros;
-    private Tripulacao[] tripulacoes;
-    private Aeronave[] aeronaves;
+    private Tripulante[] tripulantes;
+    // private Aeronave[] aeronaves;
+    private Aeronave aeronave;
+    // private Comissario[] comissarios;
     private int contPassageiro;
     private int contComissario;
     private int contComandante;
 
     public ControleAeronave() {
-        this.aeronaves = new Aeronave[10];
-        for (int i = 0; i < aeronaves.length; i++) {
-            aeronaves[i] = new Aeronave();
-        }
+        // this.aeronaves = new Aeronave[10];
+        // for (int i = 0; i < aeronaves.length; i++) {
+        //     aeronaves[i] = new Aeronave();
+        // }
+
+        aeronave = new Aeronave();
+
         this.passageiros = new Passageiro[10];
         for (int i = 0; i < passageiros.length; i++) {
             passageiros[i] = new Passageiro();
         }
+        
+        this.tripulantes = new Tripulante[3];
+        this.tripulantes[0] = new Comandante();
+        this.tripulantes[1] = new Comissario();
+        this.tripulantes[2] = new Comissario();
+        // for (int i = 0; i < tripulantes.length; i++) {
+        //     tripulantes[i] = new Tripulante();
+        // }
+        // this.comissarios = new Comissario[10];
+        // for (int i = 0; i < comissarios.length; i++) {
+        //     comissarios[i] = new Comissario();
+        // }
     }
 
     public void adicionarAeronave(int contAeronave, int idCodigo, String tipo, int qtdAssentos) {
        
-        this.aeronaves[contAeronave].setIdCodigo(idCodigo);
-        this.aeronaves[contAeronave].setQtdAssentos(qtdAssentos);
-        this.aeronaves[contAeronave].setTipo(tipo);
+        this.aeronave.setIdCodigo(idCodigo);
+        this.aeronave.setQtdAssentos(qtdAssentos);
+        this.aeronave.setTipo(tipo);
 
 
     }
 
 
     public void adicionarPassageiro(int numPassageiro, int numAeronave, String nome, String rg, int idPassagem, String numAssento, String classeAssento, int dia, int mes, int hora, int minuto, int idBagagem) {
-        Pessoa pessoa = new Pessoa();
-        pessoa.setNome(nome);
-        pessoa.setRg(rg);
-
+       
         Data data = new Data();
         data.setDia(dia);
         data.setMes(mes);
@@ -56,42 +70,22 @@ public class ControleAeronave {
 
         this.passageiros[numPassageiro] = passageiro;
 
-        this.aeronaves[numAeronave].setPessoa(pessoa);
+        // this.aeronaves[numAeronave].setPessoa(pessoa);
         
 
     }
     
-    public  void adicionarComandante(String nome, String rg ,int tripulacao, int idAeronautica, int idMatricula, int totalHorasVoo ) {
-        this.tripulacoes[tripulacao].setIdAeronautica(idAeronautica);
-        this.tripulacoes[tripulacao].setIdMatricula(idMatricula);
-        this.tripulacoes[tripulacao].setNome("Evandro");
-        this.tripulacoes[tripulacao].setRg("575457");
-       
+    public void adicionarComandante(String nome, String rg ,int tripulacao, int idAeronautica, int idMatricula, int totalHorasVoo ) {
         
+               
+    }
+    public void adicionarComissario(String nome, String rg ,int tripulacao, int idAeronautica, int idMatricula, int[] idiomass) {
+        // Idioma idiomas = new Idioma();
+        // this.comissarios[tripulacao].setIdiomas(idiomass);
         
-       
-    }
-    public  void adicionarComissario(String nome, String rg ,int tripulacao, int idAeronautica, int idMatricula, int idiomar[]) {
-        this.tripulacoes[tripulacao].setIdAeronautica(442);
-        this.tripulacoes[tripulacao].setIdMatricula(1451);
-        this.tripulacoes[tripulacao].setNome("Evandro");
-        this.tripulacoes[tripulacao].setRg("575457");
 
     }
 
-    public void relatorioPassageiro() {
-        System.out.printf("Nome: %s\n", passageiros[0].getNome());
-        System.out.printf("Rg: %s\n", passageiros[0].getRg());
-        System.out.printf("Identificacao bagagem: %d\n", passageiros[0].getIdBagagem());
-        System.out.printf("Identificacao passagem: %d\n", passageiros[0].getPassagem().getIdPassagem());
-        System.out.printf("Numero de assento: %s\n", passageiros[0].getPassagem().getNumAssento());
-        System.out.printf("Classe assento: %s\n",passageiros[0].getPassagem().getNumAssento());
-        System.out.printf("Dia: %d\n", passageiros[0].getPassagem().getData().getDia());
-        System.out.printf("Mes: %d\n", passageiros[0].getPassagem().getData().getMes());
-        System.out.printf("Hora: %d\n", passageiros[0].getPassagem().getData().getHora());
-        System.out.printf("Minuto: %d\n", passageiros[0].getPassagem().getData().getMinuto());
-
-    }
 
     @Override
     public String toString() {
