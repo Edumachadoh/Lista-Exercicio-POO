@@ -1,7 +1,7 @@
 package br.edu.up.telas;
 
 import br.edu.up.controles.DefinirMes;
-import br.edu.up.util.Prompt;
+import br.edu.up.telas.util.Prompt;
 
 public class VerificarMes {
 
@@ -18,7 +18,7 @@ public class VerificarMes {
 
     public static void voceQuisDizerString(String nomeMes){
         Prompt.imprimir("Você Quis dizer " + nomeMes + "?");
-        boolean escolha = EscolhaSimNao.verificar();
+        boolean escolha = EscolhaSimNao.executar();
 
         if(escolha == false){
             Menu.mesValido();
