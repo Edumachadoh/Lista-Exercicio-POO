@@ -1,14 +1,16 @@
 package br.edu.up.telas;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import br.edu.up.Programa;
-import br.edu.up.lib.Prompt;
+import br.edu.up.util.Prompt;
 import br.edu.up.modelos.Evento;
 
 public class Menu {
-    public static void executar(){
+    public static void iniciar(){
+        Evento[] listaEventos = new Evento[1];
+        executar(listaEventos);
+
+    }
+    public static void executar(Evento[] listaEventos){
         Prompt.separador();
         Prompt.imprimir("\n---Sistema de Agendamento---");
         Prompt.imprimir("\n1- Acessar Menu de Reservas");
@@ -20,19 +22,36 @@ public class Menu {
 
         switch (escolha) {
             case 1:
-                MenuReserva.executar();
+                MenuReserva.executar(listaEventos);
                 break;
             case 2:
-                MenuEvento.executar();
+    
+                MenuEvento.executar(listaEventos);
                 break;
             case 3:
                 Programa.parar();
                 break;
             default:
                 Prompt.imprimir("Escolha invalida");
-                executar();
+                executar(listaEventos);
                 break;
         }
+    }
+
+        public static int escolherEvento(Evento[] listaEventos){
+        Prompt.imprimir("Qual envento:");
+        MenuEvento.listarEvento(listaEventos);
+        
+        int escolha = (Prompt.lerInteiro("\n-->Escolha:") - 1);
+        int eventoSelecionado = 0;
+
+        for (int i = 0; i < listaEventos.length; i++) {
+            if(escolha == i){
+                eventoSelecionado = i;
+            }    
+        }
+        Prompt.imprimir("Evento escolhido:" + (eventoSelecionado + 1));
+        return eventoSelecionado;
     }
 
 }
