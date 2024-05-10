@@ -7,7 +7,7 @@ import br.edu.up.modelos.Estacionamento;
 import br.edu.up.telas.MensagensEstacionamento;
 
 public class Menu {
-    public static void executar() {
+    public static void executar() { 
         int opcao;
         int vagas = 10;
         int entradas = 0;
@@ -28,13 +28,15 @@ public class Menu {
             switch (opcao) {
                 
                 case 1:
+                    if (vagas == 0) {
+                        MensagensEstacionamento.estacionamentoCheio();
+                         break;
+                     } 
+
                     entradas ++;
                     vagas --;
 
-                     if (vagas == 0) {
-                        MensagensEstacionamento.estacionamentoCheio();
-                        break;
-                     } 
+                     
 
                     String placa = Prompt.lerLinha("Placa:");
                     String modelo = Prompt.lerLinha("Modelo:");
@@ -62,7 +64,7 @@ public class Menu {
                     String placaRetirar = Prompt.lerLinha("Placa a retirar:");
                     carro.RemoverCarro(placaRetirar, saidas, vagas);
                     
-                    vagas ++;
+                    
                     System.out.printf("------------------------- \n");
                     System.out.printf("Saidas: %d\n", carro.getSaidasEstacionamento()); 
                     System.out.printf("Vagas disponiveis: %d\n", carro.getVagasEstacionamento());
@@ -71,7 +73,7 @@ public class Menu {
                     break;
                 case 3:
                     MensagensEstacionamento.relatorio(carro.getEntradasEstacionamento(), carro.getSaidasEstacionamento());
-                    carro.imprimirCarros();
+                    
                 case 4:
                     break;
 

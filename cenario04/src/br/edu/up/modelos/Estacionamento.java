@@ -6,6 +6,9 @@ public class Estacionamento {
     private int entradas;
     private int carroRetirado;
     private boolean checarCarroRetirado;
+    private boolean checarAdicionarPlaca;
+    
+
     
     public int getVagas() {
         return vagas;
@@ -37,7 +40,14 @@ public class Estacionamento {
     public void setChecarCarroRetirado(boolean checarCarroRetirado) {
         this.checarCarroRetirado = checarCarroRetirado;
     }
-
+    public boolean getChecarAdicionarPlaca() {
+        return checarAdicionarPlaca;
+    }
+    public void setChecarAdicionarPlaca(boolean checarAdicionarPlaca) {
+        this.checarAdicionarPlaca = checarAdicionarPlaca;
+    }
+   
+    
     
 
 }

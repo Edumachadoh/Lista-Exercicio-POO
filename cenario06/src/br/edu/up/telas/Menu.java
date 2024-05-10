@@ -69,9 +69,7 @@ public class Menu {
 
                     } else if (tipoTripulacao == 2) {
 
-                        int numIdiomas = Prompt.lerInteiro("Idiomas fluentes: ");
-
-                        int[] idiomas = new int[numIdiomas];
+                        String idiomas = Prompt.lerLinha("idiomas fluentes: ");
 
                         aeronave.adicionarComissario(nome, rg ,tripulacao,idAeronautica, idMatricula, idiomas);
                        

@@ -1,16 +1,15 @@
 package br.edu.up.modelos;
 
 public class Comissario extends Tripulante{
-    private Idioma[] idiomas;
+    private String idioma;
 
-    public Idioma[] getIdiomas() {
-        return idiomas;
+    public String getIdioma() {
+        return idioma;
     }
 
-    public void setIdiomas(Idioma[] idiomas) {
-        this.idiomas = idiomas;
+    public void setIdioma(String idioma) {
+        this.idioma = idioma;
     }
-
     
     
 }

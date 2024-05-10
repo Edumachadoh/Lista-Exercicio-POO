@@ -30,10 +30,10 @@ public class Aeronave {
         this.qtdAssentos = qtdAssentos;
     }
     public Pessoa[] getPessoa() {
-        return pessoa;
+        return pessoas;
     }
-    public void setPessoa(Pessoa pessoas) {
-        this.pessoa = pessoas;
+    public void setPessoa(Pessoa[] pessoas) {
+        this.pessoas = pessoas;
     }
 
 

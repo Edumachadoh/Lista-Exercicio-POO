@@ -2,6 +2,7 @@ package br.edu.up.controles;
 
 import br.edu.up.modelos.Carro;
 import br.edu.up.modelos.Estacionamento;
+import br.edu.up.telas.MensagensEstacionamento;
 
 
 public class ControleEstacionamento {
@@ -22,21 +23,38 @@ public class ControleEstacionamento {
     public void AdicionarCarro(String placa, String cor, String modelo, int vagas, int entradas) {
         Carro carro = new Carro(modelo, placa, cor);  
      
-        estacionamento.setEntradas(entradas);
-        estacionamento.setVagas(vagas);
         
+        
+        for (int i = 0; i < 9; i ++) {
+            if (carros[i].getPlaca() != null) {
+                if (carros[i].getPlaca().equals(placa)) {
+                    estacionamento.setChecarAdicionarPlaca(true);
+                    MensagensEstacionamento.placaExistente();
+                
+                 }
+            }
+        }
+
+        if (estacionamento.getChecarAdicionarPlaca() == true) {
+            estacionamento.setEntradas(entradas --);
+            estacionamento.setVagas(vagas ++); 
+        } else {
+            estacionamento.setEntradas(entradas);
+            estacionamento.setVagas(vagas);
+        }
+
+
         if (estacionamento.getChecarCarroRetirado() == true) {
             this.carros[estacionamento.getCarroRetirado()] = carro;
             estacionamento.setChecarCarroRetirado(false);
-            System.out.printf("Funcionou loop, carro retirado\n");
+            // System.out.printf("Carro colocado na vaga do recem tirado!\n");
         } else {
             this.carros[9 - vagas] = carro;
         }
         
         this.carros[9 - vagas] = carro;
         
-        System.out.printf("Placa: %s\n", this.carros[9 - vagas].getPlaca());
-}
+    }
 
     public void RemoverCarro(String placaDigitada, int saidas, int vagas) {
         estacionamento.setSaidas(saidas);
@@ -53,15 +71,20 @@ public class ControleEstacionamento {
                 
                 
                 if (placaCompararBD.equals(placaDigitada)) {
-                      System.out.printf("Carro retirado 1 !!!!");
+                      System.out.printf("Carro '%s' retirado!!!!", placaCompararBD);
                       estacionamento.setChecarCarroRetirado(true);
                       estacionamento.setCarroRetirado(i);
-                      this.carros[i] = null;
                 }
             }
        }
+       if (estacionamento.getChecarCarroRetirado() == false) {
+            MensagensEstacionamento.carroInexistente();
+            estacionamento.setSaidas(saidas - 1);
+             estacionamento.setVagas(vagas - 1);
+       }
     }
 
+    
 
    public int getEntradasEstacionamento() {
         return estacionamento.getEntradas();
@@ -81,27 +104,7 @@ public class ControleEstacionamento {
         this.carros = carros;
     }
 
-   
-    public void imprimirCarros() {
-        System.out.printf("Placa: %s\n", this.carros[0].getPlaca());
-        System.out.printf("Modelo: %s\n", this.carros[0].getModelo());
-        System.out.printf("Cor: %s\n", this.carros[0].getCor());
-        System.out.printf("Placa: %s\n", this.carros[1].getPlaca());
-        System.out.printf("Modelo: %s\n", this.carros[1].getModelo());
-        System.out.printf("Cor: %s\n", this.carros[1].getCor());
-        System.out.printf("Placa: %s\n", this.carros[2].getPlaca());
-        System.out.printf("Modelo: %s\n", this.carros[2].getModelo());
-        System.out.printf("Cor: %s\n", this.carros[2].getCor());
-        System.out.printf("Placa: %s\n", this.carros[3].getPlaca());
-        System.out.printf("Modelo: %s\n", this.carros[3].getModelo());
-        System.out.printf("Cor: %s\n", this.carros[3].getCor());
-        System.out.printf("Placa: %s\n", this.carros[4].getPlaca());
-        System.out.printf("Modelo: %s\n", this.carros[4].getModelo());
-        System.out.printf("Cor: %s\n", this.carros[4].getCor());
-        System.out.printf("Placa: %s\n", this.carros[5].getPlaca());
-        System.out.printf("Modelo: %s\n", this.carros[5].getModelo());
-        System.out.printf("Cor: %s\n", this.carros[5].getCor());
-    }
+ 
 
 
     

@@ -29,13 +29,7 @@ public class ControleAeronave {
         this.tripulantes[0] = new Comandante();
         this.tripulantes[1] = new Comissario();
         this.tripulantes[2] = new Comissario();
-        // for (int i = 0; i < tripulantes.length; i++) {
-        //     tripulantes[i] = new Tripulante();
-        // }
-        // this.comissarios = new Comissario[10];
-        // for (int i = 0; i < comissarios.length; i++) {
-        //     comissarios[i] = new Comissario();
-        // }
+       
     }
 
     public void adicionarAeronave(int contAeronave, int idCodigo, String tipo, int qtdAssentos) {
@@ -76,14 +70,25 @@ public class ControleAeronave {
     }
     
     public void adicionarComandante(String nome, String rg ,int tripulacao, int idAeronautica, int idMatricula, int totalHorasVoo ) {
-        
+        Comandante comandante = new Comandante();
+        comandante.setIdAeronautica(idAeronautica);
+        comandante.setIdMatricula(idMatricula);
+        comandante.setNome(nome);
+        comandante.setRg(rg);
+        comandante.setTotalHorasVoo(totalHorasVoo);
+
+        this.tripulantes[0] = comandante;
                
     }
-    public void adicionarComissario(String nome, String rg ,int tripulacao, int idAeronautica, int idMatricula, int[] idiomass) {
-        // Idioma idiomas = new Idioma();
-        // this.comissarios[tripulacao].setIdiomas(idiomass);
+    public void adicionarComissario(String nome, String rg ,int tripulacao, int idAeronautica, int idMatricula, String idiomas) {
+        Comissario comissario = new Comissario();
+        comissario.setIdAeronautica(idAeronautica);
+        comissario.setIdMatricula(idMatricula);
+        comissario.setNome(nome);
+        comissario.setRg(rg);
+        comissario.setIdioma(idiomas);
         
-
+        this.tripulantes[1] = comissario;
     }
 
 
