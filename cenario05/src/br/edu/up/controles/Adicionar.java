@@ -3,14 +3,12 @@ package br.edu.up.controles;
 import br.edu.up.modelos.Evento;
 import br.edu.up.modelos.Reserva;
 import br.edu.up.telas.Menu;
-import br.edu.up.util.Prompt;
 
 public class Adicionar {
     public static void evento(Evento[] listaEventos,String nome, String data, String local, double precoIngresso, int lotacaoMax){
 
             if(listaEventos[0] == null){
                 listaEventos[0] = new Evento(nome, data, local, precoIngresso, lotacaoMax);
-                Prompt.imprimir("vetor 0  ----------------------------------------------------");
             }else{
 
             Evento[] vet1 = new Evento[listaEventos.length + 1];

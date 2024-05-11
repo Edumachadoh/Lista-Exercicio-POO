@@ -31,8 +31,8 @@ public class Reserva {
     public double getValorTotal() {
         return valorTotal;
     }
-    public void setValorTotal(double valorTotal) {
-        this.valorTotal = valorTotal;
+    public void calcularValorTotal() {
+        this.valorTotal = evento.getPrecoIngresso() * qtdPessoas;
     }
     public String getData() {
         return data;

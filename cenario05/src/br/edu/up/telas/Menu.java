@@ -44,11 +44,16 @@ public class Menu {
         
         int escolha = (Prompt.lerInteiro("\n-->Escolha:") - 1);
         int eventoSelecionado = 0;
-
-        for (int i = 0; i < listaEventos.length; i++) {
-            if(escolha == i){
-                eventoSelecionado = i;
-            }    
+        
+        if(escolha <= listaEventos.length){
+            for (int i = 0; i < listaEventos.length; i++) {
+                if(escolha == i){
+                    eventoSelecionado = i;
+                }    
+            }
+        }else{
+            Prompt.imprimir("Evento invalido");
+            Menu.executar(listaEventos);
         }
         Prompt.imprimir("Evento escolhido:" + (eventoSelecionado + 1));
         return eventoSelecionado;

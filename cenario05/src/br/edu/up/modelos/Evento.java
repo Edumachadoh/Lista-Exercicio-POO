@@ -17,9 +17,15 @@ public class Evento {
         this.precoIngresso = precoIngresso;
         this.lotacaoMax = lotacaoMax;
         this.reservas = new Reserva[lotacaoMax];
+
+        for (Reserva reserva : reservas) {
+            reserva.setData(data);
+        }
     }
     public void adicionarReserva(Reserva reserva, int numReserva){
         this.reservas[numReserva - 1] = reserva; 
+        setQtdIngressos();
+        calcularValorTotalVendas();
         this.numReservasFeitas++;
     }
     
@@ -50,8 +56,15 @@ public class Evento {
     public int getQtdIngressos() {
         return qtdIngressosVendidos;
     }
-    public void setQtdIngressos(int qtdIngressos) {
-        this.qtdIngressosVendidos = qtdIngressos;
+    public void setQtdIngressos() {
+        int valorTotal = 0;
+
+        for (Reserva reserva : reservas) {
+            if(reserva != null){
+                valorTotal += reserva.getQtdPessoas();
+            }
+        }
+        this.qtdIngressosVendidos = valorTotal;
     }
     public double getPrecoIngresso() {
         return precoIngresso;
@@ -61,6 +74,9 @@ public class Evento {
     }
     public int getNumReservasFeitas(){
         return numReservasFeitas;
+    }
+    public double calcularValorTotalVendas(){
+        return precoIngresso * qtdIngressosVendidos;
     }
     public String listarReservas(){
         String listaReserva = new String();
@@ -75,6 +91,24 @@ public class Evento {
         return listaReserva;
     }
 
+    public boolean excluirReserva(String nomeResponsavel, int qtdPessoas){
+        boolean deuCerto = false;
+        
+        for (int i = 0; i < this.reservas.length; i++) {
+
+            if(this.reservas[i].getNomeResponsavel() == nomeResponsavel && this.reservas[i].getQtdPessoas() == qtdPessoas){
+                this.reservas[i] = null;
+                return deuCerto = true;
+            }
+        }
+
+        return deuCerto;
+    }
+
+    public Reserva[] getReservas(){
+        return reservas;
+    }
+    
     @Override
     public String toString() {
         return "[Nome= " + nome + ", Data= " + data + ", Local= " + local + ", Quantidade de Ingressos Vendidos= "
