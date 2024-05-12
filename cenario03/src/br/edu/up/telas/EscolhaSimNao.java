@@ -1,6 +1,6 @@
 package br.edu.up.telas;
 
-import br.edu.up.telas.util.Prompt;
+import br.edu.up.util.Prompt;
 
 public class EscolhaSimNao {
 

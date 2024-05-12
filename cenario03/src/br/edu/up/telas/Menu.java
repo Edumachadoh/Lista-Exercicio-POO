@@ -2,13 +2,12 @@ package br.edu.up.telas;
 
 import br.edu.up.Programa;
 import br.edu.up.controles.AdcionarAno;
-import br.edu.up.controles.AgendarCompromisso;
-import br.edu.up.controles.DefinirDiasValidos;
-import br.edu.up.controles.DefinirNumMes;
-import br.edu.up.controles.VerificarBissexto;
 import br.edu.up.controles.VerificarPosicao;
 import br.edu.up.metodos.Ano;
-import br.edu.up.telas.util.Prompt;
+import br.edu.up.metodos.Compromisso;
+import br.edu.up.metodos.Dia;
+import br.edu.up.metodos.Mes;
+import br.edu.up.util.Prompt;
 
 public class Menu {
     
@@ -16,7 +15,7 @@ public class Menu {
     public static void iniciar(){
         Ano[] listaAnos = new Ano[1];
         int ano = Prompt.lerInteiro("Digite o ano desejado:");
-        listaAnos[0] = new Ano(ano, VerificarBissexto.executar(ano)); 
+        listaAnos[0] = new Ano(ano); 
         mostrarTela(listaAnos, 0);
     }
 
@@ -49,7 +48,6 @@ public class Menu {
 
                 break;
             case 3:
-                Prompt.lerInteiro("Qual Ano:");
                 Prompt.lerLinha("Qual Mes:");
                 Prompt.lerInteiro("Qual dia:");
 
@@ -67,14 +65,14 @@ public class Menu {
                 boolean posicaoExiste = VerificarPosicao.seExiste(listaAnos, anoDigitado);
 
                 if(posicaoExiste == true){
-                    posicao = VerificarPosicao.qualPosicao(listaAnos, anoDigitado, posicao);
+                    Prompt.imprimir("--Ano já listado--\n Reselecionado");
+                    posicao = listaAnos.length - 1;
                     mostrarTela(listaAnos, posicao);
                 }else{
-
-                    listaAnos = new Ano[listaAnos.length + 1];
                     listaAnos = AdcionarAno.executar(listaAnos);
-                    posicao = VerificarPosicao.qualPosicao(listaAnos, anoDigitado, posicao);
-                    listaAnos[posicao] = new Ano(anoDigitado, VerificarBissexto.executar(anoDigitado)); 
+                    listaAnos = new Ano[listaAnos.length + 1];
+                    posicao = listaAnos.length - 1;
+                    listaAnos[posicao] = new Ano(anoDigitado); 
                     mostrarTela(listaAnos, posicao);
                 }
                 break;
@@ -83,6 +81,8 @@ public class Menu {
                 Programa.parar();
                 break;
         }
+
+        mostrarTela(listaAnos, posicao);
     }
 
     public static String mesValido(){
@@ -95,16 +95,26 @@ public class Menu {
     public static void agendar(Ano objetoAno){
         
         String mes = Menu.mesValido();
-        int numMes = DefinirNumMes.executar(mes);
-        int numDias = DefinirDiasValidos.executar(numMes, objetoAno.isBissexto());
+        Mes objetoMes = new Mes(mes, objetoAno);
+
         int dia = Prompt.lerInteiro("Qual dia:");
+        Dia objetoDia = new Dia(dia);
+
         int hora = Prompt.lerInteiro("Qual hora:");
         String pessoa = Prompt.lerLinha("Nome da pessoa:");
         String local = Prompt.lerLinha("Nome do local:");
         String assunto = Prompt.lerLinha("Assunto:");
+        Compromisso objCompromisso = new Compromisso(pessoa, local, assunto, hora);
 
+        objetoDia.adicionarCompromisso(objCompromisso);
         
-        AgendarCompromisso.executar(objetoAno,mes,dia,hora,pessoa,local,assunto,numMes, numDias);
+        objetoMes.adicionarCompromisso(objCompromisso, dia);
+        
+        objetoAno.adicionarMes(objetoMes, objetoMes.numeroMes());
+
+
+
+    
     }
 
 

@@ -16,17 +16,5 @@ public class VerificarPosicao {
 
     }
 
-    public static int qualPosicao(Ano[] listaAnos, int anoDigitado, int posicao){
-        int i = 0;
-
-        for (Ano ano : listaAnos) {
-            if (ano.getAno() == anoDigitado) {
-
-                return i;
-            }
-            i++;
-        }
-        return posicao;
-    }
 }
 

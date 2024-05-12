@@ -2,6 +2,7 @@ package br.edu.up.controles;
 
 public class DefinirMes {
     public static String executar(String mes){
+        mes.toLowerCase();
         String nomeMes;
         
         if(mes.contains("jan") == true){
