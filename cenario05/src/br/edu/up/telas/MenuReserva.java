@@ -19,7 +19,7 @@ public class MenuReserva {
 
         int escolha = Prompt.lerInteiro();
         
-        if(listaEventos[0] == null && escolha < 5){
+        if(listaEventos[0] == null){
             Prompt.imprimir("Nenhum Evento Registrado");
             Menu.executar(listaEventos);
         }

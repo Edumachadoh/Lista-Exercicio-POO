@@ -19,7 +19,9 @@ public class Evento {
         this.reservas = new Reserva[lotacaoMax];
 
         for (Reserva reserva : reservas) {
-            reserva.setData(data);
+            if(reserva != null){
+                reserva.setData(data);
+            }
         }
     }
     public void adicionarReserva(Reserva reserva, int numReserva){

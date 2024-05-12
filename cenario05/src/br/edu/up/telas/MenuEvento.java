@@ -20,7 +20,12 @@ public class MenuEvento {
                 adicionarEvento(listaEventos);
                 break;
             case 2:
-                alterarEvento(listaEventos);
+                if(listaEventos[0] == null && listaEventos.length == 1){
+                    Prompt.imprimir("Não existem eventos registrados");
+                }else{
+                    alterarEvento(listaEventos);
+                }
+
                 break;
             case 3:
                 listarEvento(listaEventos);
@@ -36,6 +41,7 @@ public class MenuEvento {
                 executar(listaEventos);
                 break;
         }
+        executar(listaEventos);
     }
 
     public static void adicionarEvento(Evento[] listaEventos){
