@@ -32,11 +32,11 @@ public class Menu {
                             "8. Devolução de cliente empresa\r\n" + //
                             "9. Sair ");
 
-        int escolha = Prompt.lerInteiro();
-        escolherAcao(escolha, lCPessoas, lCEmpresas);
+        escolherAcao( lCPessoas, lCEmpresas);
     }
 
-    public static void escolherAcao(int escolha, List<Cliente> lCPessoas, List<Cliente> lCEmpresas){
+    public static void escolherAcao(List<Cliente> lCPessoas, List<Cliente> lCEmpresas){
+        int escolha = Prompt.lerInteiro();
         switch (escolha) {
             case 1:incluirPessoa(lCPessoas);break;    
             case 2:incluirEmpresa(lCPessoas);break;    
