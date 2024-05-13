@@ -40,13 +40,13 @@ public class ClientePessoa extends Cliente{
     public double getSaldo(){
         return super.getSaldo();
     }
-    public String getDados() {
-        return "\n----------\n" + toString() + super.getDados() + "\"----------";
+    public String getDados(int i) {
+        return "\n------------------------\nCliente Pessoa " + toString() + super.getDados(i) + "\n------------------------";
     }
 
     @Override
     public String toString() {
-        return "ClientePessoa [CPF=" + CPF + ", peso=" + peso + ", altura=" + altura + "]";
+        return "\nCPF = " + CPF + "\npeso = " + peso + "\naltura =  " + altura;
     }
     
     

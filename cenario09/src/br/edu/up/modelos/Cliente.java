@@ -71,9 +71,9 @@ public abstract class Cliente {
         return vlrEmprestimo;
     }
 
-    public String getDados(){
-        return "Cliente [nome=" + nome + ", telefone=" + telefone + ", email=" + email + ", vlrMaxCredito="
-                + vlrMaxCredito + ", vlrEmprestimo=" + vlrEmprestimo + ", endereco=" + endereco + "]" + "\n-->Saldo:" + getSaldo();
+    public String getDados(int i){
+        return "Cliente "+ i +"\nNome = " + nome + "\nTelefone =    " + telefone + "\nemail =   " + email + "\nValor Maximo de Crédito =    "
+                + vlrMaxCredito + "\nValor de Emprestimo =  " + vlrEmprestimo + "\nEndereco =   " + endereco+ "\n-->Saldo:" + getSaldo();
     }
 
     

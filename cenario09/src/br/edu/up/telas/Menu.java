@@ -40,14 +40,19 @@ public class Menu {
         switch (escolha) {
             case 1:incluirPessoa(lCPessoas);break;    
             case 2:incluirEmpresa(lCPessoas);break;    
-            case 3:for (Cliente cliente : lCPessoas){
+            case 3:
+            int i = 1;
+            for (Cliente cliente : lCPessoas){
                         ClientePessoa clientePessoa = (ClientePessoa) cliente;
-                            clientePessoa.getDados();
+                            Prompt.imprimir(clientePessoa.getDados(i));
                     }
             break;
-            case 4:for (Cliente cliente : lCEmpresas) {
+            case 4:
+            int j = 1;
+            for (Cliente cliente : lCEmpresas) {
+                        j++;
                         ClienteEmpresa clienteEmpresa = (ClienteEmpresa) cliente;
-                            clienteEmpresa.getDados();
+                        Prompt.imprimir(clienteEmpresa.getDados(j));
                     }
             break;
             case 5:emprestarPessoa(lCPessoas);break;

@@ -23,7 +23,7 @@ public class Cidade {
     
     @Override
     public String toString() {
-        return "Cidade [nome=" + nome + ", UF=" + UF + "]";
+        return "Cidade\nnome =  " + nome + "\nUF =  " + UF;
     }
     
     

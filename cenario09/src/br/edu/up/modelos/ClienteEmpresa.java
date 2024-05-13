@@ -33,12 +33,12 @@ public class ClienteEmpresa extends Cliente{
     public double getSaldo(){
         return super.getSaldo();
     }
-    public String getDados() {
-        return "\n----------\n" + toString() + super.getDados() + "\"----------";
+    public String getDados(int i) {
+        return "\n----------\n" + toString() + super.getDados(i) + "\"----------";
     }
     @Override
     public String toString() {
-        return "ClienteEmpresa [cnpj=" + cnpj + ", inscEstadual=" + inscEstadual + ", anoFundacao=" + anoFundacao + "]";
+        return "ClienteEmpresa \ncnpj = " + cnpj + "\nInscrição Estadual =  " + inscEstadual + "\nAno de Fundação da Empresa =  " + anoFundacao;
     }
     
 
