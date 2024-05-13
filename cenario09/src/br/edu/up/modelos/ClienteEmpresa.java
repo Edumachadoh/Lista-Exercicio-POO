@@ -5,9 +5,11 @@ public class ClienteEmpresa extends Cliente{
     private String inscEstadual;
     private int anoFundacao;
 
-
-    public ClienteEmpresa(double credito) {
-
+    public ClienteEmpresa(String cnpj, String inscEstadual, int anoFundacao,double credito) {
+        this.cnpj = cnpj;
+        this.inscEstadual = inscEstadual;
+        this.anoFundacao = anoFundacao;
+        super.setVlrMaxCredito(credito);
     }
     public String getCnpj() {
         return cnpj;
@@ -28,9 +30,11 @@ public class ClienteEmpresa extends Cliente{
     public void setAnoFundacao(int anoFundacao) {
         this.anoFundacao = anoFundacao;
     }
-
+    public double getSaldo(){
+        return super.getSaldo();
+    }
     public String getDados() {
-        return "\n----------\ncnpj=" + cnpj + "\n inscEstadual=" + inscEstadual + "\n anoFundacao=" + anoFundacao + "----------\n";
+        return "\n----------\n" + toString() + super.getDados() + "\"----------";
     }
     @Override
     public String toString() {

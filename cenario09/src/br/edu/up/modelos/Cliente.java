@@ -7,7 +7,9 @@ public abstract class Cliente {
     private double vlrMaxCredito;
     private double vlrEmprestimo;
     private Endereco endereco;
-    
+
+    //O valor máximo de crédito para cliente pessoa é de R$ 10.000,00 e cliente empresa R$25.000,00. 
+
     public String getNome() {
         return nome;
     }
@@ -46,15 +48,32 @@ public abstract class Cliente {
     }
 
     public void emprestar(double valor){
+        double valorTeste = valor + vlrEmprestimo;
 
+        if(valorTeste > vlrMaxCredito || vlrEmprestimo == vlrMaxCredito){
+            System.out.println("Valor maior que o possível de se emprestar!");
+        }else{
+            vlrEmprestimo += valor;
+        }
     }
 
     public double devolver(double valor){
-
+        if(vlrEmprestimo < valor){
+            valor -= vlrEmprestimo;
+            vlrEmprestimo = 0;
+        }else{
+            vlrEmprestimo -= valor;
+        }
+        return valor;
     }
     
     public double getSaldo(){
+        return vlrEmprestimo;
+    }
 
+    public String getDados(){
+        return "Cliente [nome=" + nome + ", telefone=" + telefone + ", email=" + email + ", vlrMaxCredito="
+                + vlrMaxCredito + ", vlrEmprestimo=" + vlrEmprestimo + ", endereco=" + endereco + "]" + "\n-->Saldo:" + getSaldo();
     }
 
     

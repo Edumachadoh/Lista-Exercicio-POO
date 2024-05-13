@@ -5,16 +5,21 @@ public class ClientePessoa extends Cliente{
     private double peso;
     private double altura;
 
-    public ClientePessoa(double credito) {
 
+
+    public ClientePessoa(String cPF, double peso, double altura, double creditoMAX) {
+        CPF = cPF;
+        this.peso = peso;
+        this.altura = altura;
+        super.setVlrMaxCredito(creditoMAX);
     }
 
     public String getCPF() {
         return CPF;
     }
 
-    public void setCPF(String cPF) {
-        CPF = cPF;
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
     }
 
     public double getPeso() {
@@ -33,10 +38,10 @@ public class ClientePessoa extends Cliente{
         this.altura = altura;
     }
     public double getSaldo(){
-
+        return super.getSaldo();
     }
     public String getDados() {
-        return "\n----------\nCPF=" + CPF + "\n peso=" + peso + "\n altura=" + altura + "\"----------";
+        return "\n----------\n" + toString() + super.getDados() + "\"----------";
     }
 
     @Override

@@ -4,6 +4,10 @@ public class Cidade {
     private String nome;
     private String UF;
 
+    public Cidade(String nome, String uF) {
+        this.nome = nome;
+        UF = uF;
+    }
     public String getNome() {
         return nome;
     }
