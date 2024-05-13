@@ -21,7 +21,7 @@ public class MensagensEstacionamento {
     }
 
     public static void placaExistente() {
-        System.out.printf("Placa ja contida no sistema!");
+        System.out.printf("Placa ja contida no sistema!\n");
     }
 
 

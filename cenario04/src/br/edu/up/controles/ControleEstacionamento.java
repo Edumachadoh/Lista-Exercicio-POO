@@ -22,7 +22,9 @@ public class ControleEstacionamento {
 
     public void AdicionarCarro(String placa, String cor, String modelo, int vagas, int entradas) {
         Carro carro = new Carro(modelo, placa, cor);  
-     
+        
+        estacionamento.setEntradas(entradas);
+        estacionamento.setVagas(vagas);
         
         
         for (int i = 0; i < 9; i ++) {
@@ -30,24 +32,19 @@ public class ControleEstacionamento {
                 if (carros[i].getPlaca().equals(placa)) {
                     estacionamento.setChecarAdicionarPlaca(true);
                     MensagensEstacionamento.placaExistente();
+                    estacionamento.setEntradas(entradas - 1);
+                    estacionamento.setVagas(vagas + 1); 
                 
                  }
             }
         }
 
-        if (estacionamento.getChecarAdicionarPlaca() == true) {
-            estacionamento.setEntradas(entradas --);
-            estacionamento.setVagas(vagas ++); 
-        } else {
-            estacionamento.setEntradas(entradas);
-            estacionamento.setVagas(vagas);
-        }
+       
 
 
         if (estacionamento.getChecarCarroRetirado() == true) {
             this.carros[estacionamento.getCarroRetirado()] = carro;
             estacionamento.setChecarCarroRetirado(false);
-            // System.out.printf("Carro colocado na vaga do recem tirado!\n");
         } else {
             this.carros[9 - vagas] = carro;
         }
@@ -97,6 +94,16 @@ public class ControleEstacionamento {
    }
    public int getVagasEstacionamento() {
         return estacionamento.getVagas();
+    }
+
+   public void setVagasEstacionamento(int vagas) {
+         estacionamento.setVagas(vagas);
+    }
+   public void setEntradasEstacionamento(int entradas) {
+         estacionamento.setEntradas(entradas);
+    }
+   public void setSaidasEstacionamento(int saidas) {
+         estacionamento.setSaidas(saidas);
     }
 
 

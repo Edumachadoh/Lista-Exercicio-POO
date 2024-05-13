@@ -14,6 +14,8 @@ public class Menu {
         int saidas = 0;
 
         ControleEstacionamento carro = new ControleEstacionamento();
+        carro.setEntradasEstacionamento(entradas);
+        carro.setVagasEstacionamento(vagas);
         
         do {
             System.out.printf("------------------------- \n");
@@ -28,21 +30,20 @@ public class Menu {
             switch (opcao) {
                 
                 case 1:
-                    if (vagas == 0) {
+                    if (carro.getVagasEstacionamento() == 0) {
                         MensagensEstacionamento.estacionamentoCheio();
                          break;
                      } 
 
-                    entradas ++;
-                    vagas --;
-
-                     
-
+                    carro.setEntradasEstacionamento(carro.getEntradasEstacionamento() + 1);
+                    carro.setVagasEstacionamento(carro.getVagasEstacionamento() - 1);
+                    
+                    
                     String placa = Prompt.lerLinha("Placa:");
                     String modelo = Prompt.lerLinha("Modelo:");
                     String cor = Prompt.lerLinha("Cor:");
 
-                    carro.AdicionarCarro(placa, cor, modelo, vagas, entradas);
+                    carro.AdicionarCarro(placa, cor, modelo, carro.getVagasEstacionamento(), carro.getEntradasEstacionamento());
                     
                     System.out.printf("------------------------- \n");
                     System.out.printf("Entradas: %d\n", carro.getEntradasEstacionamento());
@@ -53,16 +54,18 @@ public class Menu {
 
                 case 2:
                     
-                    saidas ++;
-                    vagas ++;
+                    carro.setSaidasEstacionamento(carro.getSaidasEstacionamento() + 1);
+                    carro.setVagasEstacionamento(carro.getVagasEstacionamento() + 1);
+                    // saidas ++;
+                    // vagas ++;
 
-                    if (vagas == 11) {
-                        vagas = 10;
+                    if (carro.getVagasEstacionamento() == 11) {
+                        carro.setVagasEstacionamento(10);
                         break;
                     }
 
                     String placaRetirar = Prompt.lerLinha("Placa a retirar:");
-                    carro.RemoverCarro(placaRetirar, saidas, vagas);
+                    carro.RemoverCarro(placaRetirar, carro.getSaidasEstacionamento(), carro.getVagasEstacionamento());
                     
                     
                     System.out.printf("------------------------- \n");
