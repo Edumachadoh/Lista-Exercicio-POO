@@ -1,14 +1,13 @@
 package br.edu.up.modelos;
 
-public class Comercial {
+public class Comercial extends Contato{
     private String cnpj;
 
 
-// public Comercial(int codigo, String nome, String telefone, String cnpj) {
-    //     this.cnpj = cnpj;
-    // }
-
-
+    public Comercial(int codigo, String nome, String telefone, String cnpj) {
+        super(codigo, nome, telefone);
+        this.cnpj = cnpj;
+    }
 
     public String getCnpj() {
         return cnpj;
@@ -16,6 +15,13 @@ public class Comercial {
 
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "Comercial [cnpj=" + cnpj + ", getCnpj()=" + getCnpj() + ", getClass()=" + getClass() + "]";
     }
 
     

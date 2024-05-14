@@ -19,6 +19,7 @@ public class ControleAeronave {
         
         this.tripulantes = new Tripulante[10];
         this.tripulantes[0] = new Comandante();
+        this.tripulantes[1] = new Comissario();
        
 
     }
@@ -71,6 +72,8 @@ public class ControleAeronave {
         comandante.setTotalHorasVoo(totalHorasVoo);
 
         this.tripulantes[0] = comandante;
+
+        
                
     }
     public void adicionarComissario(String nome, String rg ,int tripulacao, int idAeronautica, int idMatricula, String idiomas, int id) {
@@ -81,8 +84,17 @@ public class ControleAeronave {
         comissario.setRg(rg);
         comissario.setIdioma(idiomas);
         
-        // this.tripulantes[0] = new Comissario();
-        // this.tripulantes[0] = comissario;
+        this.tripulantes[1] = comissario;
+
+
+        String resultado = "";
+        if (tripulantes[1] instanceof Comissario) {
+            Comissario comissario1 = (Comissario) tripulantes[1]; // Downcast para Comissario
+            resultado += "Nome do Comissário: " + comissario.getNome() + "\n";
+            resultado += "Idiomas: " + comissario.getIdioma() + "\n";
+            // Continue adicionando outros atributos do comissário, se necessário
+        } 
+        System.out.println(resultado);
         
     }
 

@@ -6,11 +6,11 @@ public abstract class Contato {
     private String telefone;
     
     
-    // public Contato(int codigo, String nome, String telefone) {
-    //     this.codigo = codigo;
-    //     this.nome = nome;
-    //     this.telefone = telefone;
-    // }
+    public Contato(int codigo, String nome, String telefone) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.telefone = telefone;
+    }
     
     public int getCodigo() {
         return codigo;
