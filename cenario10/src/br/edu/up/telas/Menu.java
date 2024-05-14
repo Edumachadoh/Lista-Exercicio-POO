@@ -1,50 +1,33 @@
 package br.edu.up.telas;
 
 import br.edu.up.Programa;
+import br.edu.up.util.Prompt;
 
 public class Menu {
         public static void executar(){
-        System.out.println( "1. Incluir cliente pessoa\r\n" + //
-                            "2. Incluir cliente empresa\r\n" + //
-                            "3. Mostrar dados cliente pessoa\r\n" + //
-                            "4. Mostrar dados cliente empresa\r\n" + //
-                            "5. Emprestar para cliente pessoa\r\n" + //
-                            "6. Emprestar para cliente empresa\r\n" + //
-                            "7. Devolução de cliente pessoa\r\n" + //
-                            "8. Devolução de cliente empresa\r\n" + //
-                            "9. Sair ");
-
-        int escolha = Prompt.lerInteiro();
-        escolherAcao(escolha, lCPessoas, lCEmpresas);
+        System.out.println( "1. Incluir seguro\r\n" +
+                            "2. Localizar seguro\r\n" +
+                            "3. Excluir seguro\r\n" +
+                            "4. Excluir todos os seguros\r\n" +
+                            "5. Listar todos os seguros\r\n" +
+                            "6. Ver quantidade de seguros\r\n" +
+                            "7. Sair\r");
+        escolherAcao();
     }
 
-    public static void escolherAcao(int escolha, List<Cliente> lCPessoas, List<Cliente> lCEmpresas){
+    public static void escolherAcao(){
+        int escolha = Prompt.lerInteiro();
         switch (escolha) {
-            case 1:incluirPessoa(lCPessoas);break;    
-            case 2:incluirEmpresa(lCPessoas);break;    
-            case 3:
-            int i = 1;
-            for (Cliente cliente : lCPessoas){
-                        ClientePessoa clientePessoa = (ClientePessoa) cliente;
-                            Prompt.imprimir(clientePessoa.getDados(i));
-                    }
-            break;
-            case 4:
-            int j = 1;
-            for (Cliente cliente : lCEmpresas) {
-                        j++;
-                        ClienteEmpresa clienteEmpresa = (ClienteEmpresa) cliente;
-                        Prompt.imprimir(clienteEmpresa.getDados(j));
-                    }
-            break;
-            case 5:emprestarPessoa(lCPessoas);break;
-            case 6:emprestarEmpresa(lCEmpresas);break;
-            case 7:devolverEmpresa(lCPessoas);break;
-            case 8:devolverEmpresa(lCEmpresas);break;
-            case 9: Programa.parar();break;
-            default:System.out.println("Escolha inválida\ndigite novamente...");escolherAcao(escolha, lCPessoas, lCEmpresas);break;
+            case 1:break;    
+            case 2:break;    
+            case 3:break;
+            case 4:break;
+            case 5:break;
+            case 6:break;
+            case 7: Programa.parar();break;
+            default:System.out.println("Escolha inválida\ndigite novamente...");escolherAcao();break;
         }
-        executar(lCPessoas, lCEmpresas);
+        executar();
     }
     
 }
