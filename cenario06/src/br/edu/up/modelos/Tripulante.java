@@ -5,6 +5,11 @@ public class Tripulante extends Pessoa{
     private int idMatricula;
     
     
+    
+    public Tripulante(String nome, int rg, int matricula) {
+        super(nome, rg, matricula);
+    }
+
     public int getIdAeronautica() {
         return idAeronautica;
     }

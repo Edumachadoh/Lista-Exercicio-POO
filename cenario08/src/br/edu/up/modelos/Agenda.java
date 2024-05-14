@@ -16,15 +16,15 @@ public class Agenda {
     }
 
     public void adicionar(Comercial contato) {
-        listaContatos.add(comercial);
+        listaContatos.add(contato);
     }
 
     public void adicionar(Pessoal contato) {
-        listaContatos.add(pessoal);
+        listaContatos.add(contato);
     }
   
     public Contato getContato(int codigo) {
-        return Contato; 
+        return listaContatos.get(codigo); 
     }
 
     public void excluirContato(int codigo) {
