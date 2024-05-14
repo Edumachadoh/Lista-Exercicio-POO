@@ -4,7 +4,7 @@ public class Disciplina {
     private int id;
     private String nome;
     private String curriculo;
-    //private //competencias enum[]
+    private Competencia[] copetencias; 
     private Professor professor;
     private Aluno[] alunos;
 
@@ -36,6 +36,12 @@ public class Disciplina {
     public void adicionarAlunos(Aluno[] alunos){
         this.alunos = alunos;
     }
+    public Competencia[] getCopetencias() {
+        return copetencias;
+    }
+    public void setCopetencias(Competencia[] copetencias) {
+        this.copetencias = copetencias;
+    }
     public String listarAlunos(){
         String listaAlunos = new String();
         
@@ -45,6 +51,7 @@ public class Disciplina {
 
         return listaAlunos;
     }
+    
 
     
 }

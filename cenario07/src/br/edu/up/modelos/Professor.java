@@ -4,7 +4,9 @@ public class Professor extends Pessoa{
     private int idCurriculo;
     private Titulacao titulacao;
 
-    public Professor(int idCurriculo, Titulacao titulacao) {
+    public Professor(int idCurriculo, Titulacao titulacao, String nome, int rg, int matricula) {
+        
+        super(nome, rg, matricula);
         this.idCurriculo = idCurriculo;
         this.titulacao = titulacao;
     }

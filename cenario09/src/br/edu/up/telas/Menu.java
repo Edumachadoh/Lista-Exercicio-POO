@@ -60,7 +60,7 @@ public class Menu {
             case 7:devolverEmpresa(lCPessoas);break;
             case 8:devolverEmpresa(lCEmpresas);break;
             case 9: Programa.parar();break;
-            default:System.out.println("Escolha inválida\ndigite novamente...");break;
+            default:System.out.println("Escolha inválida\ndigite novamente...");escolherAcao(escolha, lCPessoas, lCEmpresas);break;
         }
         executar(lCPessoas, lCEmpresas);
     }

@@ -9,6 +9,6 @@ public class Programa {
     }
 
     public static void parar(){
-        return;
+        System.exit(0);
     }
 }

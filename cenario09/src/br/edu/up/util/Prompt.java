@@ -175,20 +175,4 @@ public class Prompt {
 		System.out.print("Pressione ENTER para continuar...");
 		lerLinha();
 	}
-
-	/**
-	 * Gerar um numero aleatório dentro de um intervalo
-	 * @implemented by PedroWernek
-	 */
-	public static int inteiroAleatorio(int min, int max){
-		return (int)(Math.random() * ((max - min) + 1) + min);
-	}
-
-	public static double decimalAleatorio(double min, double max){
-		return (double)(Math.random() * ((max - min) + 1) + min);
-	}
-
-	public static double arredondar(double n){
-		return Math.round(n);
-	}
 }
