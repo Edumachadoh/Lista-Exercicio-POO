@@ -5,6 +5,14 @@ public class Passageiro extends Pessoa{
     private int idBagagem;
     
     
+    
+
+    public Passageiro(String nome, String rg, Passagem passagem, int idBagagem) {
+        super(nome, rg);
+        this.passagem = passagem;
+        this.idBagagem = idBagagem;
+    }
+
     public int getIdBagagem() {
         return idBagagem;
     }

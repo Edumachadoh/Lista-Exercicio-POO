@@ -2,15 +2,25 @@ package br.edu.up.telas;
 
 import br.edu.up.util.Prompt;
 import br.edu.up.controles.ControleAeronave;
+import br.edu.up.modelos.Aeronave;
+import br.edu.up.modelos.Comandante;
+import br.edu.up.modelos.Comissario;
+import br.edu.up.modelos.Passageiro;
+import br.edu.up.modelos.Passagem;
+import br.edu.up.modelos.Data;
+
 
 public class Menu {
+
+    static ControleAeronave controleAeronave = new ControleAeronave();
+
     public static void executar() {
         int opcao;
         int numAeronave = 0;
-        int passageiro = 0;
-        int tripulacao = 0;
-        int comissario = 0;
-        int comandante = 0;
+        int passageiroCont = 0;
+        int tripulacaoCont = 0;
+        int comissarioCont = 0;
+        int comandanteCont = 0;
 
         String nome;
         String rg;
@@ -20,7 +30,14 @@ public class Menu {
         String tipo = Prompt.lerLinha("Tipo: "); 
         int qtdAssentos = Prompt.lerInteiro("Qtd assentos: "); 
        
-        ControleAeronave aeronave = new ControleAeronave();
+        Aeronave aeronave = new Aeronave();
+
+        aeronave.setIdCodigo(idCodigo);
+        aeronave.setQtdAssentos(qtdAssentos);
+        aeronave.setTipo(tipo);
+
+        controleAeronave.adicionarAeronave(aeronave);
+
        
         do {
             
@@ -29,16 +46,11 @@ public class Menu {
             System.out.printf("Digite a ação que deseja de 1 a 4: \n");
             System.out.printf("1 = Adicionar passageiro\n");
             System.out.printf("2 = Adicionar tripulacao\n");
-            System.out.printf("3 = Relatório passageiro \n");
+            System.out.printf("3 = Relatório comandante \n");
             System.out.printf("4 = Sair \n");
 
             opcao = Prompt.lerInteiro("");
     
-
-            
-            
-            aeronave.adicionarAeronave(numAeronave, idCodigo, tipo, qtdAssentos);
-
             switch (opcao) {
                 case 1:
                    
@@ -54,8 +66,23 @@ public class Menu {
                     int hora = Prompt.lerInteiro("Hora:");
                     int minuto = Prompt.lerInteiro("Minuto:");
                     
-                    aeronave.adicionarPassageiro(passageiro, numAeronave, nome, rg, idPassagem, numAssento, classeAssento, dia, mes, hora, minuto, idBagagem);
-                    passageiro ++;
+                    Data data = new Data();
+                    data.setDia(dia);
+                    data.setMes(mes);
+                    data.setHora(hora);
+                    data.setMinuto(minuto);
+
+                    Passagem passagem = new Passagem();
+                    passagem.setIdPassagem(idPassagem);
+                    passagem.setNumAssento(numAssento);
+                    passagem.setClasseAssento(classeAssento);
+                    passagem.setData(data);
+
+                    Passageiro passageiro = new Passageiro(nome, rg, passagem, idBagagem);
+        
+                    controleAeronave.adicionarPassageiro(passageiro);
+
+                    passageiroCont ++;
 
                     break;
                 case 2:
@@ -66,28 +93,52 @@ public class Menu {
                     int tipoTripulacao = Prompt.lerInteiro("Qual tripulante [1 - Comandante / 2 - Comissário]:");
                     int idAeronautica = Prompt.lerInteiro("Id aeronautica: ");
                     int idMatricula = Prompt.lerInteiro("Id matricula: ");
-                    int id = 1;
+
 
                     if (tipoTripulacao == 1) {
 
                         int totalHorasVoo = Prompt.lerInteiro("Total de horas de voo: ");     
-                        aeronave.adicionarComandante(nome, rg, tripulacao, idAeronautica, idMatricula, totalHorasVoo, id); 
+                        
+                        Comandante comandante = new Comandante(nome, rg, idAeronautica, idMatricula, totalHorasVoo);
 
-                        tripulacao ++; 
-                        comandante ++;
+                        comandante.setIdAeronautica(idAeronautica);
+                        comandante.setIdMatricula(idMatricula);
+                        comandante.setNome(nome);
+                        comandante.setRg(rg);
+                        comandante.setTotalHorasVoo(totalHorasVoo);
+                        
+                        controleAeronave.adicionarComandante(comandante); 
+
+                        tripulacaoCont ++; 
+                        comandanteCont ++;
+
+                        break;
                     } else if (tipoTripulacao == 2) {
 
                         String idiomas = Prompt.lerLinha("idiomas fluentes: ");
 
-                        aeronave.adicionarComissario(nome, rg ,tripulacao,idAeronautica, idMatricula, idiomas, id);
+                        Comissario comissario = new Comissario(nome, rg, idAeronautica, idMatricula, idiomas);
+
+                        comissario.setIdAeronautica(idAeronautica);
+                        comissario.setIdMatricula(idMatricula);
+                        comissario.setNome(nome);
+                        comissario.setRg(rg);
+                        comissario.setIdioma(idiomas);
+                        controleAeronave.adicionarComissario(comissario);
                        
-                        tripulacao ++; 
-                        comissario ++;
+                        tripulacaoCont ++; 
+                        comissarioCont ++;
 
                         break;
                     }
                 case 3:
-                    System.out.println(aeronave);
+                    Comandante comandante = controleAeronave.buscarComandante();
+                    if(comandante != null){
+                        //System.out.println(comandante);
+                        System.out.println(comandante.getTotalHorasVoo());
+                    } else {
+
+                    }
                     break;
                 case 4:
                     System.out.println("Saindo...");

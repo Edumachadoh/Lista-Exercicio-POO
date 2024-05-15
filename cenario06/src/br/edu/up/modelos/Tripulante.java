@@ -6,10 +6,12 @@ public class Tripulante extends Pessoa{
     
     
     
-    public Tripulante(String nome, int rg, int matricula) {
-        super(nome, rg, matricula);
+    public Tripulante(String nome, String rg, int idAeronautica, int idMatricula) {
+        super(nome, rg);
+        this.idAeronautica = idAeronautica;
+        this.idMatricula = idMatricula;
     }
-
+    
     public int getIdAeronautica() {
         return idAeronautica;
     }
