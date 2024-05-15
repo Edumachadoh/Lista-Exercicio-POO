@@ -4,8 +4,14 @@ public class Aluno extends Pessoa{
     private int anoIngresso;
     private String nomeCurso;
     private String turno;
-    private SituacaoAluno situacao;
     private Disciplina disciplina;
+
+    private Aprovacao aprovacao;
+    @SuppressWarnings("unused")
+    private Situacao[] situacao;
+
+    @SuppressWarnings("unused")
+    private Competencia[] competencias;
 
     public Aluno(int anoIngresso, String nomeCurso, String turno, String nome, int rg, int matricula) {
         
@@ -13,6 +19,7 @@ public class Aluno extends Pessoa{
         this.anoIngresso = anoIngresso;
         this.nomeCurso = nomeCurso;
         this.turno = turno;
+
     }
     
     public int getAnoIngresso() {
@@ -35,11 +42,18 @@ public class Aluno extends Pessoa{
     }
     public void adicionarDisciplina(Disciplina disciplina){
         this.disciplina = disciplina;
-        }
-    public void verSituacao(){
-        //copetencias atingidas
+    }
+    public Disciplina getDisciplina(){
+        return disciplina;
+    }
+    
 
-        Competencia[] competencias = disciplina.getCopetencias();
+    public Aprovacao getAprovacao() {
+        return aprovacao;
+    }
+
+    public void setAprovacao(Aprovacao aprovacao) {
+        this.aprovacao = aprovacao;
     }
 
     @Override
@@ -47,10 +61,13 @@ public class Aluno extends Pessoa{
         return "Aluno [anoIngresso=" + anoIngresso + ", nomeCurso=" + nomeCurso + ", turno=" + turno + "]";
     }
 
-    enum SituacaoAluno{
+    enum Situacao{
+        ATINGIDA,
+        NAO_ATINGIDA;
+    }
+
+    enum Aprovacao{
         APROVADO,
         REPROVADO;
     }
-
-    
 }

@@ -19,6 +19,7 @@ public class Registrar {
     public static void aluno(List<Pessoa> listaAlunos, String nome, int rg, int matricula, String nomeInstituicao, int anoIngresso, String nomeCurso, String turno){
 
         Pessoa aluno = new Aluno(anoIngresso, nomeCurso, turno, nomeCurso, rg, matricula);
+        
         listaAlunos.add(aluno);
     }
 }

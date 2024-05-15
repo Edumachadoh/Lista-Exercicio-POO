@@ -4,11 +4,18 @@ public class Disciplina {
     private int id;
     private String nome;
     private String curriculo;
-    private Competencia[] copetencias; 
-    private Professor professor;
-    private Aluno[] alunos;
+    private Competencia[] competencias; 
+    private Pessoa professor;
+    private Pessoa[] alunos;
 
 
+    public Disciplina(int id, String nome, String curriculo, Competencia[] competencias, Pessoa professor) {
+        this.id = id;
+        this.nome = nome;
+        this.curriculo = curriculo;
+        this.competencias = competencias;
+        this.professor = professor;
+    }
     public int getId() {
         return id;
     }
@@ -36,16 +43,16 @@ public class Disciplina {
     public void adicionarAlunos(Aluno[] alunos){
         this.alunos = alunos;
     }
-    public Competencia[] getCopetencias() {
-        return copetencias;
+    public Competencia[] getCompetencias() {
+        return competencias;
     }
-    public void setCopetencias(Competencia[] copetencias) {
-        this.copetencias = copetencias;
+    public void setCompetencias(Competencia[] competencias) {
+        this.competencias = competencias;
     }
     public String listarAlunos(){
         String listaAlunos = new String();
         
-        for (Aluno aluno : alunos) {
+        for (Pessoa aluno : alunos) {
             listaAlunos += aluno.toString() + "\n";    
         }
 

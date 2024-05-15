@@ -20,8 +20,8 @@ public abstract class Pessoa{
     public int getRg() {
         return rg;
     }
-    public void setRg(String rg2) {
-        this.rg = rg2;
+    public void setRg(int rg) {
+        this.rg = rg;
     }
     public int getMatricula() {
         return matricula;

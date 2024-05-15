@@ -2,10 +2,9 @@ package br.edu.up.modelos;
 
 public class Competencia {
     private Tipo tipo;
-    private Situacao situacao;
 
-    enum Tipo{
-        NESCESSARIA,
+    public enum Tipo{
+        NECESSARIA,
         COMPLEMENTAR;
     }
 
@@ -17,20 +16,6 @@ public class Competencia {
         this.tipo = tipo;
     }
 
-    enum Situacao{
-        ATINGIDA,
-        NAO_ATINGIDA;
-    }
-
-    public Situacao getSituacao() {
-        return situacao;
-    }
-
-    public void setSituacao(Situacao situação) {
-        this.situacao = situação;
-    }
-
     
-    
-    
+
 }

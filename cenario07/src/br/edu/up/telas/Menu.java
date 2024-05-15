@@ -5,6 +5,7 @@ import java.util.List;
 
 import br.edu.up.Programa;
 import br.edu.up.controles.Registrar;
+import br.edu.up.modelos.Competencia;
 import br.edu.up.modelos.Disciplina;
 import br.edu.up.modelos.Pessoa;
 import br.edu.up.util.Prompt;
@@ -22,7 +23,8 @@ public class Menu {
     public static void mostrarTela(){
         System.out.println("1- Registrar Professor");
         System.out.println("2- Registrar Aluno");
-        System.out.println("2- Registrar Disciplina");
+        System.out.println("3- Registrar Disciplina");
+        System.out.println("4- Adicionar Aluna a Disciplina");
     }
 
     public static void escolherAcao(List<Pessoa> listaProfessores, List<Pessoa> listaAlunos,List<Disciplina> listaDisciplinas){
@@ -31,7 +33,7 @@ public class Menu {
         switch (escolha) {
             case 1:registrarProfessor(listaProfessores);break;    
             case 2:registrarALuno(listaAlunos);break;    
-            case 3:break;
+            case 3:registrarDisciplina(listaProfessores, listaDisciplinas);break;
             case 4:break;
             case 5:break;
             case 6:break;
@@ -56,6 +58,7 @@ public class Menu {
 
         Registrar.professor(listaProfessores, idCurriculo, nome, rg, matricula, nomeInstituicao, anoConclusao, nomeTitulo, tituloTrabalhoConclusao);
     }
+
     public static void registrarALuno(List<Pessoa> listaAlunos){
         String nome = Prompt.lerLinha("Nome:");
         int rg = Prompt.lerInteiro("RG:");
@@ -69,5 +72,19 @@ public class Menu {
         Registrar.aluno(listaAlunos, nome, rg, matricula, nomeInstituicao, anoIngresso, nomeCurso, turno);
     }   
 
-    
+    public static void registrarDisciplina(List<Pessoa> listaProfessores,List<Disciplina> listaDisciplinas){
+            
+        int id = listaDisciplinas.size();
+        String nome = Prompt.lerLinha("Nome da Disciplina:");
+        String curriculo = Prompt.lerLinha("Curriculo da disciplina:");
+        Competencia[] competencias = new Competencia[1];
+        competencias = MenuCompetencias.lerCompetencias(); 
+            
+        Pessoa professor = Escolha.professor(listaProfessores);
+            
+        Disciplina disciplina = new Disciplina(id, nome, curriculo, competencias, professor);
+
+        listaDisciplinas.add(disciplina);
+
+    }
 }
