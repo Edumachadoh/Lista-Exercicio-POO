@@ -49,7 +49,10 @@ public class Mes {
         String compromissos = new String();
 
         for (Dia dia : dias) {
-            compromissos += dia.listarCompromissos() + "\n" ;   
+            if(dia != null){
+                compromissos += nome + " " + dia.listarCompromissos() + "\n" ;  
+            }
+
         }
         return compromissos;
     }
@@ -59,7 +62,7 @@ public class Mes {
 
         for (Dia dia : dias) {
             if(dia != null){
-                listaCompromissos += nome + dia.listarCompromissos();
+                listaCompromissos += this.nome + " " + dia.listarCompromissos();
             }
                 
         }
@@ -89,4 +92,10 @@ public class Mes {
         return numMes;
     }
 
+    public int getQtdDeDias() {
+        return qtdDeDias;
+    }
+
+
+    
 }   

@@ -2,6 +2,7 @@ package br.edu.up.telas;
 
 import br.edu.up.Programa;
 import br.edu.up.controles.AdcionarAno;
+import br.edu.up.controles.DefinirNumMes;
 import br.edu.up.controles.VerificarPosicao;
 import br.edu.up.metodos.Ano;
 import br.edu.up.metodos.Compromisso;
@@ -31,7 +32,8 @@ public class Menu {
         System.out.println("3 - Excluir compromisso");
         System.out.println("4 - Listar compromissos desse ano");
         System.out.println("5 - Listar compromisso de uma mês específico");
-        System.out.println("6 - Mudar ano");
+        System.out.println("6 - Listar compromisso de um dia específico");
+        System.out.println("7 - Mudar ano");
         System.out.println("(qualquer botão) - Parar Programa");
         Prompt.separador();
 
@@ -53,14 +55,15 @@ public class Menu {
 
                 break;
             case 4:
-                listaAnos[posicao].listarCompromissos();
-
+                Prompt.imprimir(listaAnos[posicao].listarCompromissos());
                 break;
             case 5:
-
-
+                listarMes(listaAnos[posicao]);
                 break;
             case 6:
+                listarDia(listaAnos[posicao]);
+                break;
+            case 7:
                 int anoDigitado = Prompt.lerInteiro("Qual ano:");  
                 boolean posicaoExiste = VerificarPosicao.seExiste(listaAnos, anoDigitado);
 
@@ -87,7 +90,7 @@ public class Menu {
 
     public static String mesValido(){
         String mes = Prompt.lerLinha("Qual Mês:");
-        VerificarMes.executar(mes);
+        mes = VerificarMes.executar(mes);
 
         return mes;
     }
@@ -111,11 +114,33 @@ public class Menu {
         objetoMes.adicionarCompromisso(objCompromisso, dia);
         
         objetoAno.adicionarMes(objetoMes, objetoMes.numeroMes());
-
-
-
-    
     }
 
+    public static void listarMes(Ano ano){
+        String mes = Menu.mesValido();
+        int n = DefinirNumMes.executar(mes);
+
+        Prompt.imprimir(ano.listarCompromissos(n));
+    }
+
+    public static void listarDia(Ano ano){
+        String mes = Menu.mesValido();
+        int n = DefinirNumMes.executar(mes);
+
+        Mes mesEscolhido = ano.getMes(n);
+
+        int dia = 0;
+
+        do{
+            dia = Prompt.lerInteiro("Qual dia:");
+            if(dia > mesEscolhido.getQtdDeDias() || dia < 0){
+                Prompt.imprimir("Dia Inválido");
+            }else{
+                break;
+            }
+        }while(true);
+
+        mesEscolhido.listarCompromissos(dia);
+    }
 
 }

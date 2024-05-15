@@ -28,7 +28,9 @@ public class Dia {
         String lista = new String();
         
         for (Compromisso compromisso : compromissos) {
-            lista += this.diaMes + "" + compromisso;
+            if(compromisso != null){
+                lista += this.diaMes + " " + compromisso;
+            }
         }
 
         return lista;
