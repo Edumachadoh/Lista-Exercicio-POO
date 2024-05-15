@@ -5,7 +5,7 @@ import br.edu.up.util.Prompt;
 
 public class VerificarMes {
 
-    public static void executar(String mes){
+    public static String executar(String mes){
         String nomeMes = DefinirMes.executar(mes);
         
         if(nomeMes == "Null"){
@@ -14,6 +14,8 @@ public class VerificarMes {
         }else{
             voceQuisDizerString(nomeMes);
         }
+
+        return nomeMes;
     }
 
     public static void voceQuisDizerString(String nomeMes){

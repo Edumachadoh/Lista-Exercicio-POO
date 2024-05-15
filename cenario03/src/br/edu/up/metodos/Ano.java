@@ -66,7 +66,7 @@ public class Ano {
 
         for (Mes mes : meses) {
             if(mes != null){
-                listaCompromissos += this.ano + mes.listarCompromissos();
+                listaCompromissos += this.ano + " " + mes.listarCompromissos();
             }
         }
 
@@ -75,6 +75,10 @@ public class Ano {
 
     public boolean isBissexto() {
         return bissexto;
+    }
+
+    public Mes getMes(int num){
+        return meses[num];
     }
     
 }
