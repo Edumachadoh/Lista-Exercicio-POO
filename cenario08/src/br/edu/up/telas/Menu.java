@@ -27,6 +27,7 @@ public class Menu {
                      
 
                     agenda.incluirContatoPessoal(codigo, nome, telefone, aniversario);
+                    imprimirCodigo(codigo);
                     break;
             
                 case 2:
@@ -37,10 +38,16 @@ public class Menu {
                 
 
                     agenda.incluirContatoComercial(codigo, nome, telefone, cpnj);
+                    imprimirCodigo(codigo);
                     break;
             
                 case 3:
+
+                    int codigoExcluir = Prompt.lerInteiro("Codigo que deseja excluir: ");
+
+                    agenda.excluirContato(codigo, codigoExcluir);
                     
+
                     break;
             
                 case 4:
@@ -56,18 +63,10 @@ public class Menu {
             } 
        } while (opcao != 0);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
+
+    public static void imprimirCodigo(int codigo) {
+        System.out.printf("Codigo do contato: %d\n", codigo); 
+    }
+    
 }

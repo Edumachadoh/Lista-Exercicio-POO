@@ -15,11 +15,7 @@ public class Agenda {
 
     }
 
-    public void adicionar(Comercial contato) {
-        listaContatos.add(contato);
-    }
-
-    public void adicionar(Pessoal contato) {
+    public void adicionar(Contato contato) {
         listaContatos.add(contato);
     }
   
