@@ -13,13 +13,14 @@ public class Menu {
        ManipularAgenda agenda = new ManipularAgenda();
 
         do {
-            System.out.println("--------------------------\n1- Incluir um contato pessoal\n2- Incluir um contato comercial\n3- Excluir um contato pessoal\n4- Consultar um contato pelo código\n5- Listar todos os contatos\n6- Sair do programa:");
+            System.out.println("--------------------------\n1- Incluir um contato pessoal\n2- Incluir um contato comercial\n3- Excluir um contato \n4- Consultar um contato pelo código\n5- Listar todos os contatos\n6- Sair do programa:");
 
             opcao = Prompt.lerInteiro("");
-            codigo ++;
+            
             
             switch (opcao) {
                 case 1:
+                    codigo ++;
                     nome = Prompt.lerLinha("Nome: ");
                     telefone = Prompt.lerLinha("Telefone: ");
                     String aniversario = Prompt.lerLinha("Aniversario: ");
@@ -31,6 +32,7 @@ public class Menu {
                     break;
             
                 case 2:
+                    codigo ++;
                     nome = Prompt.lerLinha("Nome: ");
                     telefone = Prompt.lerLinha("Telefone: ");
                     String cpnj = Prompt.lerLinha("Cnpj: ");
@@ -51,11 +53,13 @@ public class Menu {
                     break;
             
                 case 4:
-                    
+                     int codigoConsultar = Prompt.lerInteiro("Codigo que deseja consultar: ");
+
+                    agenda.consultarContato(codigo, codigoConsultar);
                     break;
             
                 case 5:
-                    
+                    agenda.listarContatos();
                     break;
             
                 default:

@@ -24,11 +24,11 @@ public class Agenda {
     }
 
     public void excluirContato(int codigo) {
-
+        listaContatos.remove(codigo);
     }
 
-    public void listarContatos() {
-
+    public Contato listarContatos() {
+        return listaContatos.get(0);
     }
 
     

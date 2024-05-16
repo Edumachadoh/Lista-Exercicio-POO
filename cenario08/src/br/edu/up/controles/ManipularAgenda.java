@@ -30,19 +30,24 @@ public class ManipularAgenda {
     }
 
    public void excluirContato(int codigo, int codigoExcluir) {
-        boolean teste = false; // Inicializando a variável teste como false
-        for (int i = 0; i < codigo; i ++) {
-            if (agenda.getContato(codigo).getCodigo() == codigoExcluir) {
-                System.out.printf("contato excluido");
-                teste = true;
-            }
-        }   
-        
-        if (teste == false) {
-            System.out.printf("contato inexistente");
+        boolean teste = false; 
+        if (codigoExcluir <= codigo) {
+            agenda.excluirContato(codigoExcluir);
+            teste = true;
+            System.out.printf("contato excluido\n");
         }
+
+        if (teste == false) {
+        }
+        System.out.printf("contato inexistente\n");
 }
 
+    public void consultarContato(int codigo, int codigoConsultar) {
+        
+    }
     
-    
+    public void listarContatos() {
+        System.out.println(agenda.listarContatos());
+    }
+
 }

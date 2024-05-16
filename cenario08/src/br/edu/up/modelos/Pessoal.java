@@ -22,8 +22,8 @@ public class Pessoal extends Contato{
 
     @Override
     public String toString() {
-        return "Pessoal [aniversario=" + aniversario + ", getAniversario()=" + getAniversario() + ", getCodigo()="
-                + getCodigo() + ", getNome()=" + getNome() + ", getTelefone()=" + getTelefone() + "]";
+        return "Pessoal [aniversario = " + aniversario + ", Codigo = "
+                + getCodigo() + " Nome: " + getNome() + " Telefone " + getTelefone() + "]";
     }
 
     

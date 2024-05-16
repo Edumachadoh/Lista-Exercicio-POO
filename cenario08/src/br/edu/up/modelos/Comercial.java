@@ -17,12 +17,15 @@ public class Comercial extends Contato{
         this.cnpj = cnpj;
     }
 
-
-
     @Override
     public String toString() {
-        return "Comercial [cnpj=" + cnpj + ", getCnpj()=" + getCnpj() + ", getClass()=" + getClass() + "]";
+        return "Comercial [cnpj = " + cnpj + ", Codigo = "
+        + getCodigo() + " Nome: " + getNome() + " Telefone " + getTelefone() + "]";
     }
+
+
+
+   
 
     
 }
