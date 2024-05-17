@@ -10,6 +10,20 @@ public class Segurado {
     private String CEP;
     private String cidade;
 
+
+
+    
+    public Segurado(String nome, String rg, String cpf, Sexo sexo, String telefone, String endereco, String cep, String cidade) {
+        this.nome = nome;
+        this.RG = rg;
+        this.CPF = cpf;
+        this.sexo = sexo;
+        this.telefone = telefone;
+        this.endereco = endereco;
+        this.CEP = cep;
+        this.cidade = cidade;
+    }
+
     enum Sexo{
         MASCULINO,
         FEMININO;
