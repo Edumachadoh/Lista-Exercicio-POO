@@ -7,10 +7,6 @@ public class Agenda {
     
     private List<Contato> listaContatos = new ArrayList<>();
 
-    // Pessoal pessoal = new Pessoal();
-    // Comercial comercial = new Comercial();
-    
-
     public Agenda() {
 
     }
@@ -19,17 +15,30 @@ public class Agenda {
         listaContatos.add(contato);
     }
   
-    public Contato getContato(int codigo) {
-        return listaContatos.get(codigo); 
+    public Contato getContato(int codigoConsultar) {
+        return listaContatos.get(codigoConsultar - 1); 
     }
 
     public void excluirContato(int codigo) {
-        listaContatos.remove(codigo);
+        listaContatos.set(codigo - 1, null);
     }
 
-    public Contato listarContatos() {
-        return listaContatos.get(0);
+    public String listarContatos() {
+        String contatosString = "";
+        for (Contato contato : listaContatos) {
+
+            contatosString += contato + "\n";
+            
+        }
+
+        return contatosString;
     }
 
+    @Override
+    public String toString() {
+        return "Agenda [listaContatos=" + listaContatos + ", listarContatos()=" + listarContatos() + "]";
+    }
+
+    
     
 }

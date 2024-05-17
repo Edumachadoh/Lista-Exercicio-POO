@@ -19,8 +19,8 @@ public class Comercial extends Contato{
 
     @Override
     public String toString() {
-        return "Comercial [cnpj = " + cnpj + ", Codigo = "
-        + getCodigo() + " Nome: " + getNome() + " Telefone " + getTelefone() + "]";
+        return "Comercial [ Cnpj = " + cnpj + ", Codigo = "
+        + getCodigo() + ", Nome: " + getNome() + ", Telefone: " + getTelefone() + " ]";
     }
 
 

@@ -8,9 +8,6 @@ import br.edu.up.modelos.Comercial;
 public class ManipularAgenda {
     private Agenda agenda;
 
-
-
-
     public ManipularAgenda() {
         this.agenda = new Agenda();
     }
@@ -25,29 +22,36 @@ public class ManipularAgenda {
     
     public void incluirContatoComercial(int codigo, String nome, String telefone, String cnpj) {
 
-        Contato pessoa = new Comercial(codigo, nome, telefone, cnpj);
+        Contato comercial = new Comercial(codigo, nome, telefone, cnpj);
+        agenda.adicionar(comercial);
         
     }
 
-   public void excluirContato(int codigo, int codigoExcluir) {
-        boolean teste = false; 
-        if (codigoExcluir <= codigo) {
+   public int excluirContato(int codigo, int codigoExcluir) {
+        int retorno;
+        if (codigoExcluir > codigo) {
+            retorno = 1;
+            return retorno;
+        } else {
             agenda.excluirContato(codigoExcluir);
-            teste = true;
-            System.out.printf("contato excluido\n");
-        }
 
-        if (teste == false) {
+            retorno = 2;
+            return retorno;
         }
-        System.out.printf("contato inexistente\n");
+    
+    
 }
 
-    public void consultarContato(int codigo, int codigoConsultar) {
-        
+    public Contato consultarContato(int codigo, int codigoConsultar) {
+        if (codigoConsultar > codigo) {
+            return null;
+        } else {
+         return agenda.getContato(codigoConsultar);
+        }
     }
     
-    public void listarContatos() {
-        System.out.println(agenda.listarContatos());
+    public String listarContatos() {
+        return agenda.listarContatos();
     }
 
 }

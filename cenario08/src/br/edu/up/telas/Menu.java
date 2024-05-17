@@ -47,7 +47,11 @@ public class Menu {
 
                     int codigoExcluir = Prompt.lerInteiro("Codigo que deseja excluir: ");
 
-                    agenda.excluirContato(codigo, codigoExcluir);
+                    if (agenda.excluirContato(codigo, codigoExcluir) == 1) {
+                        System.out.println("Codigo inexistente!");
+                    } else {
+                        System.out.println("Contato - " + codigoExcluir+" - excluido");
+                    }
                     
 
                     break;
@@ -55,11 +59,20 @@ public class Menu {
                 case 4:
                      int codigoConsultar = Prompt.lerInteiro("Codigo que deseja consultar: ");
 
-                    agenda.consultarContato(codigo, codigoConsultar);
+                     agenda.consultarContato(codigo, codigoConsultar);
+                     if (agenda.consultarContato(codigo, codigoConsultar) != null) {
+                        System.out.println(agenda.consultarContato(codigo, codigoConsultar));
+                     } else {
+                        System.out.println("Contato inexistente ou excluido!");
+                     }
+                    
+                     
+
                     break;
             
                 case 5:
-                    agenda.listarContatos();
+                    System.out.println("--------------------------\n");
+                    System.out.println(agenda.listarContatos());
                     break;
             
                 default:
