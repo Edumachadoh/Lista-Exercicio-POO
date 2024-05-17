@@ -1,4 +1,4 @@
-package br.edu.up.controles;
+package br.edu.up.telas;
 
 import br.edu.up.metodos.Ponto;
 

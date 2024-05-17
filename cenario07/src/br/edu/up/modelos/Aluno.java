@@ -7,10 +7,7 @@ public class Aluno extends Pessoa{
     private Disciplina disciplina;
 
     private Aprovacao aprovacao;
-    @SuppressWarnings("unused")
-    private Situacao[] situacao;
-
-    @SuppressWarnings("unused")
+    //private Situacao[] situacao;
     private Competencia[] competencias;
 
     public Aluno(int anoIngresso, String nomeCurso, String turno, String nome, int rg, int matricula) {
@@ -61,13 +58,9 @@ public class Aluno extends Pessoa{
         return "Aluno [anoIngresso=" + anoIngresso + ", nomeCurso=" + nomeCurso + ", turno=" + turno + "]";
     }
 
-    enum Situacao{
-        ATINGIDA,
-        NAO_ATINGIDA;
-    }
-
     enum Aprovacao{
         APROVADO,
-        REPROVADO;
+        REPROVADO,
+        PENDENTE;
     }
 }
