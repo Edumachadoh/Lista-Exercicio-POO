@@ -16,7 +16,9 @@ public class Menu {
             System.out.println("--------------------------\n1- Incluir um contato pessoal\n2- Incluir um contato comercial\n3- Excluir um contato \n4- Consultar um contato pelo código\n5- Listar todos os contatos\n6- Sair do programa:");
 
             opcao = Prompt.lerInteiro("");
-            
+            if (opcao == 6) {
+                break;
+            }
             
             switch (opcao) {
                 case 1:
@@ -74,9 +76,11 @@ public class Menu {
                     System.out.println("--------------------------\n");
                     System.out.println(agenda.listarContatos());
                     break;
-            
+                case 6:
+                     break;
                 default:
                     break;
+                
             } 
        } while (opcao != 0);
 
