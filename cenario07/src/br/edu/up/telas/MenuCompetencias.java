@@ -15,11 +15,13 @@ public class MenuCompetencias {
             tipo = Prompt.lerInteiro("Qual tipo de Competencia:\n(1- Nescessária / 2- Complementar)");   
 
             switch (tipo) {
-                case 1:       
-                    competencia.setTipo(Competencia.Tipo.NECESSARIA);
+                case 1:   
+                    competencia.setTipo(Competencia.Tipo.NECESSARIA);    
+                    //competencia.setTipo(Competencia.Tipo.NECESSARIA);
                     break;
                 case 2:
                     competencia.setTipo(Competencia.Tipo.COMPLEMENTAR);
+                    //competencia.setTipo(Competencia.Tipo.COMPLEMENTAR);
                     break;
                 default:
                     Prompt.imprimir("escolha inválida");
