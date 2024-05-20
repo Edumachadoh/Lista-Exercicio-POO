@@ -20,9 +20,10 @@ public class ControleEstacionamento {
         }
     }
 
-    public void AdicionarCarro(String placa, String cor, String modelo, int vagas, int entradas) {
+    public int AdicionarCarro(String placa, String cor, String modelo, int vagas, int entradas) {
         Carro carro = new Carro(modelo, placa, cor);  
-        
+        int ret = 0;
+
         estacionamento.setEntradas(entradas);
         estacionamento.setVagas(vagas);
         
@@ -31,9 +32,9 @@ public class ControleEstacionamento {
             if (carros[i].getPlaca() != null) {
                 if (carros[i].getPlaca().equals(placa)) {
                     estacionamento.setChecarAdicionarPlaca(true);
-                    MensagensEstacionamento.placaExistente();
                     estacionamento.setEntradas(entradas - 1);
                     estacionamento.setVagas(vagas + 1); 
+                    ret = 1;
                 
                  }
             }
@@ -50,10 +51,12 @@ public class ControleEstacionamento {
         }
         
         this.carros[9 - vagas] = carro;
+
+        return ret;
         
     }
 
-    public void RemoverCarro(String placaDigitada, int saidas, int vagas) {
+    public int RemoverCarro(String placaDigitada, int saidas, int vagas) {
         estacionamento.setSaidas(saidas);
         estacionamento.setVagas(vagas);
       
@@ -68,17 +71,21 @@ public class ControleEstacionamento {
                 
                 
                 if (placaCompararBD.equals(placaDigitada)) {
-                      System.out.printf("Carro '%s' retirado!!!!", placaCompararBD);
+                      
                       estacionamento.setChecarCarroRetirado(true);
                       estacionamento.setCarroRetirado(i);
                 }
             }
        }
        if (estacionamento.getChecarCarroRetirado() == false) {
-            MensagensEstacionamento.carroInexistente();
+            
             estacionamento.setSaidas(saidas - 1);
              estacionamento.setVagas(vagas - 1);
+             return 1;
+       } else {
+            return 0;
        }
+       
     }
 
     

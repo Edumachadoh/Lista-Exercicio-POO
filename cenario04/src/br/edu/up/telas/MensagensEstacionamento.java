@@ -17,7 +17,7 @@ public class MensagensEstacionamento {
         System.out.printf("Valor do período: R$ %.2f\n", valorTotal);
     }
     public static void carroInexistente() {
-        System.out.printf("Carro inexistente no sistema!");
+        System.out.printf("Carro inexistente no sistema!\n");
     }
 
     public static void placaExistente() {

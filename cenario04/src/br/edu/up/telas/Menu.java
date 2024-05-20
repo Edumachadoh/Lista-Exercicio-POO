@@ -43,8 +43,13 @@ public class Menu {
                     String modelo = Prompt.lerLinha("Modelo:");
                     String cor = Prompt.lerLinha("Cor:");
 
-                    carro.AdicionarCarro(placa, cor, modelo, carro.getVagasEstacionamento(), carro.getEntradasEstacionamento());
+                    int num = carro.AdicionarCarro(placa, cor, modelo, carro.getVagasEstacionamento(), carro.getEntradasEstacionamento());
+
+                    if (num == 1) {
+                        MensagensEstacionamento.placaExistente();
+                    }
                     
+
                     System.out.printf("------------------------- \n");
                     System.out.printf("Entradas: %d\n", carro.getEntradasEstacionamento());
                    
@@ -65,7 +70,13 @@ public class Menu {
                     }
 
                     String placaRetirar = Prompt.lerLinha("Placa a retirar:");
-                    carro.RemoverCarro(placaRetirar, carro.getSaidasEstacionamento(), carro.getVagasEstacionamento());
+                    int num2 = carro.RemoverCarro(placaRetirar, carro.getSaidasEstacionamento(), carro.getVagasEstacionamento());
+
+                    if (num2 == 1) {
+                        MensagensEstacionamento.carroInexistente();
+                    } else {
+                        System.out.printf("Carro retirado!!!!\n");
+                    }
                     
                     
                     System.out.printf("------------------------- \n");
