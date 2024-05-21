@@ -8,20 +8,22 @@ public class MenuCompetencias {
         int escolha, tipo;
 
         Competencia[] competencias = new Competencia[0];
+
+        //loop
         do{
             Competencia competencia = new Competencia();
 
             do{
-            tipo = Prompt.lerInteiro("Qual tipo de Competencia:\n(1- Nescessária / 2- Complementar)");   
+            tipo = Prompt.lerInteiro("Qual tipo de Competencia:\n(1- Necessária / 2- Complementar)");   
 
             switch (tipo) {
                 case 1:   
+                    //NECESSARIA
                     competencia.setTipo(Competencia.Tipo.NECESSARIA);    
-                    //competencia.setTipo(Competencia.Tipo.NECESSARIA);
                     break;
                 case 2:
+                    //COMPLEMENTAR
                     competencia.setTipo(Competencia.Tipo.COMPLEMENTAR);
-                    //competencia.setTipo(Competencia.Tipo.COMPLEMENTAR);
                     break;
                 default:
                     Prompt.imprimir("escolha inválida");
@@ -36,7 +38,10 @@ public class MenuCompetencias {
             }
 
             arrayTeste[arrayTeste.length - 1] = competencia;
+
+            competencias = new Competencia[arrayTeste.length];
             competencias = arrayTeste;
+            
             escolha = Prompt.lerInteiro("Colocar mais uma competência?(0 para parar)");
         }while(escolha != 0);
 
