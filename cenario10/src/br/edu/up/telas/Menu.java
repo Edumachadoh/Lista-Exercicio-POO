@@ -3,7 +3,6 @@ package br.edu.up.telas;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-import br.edu.up.Programa;
 import br.edu.up.controles.ManipularSeguros;
 import br.edu.up.modelos.Segurado;
 import br.edu.up.modelos.SeguroVeiculo;
@@ -11,23 +10,22 @@ import br.edu.up.modelos.SeguroVida;
 import br.edu.up.util.Prompt;
 
 public class Menu {
-        public static void executar(){
+    public static void executar() {
         int opcao = 0;
+        int contSeguros = 0; 
 
         ManipularSeguros seguros = new ManipularSeguros();
         Scanner leitor = new Scanner(System.in);
-        
-        do {
-            int contSeguros = 0;
 
+        do {
             System.out.println("----------------------");
-            System.out.println( "1. Incluir seguro\r\n" +
-                            "2. Localizar seguro\r\n" +
-                            "3. Excluir seguro\r\n" +
-                            "4. Excluir todos os seguros\r\n" +
-                            "5. Listar todos os seguros\r\n" +
-                            "6. Ver quantidade de seguros\r\n" +
-                            "7. Sair\r");
+            System.out.println("1. Incluir seguro\n" +
+                    "2. Localizar seguro\n" +
+                    "3. Excluir seguro\n" +
+                    "4. Excluir todos os seguros\n" +
+                    "5. Listar todos os seguros\n" +
+                    "6. Ver quantidade de seguros\n" +
+                    "7. Sair");
             System.out.println("----------------------\n");
 
             opcao = Prompt.lerInteiro(":");
@@ -40,28 +38,28 @@ public class Menu {
                 break;
             }
 
-            String nome = Prompt.lerLinha("Nome: ");
-            String rg = Prompt.lerLinha("RG: ");
-            String cpf = Prompt.lerLinha("CPF: ");
-            String telefone = Prompt.lerLinha("Telefone: ");
-            String endereco = Prompt.lerLinha("Endereço: ");
-            String cep = Prompt.lerLinha("Cep: ");
-            String cidade = Prompt.lerLinha("Cidade: ");
+            // String nome = Prompt.lerLinha("Nome: ");
+            // String rg = Prompt.lerLinha("RG: ");
+            // String cpf = Prompt.lerLinha("CPF: ");
+            // String telefone = Prompt.lerLinha("Telefone: ");
+            // String endereco = Prompt.lerLinha("Endereço: ");
+            // String cep = Prompt.lerLinha("Cep: ");
+            // String cidade = Prompt.lerLinha("Cidade: ");
             int sexo = Prompt.lerInteiro("Sexo: ([1] Homem [2] Mulher) ");
 
-            Segurado segurado = new Segurado(nome, rg, cpf, telefone, endereco, cep, cidade);
-            switch (sexo) {
-                case 1:
-                    segurado.setSexo(Segurado.Sexo.MASCULINO);
-                    break;
-                case 2:
-                    segurado.setSexo(Segurado.Sexo.FEMININO);
-                    break;
-                default:
-                    System.out.println("Valor invalido!");
-                    break;
-            }
-            
+            // Segurado segurado = new Segurado(nome, rg, cpf, telefone, endereco, cep, cidade);
+            Segurado segurado = new Segurado(null, null, null, null, null, null, null);
+            // switch (sexo) {
+            //     case 1:
+            //         segurado.setSexo(Segurado.Sexo.MASCULINO);
+            //         break;
+            //     case 2:
+            //         segurado.setSexo(Segurado.Sexo.FEMININO);
+            //         break;
+            //     default:
+            //         System.out.println("Valor invalido!");
+            //         break;
+            // }
 
             switch (opcao) {
                 case 1:
@@ -81,16 +79,16 @@ public class Menu {
 
                         int cD = Prompt.lerInteiro("Cobre doenca: (1- Sim 2- Nao):");
                         if (cD == 1) {
-                             cobreDoenca = true;
+                            cobreDoenca = true;
                         } else if (cD == 2) {
-                             cobreDoenca = false;
+                            cobreDoenca = false;
                         }
 
                         int cA = Prompt.lerInteiro("Cobre acidente: (1- Sim 2- Nao):");
                         if (cA == 1) {
-                             cobreAcidente = true;
+                            cobreAcidente = true;
                         } else if (cA == 2) {
-                             cobreAcidente = false;
+                            cobreAcidente = false;
                         }
 
                         SeguroVida seguroVida = new SeguroVida(apolice, segurado, vlrApolice, dtaInicio, dtaFim, cobreDoenca, cobreAcidente);
@@ -104,52 +102,50 @@ public class Menu {
 
                         int cD = Prompt.lerInteiro("Carro reserva: (1- Sim 2- Nao):");
                         if (cD == 1) {
-                             temCarroReserva = true;
+                            temCarroReserva = true;
                         } else if (cD == 2) {
-                             temCarroReserva = false;
+                            temCarroReserva = false;
                         }
 
                         int cA = Prompt.lerInteiro("Cobre vidros: (1- Sim 2- Nao):");
                         if (cA == 1) {
-                             cobreVidros = true;
+                            cobreVidros = true;
                         } else if (cA == 2) {
-                             cobreVidros = false;
+                            cobreVidros = false;
                         }
 
                         SeguroVeiculo seguroVeiculo = new SeguroVeiculo(apolice, segurado, vlrApolice, dtaInicio, dtaFim, vlrFranquia, temCarroReserva, cobreVidros);
                         seguros.adicionarSeguroVeiculo(seguroVeiculo, contSeguros);
                     }
 
-                    contSeguros ++;
+                    contSeguros++;
+                    
                     break;
-            
                 case 2:
-                    
+                    System.out.println("case 2");
                     break;
-            
+
                 case 3:
-                    
+                  
                     break;
-            
+
                 case 4:
-                    seguros.toString();
+                  
                     break;
-            
+
                 case 5:
-                    
+                    System.out.println(seguros.toString());
                     break;
-            
+
                 case 6:
-                    
+                   
                     break;
-            
+
                 default:
                     System.out.println("Opcao invalida!");
                     break;
             }
 
         } while (opcao != 7);
-            
-    
     }
 }
