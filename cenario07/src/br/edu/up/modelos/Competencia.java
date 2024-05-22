@@ -1,10 +1,11 @@
 package br.edu.up.modelos;
 
 public class Competencia {
-    private Tipo tipo;
+    
+    public Tipo tipo;
 
     public enum Tipo{
-        NECESSARIA,
+        NECESSARIA, 
         COMPLEMENTAR;
     }
 
@@ -15,7 +16,4 @@ public class Competencia {
     public void setTipo(Tipo tipo) {
         this.tipo = tipo;
     }
-
-    
-
 }

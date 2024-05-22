@@ -8,7 +8,7 @@ public class Aluno extends Pessoa{
 
     private Aprovacao aprovacao;
     //private Situacao[] situacao;
-    private Competencia[] competencias;
+    //private Competencia[] competencias;
 
     public Aluno(int anoIngresso, String nomeCurso, String turno, String nome, int rg, int matricula) {
         
