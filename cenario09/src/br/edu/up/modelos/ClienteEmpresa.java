@@ -5,11 +5,16 @@ public class ClienteEmpresa extends Cliente{
     private String inscEstadual;
     private int anoFundacao;
 
-    public ClienteEmpresa(String cnpj, String inscEstadual, int anoFundacao,double credito) {
+    public ClienteEmpresa(){
+        super();
+    }
+    public ClienteEmpresa(String nome, String telefone, String email, double vlrMaxCredito, double vlrEmprestimo,
+            Endereco endereco, String cnpj, String inscEstadual, int anoFundacao, double creditoMAX) {
+        super(nome, telefone, email, vlrMaxCredito, vlrEmprestimo, endereco);
         this.cnpj = cnpj;
         this.inscEstadual = inscEstadual;
         this.anoFundacao = anoFundacao;
-        super.setVlrMaxCredito(credito);
+        super.setVlrMaxCredito(creditoMAX);
     }
     public String getCnpj() {
         return cnpj;

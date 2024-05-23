@@ -9,10 +9,22 @@ public abstract class Cliente {
     private Endereco endereco;
 
     //O valor máximo de crédito para cliente pessoa é de R$ 10.000,00 e cliente empresa R$25.000,00. 
+    public Cliente(){
+    }
+    public Cliente(String nome, String telefone, String email, double vlrMaxCredito, double vlrEmprestimo,
+            Endereco endereco) {
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+        this.vlrMaxCredito = vlrMaxCredito;
+        this.vlrEmprestimo = vlrEmprestimo;
+        this.endereco = endereco;
+    }
 
     public String getNome() {
         return nome;
     }
+    
     public void setNome(String nome) {
         this.nome = nome;
     }

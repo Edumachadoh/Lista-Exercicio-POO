@@ -9,21 +9,13 @@ import br.edu.up.modelos.Endereco;
 
 public class IncluirCliente {
     public static void pessoa(List<Cliente> lCPessoas, String nomeCliente, String telefone, String email, Endereco endereco, String CPF, double peso, double altura){
-        Cliente cliente = new ClientePessoa(CPF, peso, altura, 10000);
-        cliente.setNome(nomeCliente);
-        cliente.setEmail(email);
-        cliente.setTelefone(telefone);
-        cliente.setEndereco(endereco);
+        Cliente cliente = new ClientePessoa(nomeCliente, telefone, email, altura, altura, endereco, CPF, peso, altura, 10000);
 
         lCPessoas.add(cliente);
     }
 
     public static void empresa(List<Cliente> lCEmpresas, String nomeCliente, String telefone, String email, Endereco endereco, String cnpj, String inscEstadual, int anoFundacao){
-        Cliente cliente = new ClienteEmpresa(cnpj, inscEstadual, anoFundacao, 25000);
-        cliente.setNome(nomeCliente);
-        cliente.setEmail(email);
-        cliente.setTelefone(telefone);
-        cliente.setEndereco(endereco);
+        Cliente cliente = new ClienteEmpresa(nomeCliente, telefone, email, anoFundacao, anoFundacao, endereco, cnpj, inscEstadual, anoFundacao, 25000);
 
         lCEmpresas.add(cliente);
     }
