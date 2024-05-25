@@ -5,20 +5,58 @@ import br.edu.up.modelos.Professor;
 import br.edu.up.modelos.Titulacao;
 
 public class ControleProfessor {
-    public static void addProfessor(String nome, int rg, int matricula, int idCurriculo, Titulacao titulacao, Pessoa[] professores){
+    private Pessoa[] professores;
+    private int i;
+    
+    public void iniciar(){
+        this.professores = new Professor[0];
+        this.i = 0;
+    }
 
+    public void addProfessor(String nome, int rg, int matricula, Titulacao titulacao){
+        this.i++;
+
+        int idCurriculo = i;
         Pessoa professor = new Professor(idCurriculo, titulacao, nome, rg, matricula);
 
-        Pessoa[] vet1 = new Professor[professores.length];
+        Pessoa[] vet1 = new Professor[this.professores.length];
 
-        vet1 = professores;
+        vet1 = this.professores;
 
-        professores = new Professor[vet1.length + 1];
+        this.professores = new Professor[vet1.length + 1];
         
         for (int i = 0; i < vet1.length; i++) {
-            professores[i] = vet1[i];
+            this.professores[i] = vet1[i];
         }
 
-        professores[vet1.length] = professor;
+        this.professores[vet1.length] = professor;
+    }
+
+    public String listarProfessores(){
+        String listaProfessores = new String();
+
+        for (Pessoa professor : professores) {
+            if(professor != null){
+                listaProfessores += "\n" + professor.toString();
+            }
+        }
+
+        return listaProfessores;
+    }
+
+    public Pessoa getProfessor(int idCurriculo){
+        Pessoa profEsco = new Professor();
+
+        for (Pessoa professor : professores) {
+            if(professor instanceof Professor){
+                Professor professorC = (Professor)professor;
+
+                if(professorC.getIdCurriculo() == idCurriculo){
+                    profEsco = professor;
+                }
+            }
+        }
+
+        return profEsco;
     }
 }

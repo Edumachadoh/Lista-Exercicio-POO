@@ -4,7 +4,7 @@ import br.edu.up.modelos.Competencia;
 import br.edu.up.util.Prompt;
 
 public class MenuCompetencias {
-    public static Competencia[] lerCompetencias(){
+    public static Competencia[] criarCompetencias(){
         int escolha, tipo;
 
         Competencia[] competencias = new Competencia[0];

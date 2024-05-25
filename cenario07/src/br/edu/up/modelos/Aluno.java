@@ -4,7 +4,7 @@ public class Aluno extends Pessoa{
     private int anoIngresso;
     private String nomeCurso;
     private String turno;
-    private Disciplina disciplina;
+    private Disciplina[] disciplinas;
 
     private Aprovacao aprovacao;
     //private Situacao[] situacao;
@@ -38,9 +38,29 @@ public class Aluno extends Pessoa{
         this.turno = turno;
     }
     public void adicionarDisciplina(Disciplina disciplina){
-        this.disciplina = disciplina;
+
+        Disciplina[] vet1 = new Disciplina[this.disciplinas.length];
+
+        vet1 = disciplinas;
+
+        disciplinas = new Disciplina[vet1.length + 1];
+        
+        for (int i = 0; i < vet1.length; i++) {
+            disciplinas[i] = vet1[i];
+        }
+
+        disciplinas[vet1.length] = disciplina;
     }
-    public Disciplina getDisciplina(){
+    public Disciplina getDisciplina(String nome){
+        
+        Disciplina disciplina = null;
+
+        for (Disciplina disciplinaT : disciplinas) {
+            if(disciplinaT.getNome().toLowerCase() == nome.toLowerCase()){
+                disciplina = disciplinaT;
+            }
+        }
+        
         return disciplina;
     }
     

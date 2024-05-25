@@ -5,7 +5,9 @@ public abstract class Pessoa{
     private int rg;
     private int matricula;
     
-    
+    public Pessoa(){
+        
+    }
     public Pessoa(String nome, int rg, int matricula) {
         this.nome = nome;
         this.rg = rg;
