@@ -38,31 +38,33 @@ public class Menu {
                 break;
             }
 
-            // String nome = Prompt.lerLinha("Nome: ");
-            // String rg = Prompt.lerLinha("RG: ");
-            // String cpf = Prompt.lerLinha("CPF: ");
-            // String telefone = Prompt.lerLinha("Telefone: ");
-            // String endereco = Prompt.lerLinha("Endereço: ");
-            // String cep = Prompt.lerLinha("Cep: ");
-            // String cidade = Prompt.lerLinha("Cidade: ");
-            int sexo = Prompt.lerInteiro("Sexo: ([1] Homem [2] Mulher) ");
-
-            // Segurado segurado = new Segurado(nome, rg, cpf, telefone, endereco, cep, cidade);
-            Segurado segurado = new Segurado(null, null, null, null, null, null, null);
-            // switch (sexo) {
-            //     case 1:
-            //         segurado.setSexo(Segurado.Sexo.MASCULINO);
-            //         break;
-            //     case 2:
-            //         segurado.setSexo(Segurado.Sexo.FEMININO);
-            //         break;
-            //     default:
-            //         System.out.println("Valor invalido!");
-            //         break;
-            // }
+            
 
             switch (opcao) {
                 case 1:
+                String nome = Prompt.lerLinha("Nome: ");
+                String rg = Prompt.lerLinha("RG: ");
+                String cpf = Prompt.lerLinha("CPF: ");
+                String telefone = Prompt.lerLinha("Telefone: ");
+                String endereco = Prompt.lerLinha("Endereço: ");
+                String cep = Prompt.lerLinha("Cep: ");
+                String cidade = Prompt.lerLinha("Cidade: ");
+                int sexo = Prompt.lerInteiro("Sexo: ([1] Homem [2] Mulher) ");
+    
+                Segurado segurado = new Segurado(nome, rg, cpf, telefone, endereco, cep, cidade);
+                
+                switch (sexo) {
+                    case 1:
+                        segurado.setSexo(Segurado.Sexo.MASCULINO);
+                        break;
+                    case 2:
+                        segurado.setSexo(Segurado.Sexo.FEMININO);
+                        break;
+                    default:
+                        System.out.println("Valor invalido!");
+                        break;
+                }
+
                     String apolice = Prompt.lerLinha("Apolice:");
                     double vlrApolice = Prompt.lerDecimal("Valor apolice :R$");
                     int diaInicio = Prompt.lerInteiro("Dia inicio: ");
@@ -122,7 +124,14 @@ public class Menu {
                     
                     break;
                 case 2:
-                    System.out.println("case 2");
+                    cpf = Prompt.lerLinha("Digite o cpf para localizar o seguro: ");
+                    ;
+
+                    if (seguros.localizarSeguro(cpf, contSeguros) == 1) {
+                        System.out.println("Seguro encontrado com sucesso");
+                    } else {
+                        System.out.println("Seguro NAO encontrado!!!");
+                    }
                     break;
 
                 case 3:
@@ -130,15 +139,17 @@ public class Menu {
                     break;
 
                 case 4:
-                  
+                    seguros.excluirTodos(contSeguros);
+                    contSeguros = 0;
+                    System.out.println("Seguros excluidos");
                     break;
 
                 case 5:
-                    System.out.println(seguros.toString());
+                    System.out.println(seguros.toString(contSeguros));
                     break;
 
                 case 6:
-                   
+                System.out.println("Numero de seguros: " + contSeguros);
                     break;
 
                 default:
