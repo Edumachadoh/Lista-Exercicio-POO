@@ -135,7 +135,15 @@ public class Menu {
                     break;
 
                 case 3:
-                  
+                    
+                    String cpf2 = Prompt.lerLinha("Cpf do seguro que deseja excluir: ");
+
+                    if (seguros.excluirSeguro(contSeguros, cpf2) == 1) {
+                        System.out.println("Seguro inexistente!");
+                    } else {
+                        System.out.println("Seguro excluido!!!!");
+                    }
+                    
                     break;
 
                 case 4:
@@ -147,9 +155,11 @@ public class Menu {
                 case 5:
                     System.out.println(seguros.toString(contSeguros));
                     break;
-
                 case 6:
                 System.out.println("Numero de seguros: " + contSeguros);
+                    break;
+                case 7:
+                System.out.println("Saindo...");
                     break;
 
                 default:

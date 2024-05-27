@@ -11,7 +11,7 @@ public class ManipularSeguros {
 
     
     public ManipularSeguros() {
-        this.seguro = new Seguro[10];
+        this.seguro = new Seguro[30];
        
     }
 
@@ -32,8 +32,17 @@ public class ManipularSeguros {
             }
         }
 
-        
         return flag;
+    }
+
+    public int excluirSeguro(int contSeguros, String cpf) {
+        for (int i = 0; i < contSeguros; i++) {
+            if (seguro[i] != null && cpf.equals(seguro[i].getSegurado().getCPF())) {
+                seguro[i] = null;
+                return 0; // Excluído com sucesso
+            }
+        }
+        return 1; // Não encontrado
     }
 
     public void excluirTodos(int contSeguros) {
@@ -48,8 +57,10 @@ public class ManipularSeguros {
     public String toString(int contSeguros) {
         String retorno = "";
         for (int i = 0; i < contSeguros; i ++) {
-            retorno += "ManipularSeguros [Nome=" + seguro[i].getSegurado().getNome() + "]\n";
-        }
+            if (seguro[i] != null) {
+                retorno += "ManipularSeguros [Nome=" + seguro[i].getSegurado().getNome() + "]\n";
+            }
+       }
         return retorno;
     }
     
