@@ -3,41 +3,52 @@ package br.edu.up.controles;
 import br.edu.up.modelos.Aluno;
 import br.edu.up.modelos.Pessoa;
 
-
 public class ControleAluno {
-private Pessoa[] alunos;
+    private Pessoa[] alunos;
 
-    
-    public void iniciar(){
+    public ControleAluno() {
         this.alunos = new Aluno[0];
     }
 
-    public void addAluno(int anoIngresso, String nomeCurso, String turno, String nome, int rg, int matricula){
-        
+    public void addAluno(int anoIngresso, String nomeCurso, String turno, String nome, int rg, int matricula) {
         Pessoa aluno = new Aluno(anoIngresso, nomeCurso, turno, nome, rg, matricula);
 
-        Pessoa[] vet1 = new Aluno[this.alunos.length];
+        Pessoa[] novoArray = new Aluno[this.alunos.length + 1];
 
-        vet1 = this.alunos;
-
-        this.alunos = new Aluno[vet1.length + 1];
-        
-        for (int i = 0; i < vet1.length; i++) {
-            this.alunos[i] = vet1[i];
+        for (int i = 0; i < this.alunos.length; i++) {
+            novoArray[i] = this.alunos[i];
         }
 
-        this.alunos[vet1.length] = aluno;
+        novoArray[this.alunos.length] = aluno;
+
+        this.alunos = novoArray;
     }
 
-    public String listarAlunos(){
+    public String listarAlunos() {
         String listaAlunos = new String();
 
         for (Pessoa aluno : alunos) {
-            if(aluno != null){
+            if (aluno != null) {
                 listaAlunos += "\n" + aluno.toString();
             }
         }
 
         return listaAlunos;
+    }
+    public Pessoa getAluno(int matricula){
+        Pessoa alunoSelecionado = new Aluno();
+        alunoSelecionado = null;
+        for (Pessoa aluno : alunos) {
+            if(aluno != null){
+                if(aluno.getMatricula() == matricula){
+                    alunoSelecionado = aluno;
+                }
+            }
+        }
+
+        return alunoSelecionado;
+    }
+    public Pessoa[] getAlunos() {
+        return alunos;
     }
 }

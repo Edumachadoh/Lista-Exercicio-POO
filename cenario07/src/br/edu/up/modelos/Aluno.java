@@ -10,6 +10,9 @@ public class Aluno extends Pessoa{
     //private Situacao[] situacao;
     //private Competencia[] competencias;
 
+    public Aluno(){
+
+    }
     public Aluno(int anoIngresso, String nomeCurso, String turno, String nome, int rg, int matricula) {
         
         super(nome, rg, matricula);
@@ -75,7 +78,7 @@ public class Aluno extends Pessoa{
 
     @Override
     public String toString() {
-        return "Aluno [anoIngresso=" + anoIngresso + ", nomeCurso=" + nomeCurso + ", turno=" + turno + "]";
+        return "Aluno [anoIngresso=" + anoIngresso + ", nomeCurso=" + nomeCurso + ", turno=" + turno + super.toString() + "]";
     }
 
     enum Aprovacao{

@@ -8,41 +8,37 @@ public class ControleDisciplina {
 
     private Disciplina[] disciplinas;
     private int i;
-    
-    public void iniciar(){
+
+    public ControleDisciplina() {
         this.disciplinas = new Disciplina[0];
-        i = 0;
+        this.i = 0;
     }
 
-    public void addDisciplina(String nome, String curriculo, Competencia[] competencias, Pessoa professor){
+    public void addDisciplina(String nome, String curriculo, Competencia[] competencias, Pessoa professor) {
         this.i++;
-
         int id = this.i;
-        
-        Disciplina Disciplina = new Disciplina(id, nome, curriculo, competencias, professor);
+        Disciplina disciplina = new Disciplina(id, nome, curriculo, competencias, professor);
 
-        Disciplina[] vet1 = new Disciplina[this.disciplinas.length];
+        Disciplina[] novoArray = new Disciplina[this.disciplinas.length + 1];
 
-        vet1 = this.disciplinas;
-
-        this.disciplinas = new Disciplina[vet1.length + 1];
-        
-        for (int i = 0; i < vet1.length; i++) {
-            this.disciplinas[i] = vet1[i];
+        for (int i = 0; i < this.disciplinas.length; i++) {
+            novoArray[i] = this.disciplinas[i];
         }
 
-        this.disciplinas[vet1.length] = Disciplina;
+        novoArray[this.disciplinas.length] = disciplina;
+
+        this.disciplinas = novoArray;
     }
 
-    public String listarDisciplinas(){
-        String listadisciplinas = new String();
+    public String listarDisciplinas() {
+        String listaDisciplinas = new String();
 
-        for (Disciplina Disciplina : disciplinas) {
-            if(Disciplina != null){
-                listadisciplinas += "\n" + Disciplina.toString();
+        for (Disciplina disciplina : disciplinas) {
+            if (disciplina != null) {
+                listaDisciplinas += "\n" + disciplina.toString();
             }
         }
 
-        return listadisciplinas;
+        return listaDisciplinas;
     }
 }

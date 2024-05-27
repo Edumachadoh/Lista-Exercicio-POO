@@ -4,24 +4,24 @@ import br.edu.up.Programa;
 import br.edu.up.controles.ControleAluno;
 import br.edu.up.controles.ControleDisciplina;
 import br.edu.up.controles.ControleProfessor;
+import br.edu.up.modelos.Aluno;
 import br.edu.up.modelos.Competencia;
 import br.edu.up.modelos.Pessoa;
-import br.edu.up.modelos.Professor;
 import br.edu.up.modelos.Titulacao;
 import br.edu.up.util.Prompt;
 
 public class Menu {
-
-    public static void iniciar(){
-        ControleAluno cAl = new ControleAluno();
-        ControleProfessor cPr = new ControleProfessor();
-        ControleDisciplina cDs = new ControleDisciplina();
-        cAl.iniciar();
-        cPr.iniciar();
-        cDs.iniciar();
+    private ControleAluno controleAluno;
+    private ControleProfessor controleProfessor;
+    private ControleDisciplina controleDisciplina;
+    
+    public Menu(){
+        controleAluno = new ControleAluno();
+        controleProfessor = new ControleProfessor();
+        controleDisciplina = new ControleDisciplina();
     }
 
-    public static void mostrarTela(){
+    public void mostrarTela(){
         System.out.println("1- Registrar Professor");
         System.out.println("2- Registrar Aluno");
         System.out.println("3- Registrar Disciplina");
@@ -32,14 +32,14 @@ public class Menu {
         escolherAcao();
     }
 
-    public static void escolherAcao(){
+    public void escolherAcao(){
         int escolha = Prompt.lerInteiro();
 
         switch (escolha) {
             case 1:addProfessor();break;    
             case 2:addAluno();break;    
             case 3:addDisciplina();break;
-            case 4:break;
+            case 4:addAlunoDisciplina();break;
             case 5:listarProfessores();break;
             case 6:listarAlunos();break;
             case 7:listarDisciplinas();break;
@@ -50,18 +50,16 @@ public class Menu {
         mostrarTela();
     }
 
-    public static void addProfessor(){
+    public void addProfessor(){
         String nome = Prompt.lerLinha("Nome do professor:");
         int rg = Prompt.lerInteiro("RG:");
         int matricula =  Prompt.lerInteiro("Matrícula:");
         Titulacao titulacao = addTitulacao();
 
-        ControleProfessor controle = new ControleProfessor();
-
-        controle.addProfessor(nome, rg, matricula, titulacao);
+        this.controleProfessor.addProfessor(nome, rg, matricula, titulacao);
     }
 
-    public static Titulacao addTitulacao(){
+    public Titulacao addTitulacao(){
         String nomeInstituicao = Prompt.lerLinha("Nome da instituição:");
         int anoConclusao = Prompt.lerInteiro("Ano de Conclusão:");
         String nomeTitulo = Prompt.lerLinha("Nome da Instituição:");
@@ -72,61 +70,86 @@ public class Menu {
         return titulacao;
     }
 
-    public static void listarProfessores(){
-        ControleProfessor controleProf = new ControleProfessor();
-        Prompt.imprimir(controleProf.listarProfessores());
+    public void listarProfessores(){
+        Prompt.imprimir(this.controleProfessor.listarProfessores());
     }
 
-    public static void addAluno(){
-        String nome = Prompt.lerLinha("Nome do professor:");
+    public void addAluno(){
+        String nome = Prompt.lerLinha("Nome do aluno:");
         int rg = Prompt.lerInteiro("RG:");
         int matricula =  Prompt.lerInteiro("Matrícula:");
         int anoIngresso = Prompt.lerInteiro("Ano de Ingresso:");
         String nomeCurso = Prompt.lerLinha("Nome do Curso:");
         String turno = Prompt.lerLinha("Turno:");
-        
-        ControleAluno controleAluno = new ControleAluno();
 
-        controleAluno.addAluno(anoIngresso, nomeCurso, turno, nome, rg, matricula);
+        this.controleAluno.addAluno(anoIngresso, nomeCurso, turno, nome, rg, matricula);
     }
 
-    public static void listarAlunos(){
-        ControleAluno controleAluno = new ControleAluno();
-        Prompt.imprimir(controleAluno.listarAlunos());
+    public void listarAlunos(){
+        Prompt.imprimir(this.controleAluno.listarAlunos());
     }
 
-    public static void addDisciplina(){
+    public void addDisciplina(){
         String nome = Prompt.lerLinha("Nome da Disciplina:");
         String curriculo = Prompt.lerLinha("Currículo da Disciplina:");
         Competencia[] competencias = MenuCompetencias.criarCompetencias();
         Pessoa professor = escolherProfessor();
 
-        ControleDisciplina cDisciplina = new ControleDisciplina();
-        cDisciplina.addDisciplina(nome, curriculo, competencias, professor);
+        this.controleDisciplina.addDisciplina(nome, curriculo, competencias, professor);
     }
 
-    public static void listarDisciplinas(){
-        ControleDisciplina cDisciplina = new ControleDisciplina();
-        Prompt.imprimir(cDisciplina.listarDisciplinas());
+    public void listarDisciplinas(){
+        Prompt.imprimir(this.controleDisciplina.listarDisciplinas());
     }
 
-    public static Pessoa escolherProfessor(){
+    public Pessoa escolherProfessor(){
 
-        Pessoa professor = new Professor();
+        Pessoa professor = new Aluno();
+        professor = null;
 
-        try{
-
-            ControleProfessor controleProf = new ControleProfessor();
-            Prompt.imprimir(controleProf.listarProfessores());
+        if(!(controleProfessor.getProfessores().length <= 0)){
+            listarProfessores();
     
             int idCurriculo = Prompt.lerInteiro("ID do Professor:");
-            professor = controleProf.getProfessor(idCurriculo);
+            professor = this.controleProfessor.getProfessor(idCurriculo);
 
-        }catch(NullPointerException e){
-
-         Prompt.imprimir("Professor não encontrado ou não há professores registrados");
-
+        }else{
+            Prompt.imprimir("Não há professores registrados");
+            mostrarTela();
         }
+
         return professor;
+    }
+
+    public void addAlunoDisciplina(){
+        Prompt.separador();
+        
+        if(controleAluno.getAlunos().length <= 0){
+            Prompt.imprimir("Não há alunos registrados");
+            
+        }else{
+            listarAlunos();
+            Prompt.separador();
+        }
+        
+    }
+
+    public Pessoa escolherAluno(){
+
+        Pessoa aluno = new Aluno();
+        aluno = null;
+
+        if(!(controleAluno.getAlunos().length <= 0)){
+            listarAlunos();
+    
+            int matricula = Prompt.lerInteiro("Matrícula do Aluno:");
+            aluno = this.controleAluno.getAluno(matricula);
+
+        }else{
+            Prompt.imprimir("Não há alunos registrados");
+            mostrarTela();
+        }
+
+        return aluno;
     }
 }
