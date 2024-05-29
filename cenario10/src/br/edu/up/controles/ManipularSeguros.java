@@ -35,14 +35,24 @@ public class ManipularSeguros {
         return flag;
     }
 
+    public int verifApolice(String apolice, int contSeguros) {
+        int flag = 0;
+        for (int i = 0; i < contSeguros; i ++) {
+            if (apolice.equals(seguro[i].getApolice())) {
+                flag = 1;
+            }
+        }
+        return flag;
+    }
+
     public int excluirSeguro(int contSeguros, String cpf) {
         for (int i = 0; i < contSeguros; i++) {
             if (seguro[i] != null && cpf.equals(seguro[i].getSegurado().getCPF())) {
                 seguro[i] = null;
-                return 0; // Excluído com sucesso
+                return 0; 
             }
         }
-        return 1; // Não encontrado
+        return 1; 
     }
 
     public void excluirTodos(int contSeguros) {
@@ -58,7 +68,13 @@ public class ManipularSeguros {
         String retorno = "";
         for (int i = 0; i < contSeguros; i ++) {
             if (seguro[i] != null) {
-                retorno += "ManipularSeguros [Nome=" + seguro[i].getSegurado().getNome() + "]\n";
+                retorno += "ManipularSeguros [Nome= " + seguro[i].getSegurado().getNome() + " RG= " + seguro[i].getSegurado().getRG() + 
+                " Cpf= " + seguro[i].getSegurado().getCPF() + 
+                " Sexo= " + seguro[i].getSegurado().getSexo() + 
+                " Telefone= " + seguro[i].getSegurado().getTelefone() + 
+                " Endereco= " + seguro[i].getSegurado().getEndereco() + 
+                " Cep= " + seguro[i].getSegurado().getNome() + 
+                "Cidade=" + seguro[i].getSegurado().getNome() + "\n";
             }
        }
         return retorno;

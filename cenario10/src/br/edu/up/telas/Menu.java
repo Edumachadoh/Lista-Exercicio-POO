@@ -30,7 +30,13 @@ public class Menu {
 
             opcao = Prompt.lerInteiro(":");
             if (opcao == 7) {
-                break;
+                int resposta = Prompt.lerInteiro("Deseja mesmo sair? [1- Sim / 2- Nao]");
+    
+                if (resposta == 1) {
+                    break;
+                } else if (resposta == 2) {
+                    continue;
+                }
             }
 
             if (contSeguros == 20) {
@@ -66,6 +72,12 @@ public class Menu {
                 }
 
                     String apolice = Prompt.lerLinha("Apolice:");
+                    
+                    if (seguros.verifApolice(apolice, contSeguros) == 1) {
+                        System.out.println("Apolice ja contido no sistema!");
+                        break;
+                    }
+
                     double vlrApolice = Prompt.lerDecimal("Valor apolice :R$");
                     int diaInicio = Prompt.lerInteiro("Dia inicio: ");
                     int mesInicio = Prompt.lerInteiro("Mes inicio: ");
@@ -128,7 +140,7 @@ public class Menu {
                     ;
 
                     if (seguros.localizarSeguro(cpf, contSeguros) == 1) {
-                        System.out.println("Seguro encontrado com sucesso");
+                        System.out.println("Seguro encontrado");
                     } else {
                         System.out.println("Seguro NAO encontrado!!!");
                     }
@@ -156,17 +168,15 @@ public class Menu {
                     System.out.println(seguros.toString(contSeguros));
                     break;
                 case 6:
-                System.out.println("Numero de seguros: " + contSeguros);
+                System.out.println("Numero de seguros realizados: " + contSeguros);
                     break;
-                case 7:
-                System.out.println("Saindo...");
-                    break;
+               
 
                 default:
                     System.out.println("Opcao invalida!");
                     break;
             }
 
-        } while (opcao != 7);
+        } while (opcao != 0);
     }
 }
