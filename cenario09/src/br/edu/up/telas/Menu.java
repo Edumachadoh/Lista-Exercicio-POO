@@ -128,7 +128,7 @@ public class Menu {
             if(cliente != null){
                 ClientePessoa clientePessoa = (ClientePessoa) cliente;
                 
-                if(CPF.equalsIgnoreCase(clientePessoa.getCPF())){
+                if(CPF.equalsIgnoreCase(clientePessoa.getCpf())){
                     double valor = Prompt.lerDecimal("Valor:");
                     Emprestar.executar(clientePessoa, valor);
                 }
@@ -157,7 +157,7 @@ public class Menu {
             if(cliente != null){
                 ClientePessoa clientePessoa = (ClientePessoa) cliente;
                 
-                if(CPF.equalsIgnoreCase(clientePessoa.getCPF())){
+                if(CPF.equalsIgnoreCase(clientePessoa.getCpf())){
                     double valor = Prompt.lerDecimal("Valor:");
                     Emprestar.executar(clientePessoa, valor);
                 }
