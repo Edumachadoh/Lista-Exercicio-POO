@@ -200,7 +200,8 @@ public class Menu {
         Pessoa pessoa = escolherAluno();
         Aluno aluno = (Aluno)pessoa;
 
-        aluno.ve
+        String apr = aluno.verificarAprovacao();
+        Prompt.imprimir(apr);
 
     }
 }
