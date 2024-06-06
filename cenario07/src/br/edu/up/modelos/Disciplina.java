@@ -10,7 +10,9 @@ public class Disciplina {
     private Pessoa professor;
     private Pessoa[] alunos;
 
+    public Disciplina(){
 
+    }
     public Disciplina(int id, String nome, String curriculo, Competencia[] competencias, Pessoa professor) {
         this.id = id;
         this.nome = nome;
@@ -60,13 +62,18 @@ public class Disciplina {
 
         return listaAlunos;
     }
+    public String listarCompetencias(){
+        String comp = new String();
+        for (Competencia competencia : competencias){
+            comp += competencia.toString() + "\n";
+        }   
+        return comp;
+    }
     @Override
     public String toString() {
         return "Disciplina [id=" + id + ", nome=" + nome + ", curriculo=" + curriculo + ", competencias="
                 + Arrays.toString(competencias) + ", professor=" + professor + ", alunos=" + Arrays.toString(alunos)
                 + "]";
     }
-    
-    
     
 }

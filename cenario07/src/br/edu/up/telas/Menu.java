@@ -6,6 +6,7 @@ import br.edu.up.controles.ControleDisciplina;
 import br.edu.up.controles.ControleProfessor;
 import br.edu.up.modelos.Aluno;
 import br.edu.up.modelos.Competencia;
+import br.edu.up.modelos.Disciplina;
 import br.edu.up.modelos.Pessoa;
 import br.edu.up.modelos.Titulacao;
 import br.edu.up.util.Prompt;
@@ -29,6 +30,8 @@ public class Menu {
         System.out.println("5- Listar Professores");
         System.out.println("6- Listar Alunos");
         System.out.println("7- Listar Disciplinas");
+        System.out.println("8- Adicionar Competencias concluídas a Aluno");
+        System.out.println("9- Verificar Situação Aluno");
         escolherAcao();
     }
 
@@ -43,8 +46,9 @@ public class Menu {
             case 5:listarProfessores();break;
             case 6:listarAlunos();break;
             case 7:listarDisciplinas();break;
-            case 8:break;
-            case 9:Programa.parar();break;
+            case 8:addCompetenciaAAluno();break;
+            case 9:verificarSituacaoAluno();break;
+            case 10:Programa.parar();break;
             default:System.out.println("Escolha inválida\ndigite novamente...");escolherAcao();break;
         }
         mostrarTela();
@@ -151,5 +155,52 @@ public class Menu {
         }
 
         return aluno;
+    }
+
+    public Disciplina escolherDisciplina(){
+
+        Disciplina disciplina = new Disciplina();
+        disciplina = null;
+
+        if(!(controleDisciplina.getDisciplinas().length <= 0)){
+            listarDisciplinas();
+    
+            int id = Prompt.lerInteiro("ID disciplina:");
+            disciplina = this.controleDisciplina.getDisciplina(id);
+
+        }else{
+            Prompt.imprimir("Não há disciplinas registradas ou disciplina inválida");
+            mostrarTela();
+        }
+
+        return disciplina;
+    }
+
+    public void addCompetenciaAAluno(){
+
+        Pessoa pessoa = escolherAluno();
+        Aluno aluno = (Aluno)pessoa;
+
+        int escolha;
+
+        do{
+        aluno.adicionarCompetencia(MenuCompetencias.setCompetencia());
+        escolha = Prompt.lerInteiro("Deseja adicionar mais uma? (0 para parar)");
+        
+        if(escolha == 0){
+            break;
+        }
+
+        }while(true);
+
+
+    }
+
+    public void verificarSituacaoAluno(){
+        Pessoa pessoa = escolherAluno();
+        Aluno aluno = (Aluno)pessoa;
+
+        aluno.ve
+
     }
 }

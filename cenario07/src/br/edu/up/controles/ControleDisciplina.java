@@ -41,4 +41,17 @@ public class ControleDisciplina {
 
         return listaDisciplinas;
     }
+
+    public Disciplina[] getDisciplinas(){
+        return disciplinas;
+    }
+
+    public Disciplina getDisciplina(int ID){
+        for (Disciplina disciplina : disciplinas) {
+            if (disciplina.getId() == ID) {
+                return disciplina;
+            }
+        }
+        return null;
+    }
 }
